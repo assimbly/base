@@ -21,3 +21,40 @@
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+
+######################
+# Intellij
+######################
+*.iws
+*.iml
+.idea_modules/
+.idea/
+atlassian-ide-plugin.xml
+out/
+
+######################
+# Eclipse
+######################
+.project
+.metadata
+tmp/
+tmp/**/*
+*.tmp
+*.bak
+*.swp
+*~.nib
+.sts4-cache/
+.sts-cache/
+local.properties
+.classpath
+.settings/
+.loadpath
+.factorypath
+
+# Databases #
+######################
+*.sql
+
+# Directories #
+######################
+target/
