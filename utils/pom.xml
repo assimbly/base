@@ -7,14 +7,7 @@
     <version>3.7.0</version>
   </parent>
 
-  <packaging>jar</packaging>
-  <groupId>org.assimbly</groupId>
   <artifactId>utils</artifactId>
-  <version>3.7.0</version>
-
-  <name>baseModule</name>
-  <!-- FIXME change it to the project's website -->
-  <url>http://www.example.com</url>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -23,15 +16,57 @@
   </properties>
 
   <dependencies>
-        <dependency>
-		    <groupId>org.apache.camel</groupId>
-		    <artifactId>camel-base</artifactId>
-		</dependency>
-        <dependency>
+
+      <dependency>
+        <groupId>org.assimbly</groupId>
+        <artifactId>camelBase</artifactId>
+        <version>${assimbly.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.assimbly</groupId>
+        <artifactId>commonBase</artifactId>
+        <version>${assimbly.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.assimbly</groupId>
+        <artifactId>springBase</artifactId>
+        <version>${assimbly.version}</version>
+      </dependency>
+      <dependency>
+          <groupId>org.assimbly</groupId>
+          <artifactId>testBase</artifactId>
+          <version>${assimbly.version}</version>
+          <scope>test</scope>
+      </dependency>
+
+      <dependency>
           <groupId>dev.jeka</groupId>
           <artifactId>jeka-core</artifactId>
-          <version>0.9.20.RC26</version>
+          <version>${jeka.version}</version>
         </dependency>
+
+        <dependency>
+          <groupId>org.jasypt</groupId>
+          <artifactId>jasypt</artifactId>
+          <version>${jasypt.version}</version>
+        </dependency>
+        <dependency>
+          <groupId>org.apache.camel</groupId>
+          <artifactId>camel-jasypt</artifactId>
+        </dependency>
+
+        <dependency>
+          <groupId>org.bouncycastle</groupId>
+          <artifactId>bcpkix-jdk15on</artifactId>
+          <version>${bouncycastle.version}</version>
+        </dependency>
+
+      <dependency>
+          <groupId>io.github.assimbly</groupId>
+          <artifactId>docconverter</artifactId>
+          <version>${docconverter.version}</version>
+      </dependency>
+
   </dependencies>
 
   <build>
