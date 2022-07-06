@@ -16,15 +16,26 @@
     <properties>
   	  	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     	<maven.compiler.release>11</maven.compiler.release>
-        <maven-versions-rules>file:///${project.basedir}/rules.xml</maven-versions-rules>
+        <maven.versions-rules>file:///${parent.basedir}/rules.xml</maven.versions-rules>
     </properties>
   
     <dependencies>
         <!-- database drivers -->
         <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <version>${mysql-connector-java.version}</version>
+            <groupId>com.ibm.db2.jcc</groupId>
+            <artifactId>db2jcc</artifactId>
+            <version>${db2-jdbc.version}</version>
+        </dependency>
+        <!--BEWARE: Informix requires BSON from version 4.10.12, but doesn't include it as a dependency-->
+        <dependency>
+            <groupId>com.ibm.informix</groupId>
+            <artifactId>jdbc</artifactId>
+            <version>${informix-jdbc.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.mongodb</groupId>
+            <artifactId>bson</artifactId>
+            <version>${bson.version}</version>
         </dependency>
         <dependency>
             <groupId>com.microsoft.sqlserver</groupId>
@@ -32,10 +43,26 @@
             <version>${mssql-jdbc.version}</version>
         </dependency>
         <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>${mysql-connector-java.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.oracle.database.jdbc</groupId>
+            <artifactId>ojdbc8</artifactId>
+            <version>${oracle12.version}</version>
+        </dependency>
+        <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
             <version>${postgresql.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.xerial</groupId>
+            <artifactId>sqlite-jdbc</artifactId>
+            <version>${sqlite-jdbc.version}</version>
+        </dependency>
+
     </dependencies>
 
 </project>

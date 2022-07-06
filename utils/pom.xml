@@ -12,7 +12,7 @@
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.release>11</maven.compiler.release>
-    <maven-versions-rules>file:///${project.basedir}/rules.xml</maven-versions-rules>
+    <maven.versions-rules>file:///${parent.basedir}/rules.xml</maven.versions-rules>
   </properties>
 
   <dependencies>
@@ -60,6 +60,17 @@
           <artifactId>bcpkix-jdk15on</artifactId>
           <version>${bouncycastle.version}</version>
         </dependency>
+
+      <dependency>
+          <groupId>org.apache.ws.commons.axiom</groupId>
+          <artifactId>axiom-api</artifactId>
+          <version>${axiom.version}</version>
+      </dependency>
+      <dependency>
+          <groupId>org.apache.tika</groupId>
+          <artifactId>tika-bundle</artifactId>
+          <version>${tika.version}</version>
+      </dependency>
 
       <dependency>
           <groupId>io.github.assimbly</groupId>
