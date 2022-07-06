@@ -60,8 +60,8 @@
 		<javax-annotation-api.version>1.3.2</javax-annotation-api.version>
 		<javax-xml-soap-api.version>1.4.0</javax-xml-soap-api.version>
 		<jakarta-xml-bind-api.version>4.0.0</jakarta-xml-bind-api.version>
-		<jaxb-core.version>4.0.0</jaxb-core.version>
-		<jaxb-impl.version>4.0.0</jaxb-impl.version>
+		<jaxb-core.version>3.0.2</jaxb-core.version>
+		<jaxb-impl.version>3.0.2</jaxb-impl.version>
 		<jasypt.version>1.9.3</jasypt.version>
 		<jeka.version>0.9.20.RC26</jeka.version>
 		<json.version>20220320</json.version>
