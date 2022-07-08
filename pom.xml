@@ -14,13 +14,13 @@
 		<module>activemqBase</module>
 		<module>camelBase</module>
 		<module>camelComponents</module>
-		<module>camelCustomComponents</module>
 		<module>databaseDrivers</module>
 		<module>commonBase</module>
 		<module>extra</module>
 		<module>springBase</module>
 		<module>testBase</module>
 		<module>utils</module>
+		<module>camelCustomComponents</module>
 	</modules>
 
 	<properties>
