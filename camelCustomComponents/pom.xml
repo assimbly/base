@@ -19,7 +19,8 @@
         <maven.versions-rules>file:///${parent.basedir}/rules.xml</maven.versions-rules>
     </properties>
 
-    <!-- Custom Dovetail component -->
+    <!-- Custom Dovetail components -->
+    <!-- list of Camel components in alphabetic order -->
     <dependencies>
         <dependency>
             <groupId>world.dovetail</groupId>
@@ -114,6 +115,11 @@
         <dependency>
             <groupId>world.dovetail</groupId>
             <artifactId>replace</artifactId>
+            <version>${assimbly.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>world.dovetail</groupId>
+            <artifactId>smb</artifactId>
             <version>${assimbly.version}</version>
         </dependency>
         <dependency>

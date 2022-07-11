@@ -18,7 +18,8 @@
     	<maven.compiler.release>11</maven.compiler.release>
         <maven.versions-rules>file:///${parent.basedir}/rules.xml</maven.versions-rules>
     </properties>
-  
+
+    <!-- list of Camel components in alphabetic order -->
     <dependencies>
         <dependency>
             <groupId>org.apache.camel</groupId>
