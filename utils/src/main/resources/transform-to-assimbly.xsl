@@ -80,6 +80,31 @@
                               </route_id>
                             </endpoint>                            
                         </xsl:for-each>
+                        <xsl:for-each select="//*:camelContext/*:onException">
+                            <endpoint>
+                                <id>
+                                    <xsl:choose>
+                                        <xsl:when test="//*:camelContext/@id">
+                                            <xsl:value-of select="//*:camelContext/@id"/>
+                                        </xsl:when>
+                                        <xsl:otherwise>
+                                            <xsl:value-of  select="generate-id(.)"/>
+                                        </xsl:otherwise>
+                                    </xsl:choose>
+                                </id>
+                                <type>error</type>
+                                <route_id>
+                                    <xsl:choose>
+                                        <xsl:when test="//*:camelContext/@id">
+                                            <xsl:value-of select="//*:camelContext/@id"/>
+                                        </xsl:when>
+                                        <xsl:otherwise>
+                                            <xsl:value-of  select="generate-id(.)"/>
+                                        </xsl:otherwise>
+                                    </xsl:choose>
+                                </route_id>
+                            </endpoint>
+                        </xsl:for-each>
                       </endpoints>
                     </flow>
                   </flows>
@@ -94,12 +119,11 @@
                                         <xsl:attribute name="id" select="generate-id(.)"/> 
                                     </xsl:otherwise>                            
                                 </xsl:choose>
-                                <xsl:if test="//*:onException">
+                                <xsl:if test="//*:camelContext/*:onException">
                                     <xsl:attribute name="routeConfigurationId">
-                                        <xsl:text>errorHandler-</xsl:text>
                                         <xsl:choose>
                                             <xsl:when test="@id">
-                                                <xsl:attribute name="id" select="//*:route[1]/@id"/> 
+                                                <xsl:attribute name="id" select="//*:camelContext/@id"/>
                                             </xsl:when>
                                             <xsl:otherwise>
                                                 <xsl:attribute name="id" select="generate-id(.)"/> 
@@ -112,21 +136,20 @@
                         </xsl:for-each>
                     </routes>                    
                   <routeConfigurations>
-                    <xsl:if test="//*:onException">
+                    <xsl:if test="//*:camelContext/*:onException">
                         <routeConfiguration>
                             <xsl:attribute name="id">
-                                <xsl:text>errorHandler-</xsl:text>
                                 <xsl:choose>
-                                    <xsl:when test="//*:route[1]/@id">
-                                        <xsl:attribute name="id" select="//*:route[1]/@id"/> 
+                                    <xsl:when test="//*:camelContext/@id">
+                                        <xsl:attribute name="id" select="//*:camelContext/@id"/>
                                     </xsl:when>
                                     <xsl:otherwise>
                                         <xsl:attribute name="id" select="generate-id(.)"/> 
                                     </xsl:otherwise>                            
                                 </xsl:choose>
                             </xsl:attribute>
-                            <xsl:apply-templates select="//*:onException" mode="copy-no-namespaces"/>
-                            <xsl:apply-templates select="//*:dataFormats" mode="copy-no-namespaces"/>
+                            <xsl:apply-templates select="//*:camelContext/*:onException" mode="copy-no-namespaces"/>
+                            <xsl:apply-templates select="//*:camelContext/*:dataFormats" mode="copy-no-namespaces"/>
                         </routeConfiguration>                                                
                     </xsl:if>
                     </routeConfigurations>                    
