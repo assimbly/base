@@ -64,6 +64,8 @@ public final class TransformUtil {
         map.put("<custom ref=\"csv-","<customDataFormat ref=\"csv-");
         map.put("quartz2:","quartz:");
         map.put("sql-component:","sql-custom:");
+        map.put("pdf2txt:","pdftotext:");
+        map.put("form2xml:","formtoxml:");
 
 		String output = replaceMultipleStrings(input, map, true);
 		
