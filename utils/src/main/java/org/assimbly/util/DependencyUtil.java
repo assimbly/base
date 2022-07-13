@@ -116,6 +116,7 @@ public class DependencyUtil {
         HTTP("http"),
         HTTPS("https"),
         IMAP("imap"),
+        IMAPS("imaps"),
         JMS("jms"),
         JETTY("jetty"),
         KAFKA("kafka"),
