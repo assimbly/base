@@ -8,12 +8,7 @@ import java.net.SocketAddress;
 import java.net.SocketTimeoutException;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
-import java.util.Optional; 
+import java.util.*;
 import java.util.stream.Collectors;
 
 import org.apache.camel.spi.Resource;
@@ -165,165 +160,52 @@ public final class IntegrationUtil {
 	}
 
 
-	
-
 	public static void printTreemap(TreeMap<String, String> treeMap) throws Exception {
-	
-		Map<String, String> id = treeMap.entrySet()
-				.stream()
-				.filter(map -> map.getKey().equals("id"))
-				.collect(Collectors.toMap(map -> map.getKey(), map -> Optional.ofNullable(map.getValue()).orElse("")));
 
-		Map<String, String> flow = treeMap.entrySet()
-				.stream()
-				.filter(map -> map.getKey().startsWith("flow"))
-				.collect(Collectors.toMap(map -> map.getKey(), map -> Optional.ofNullable(map.getValue()).orElse("")));
-
-		Map<String, String> from = treeMap.entrySet()
-				.stream()
-				.filter(map -> map.getKey().startsWith("from"))
-				.collect(Collectors.toMap(map -> map.getKey(),  map -> Optional.ofNullable(map.getValue()).orElse("")));
-
-		Map<String, String> to = treeMap.entrySet()
-				.stream()
-				.filter(map -> map.getKey().startsWith("to"))
-				.collect(Collectors.toMap(map -> map.getKey(),  map -> Optional.ofNullable(map.getValue()).orElse("")));
-
-		Map<String, String> response = treeMap.entrySet()
-				.stream()
-				.filter(map -> map.getKey().startsWith("response"))
-				.collect(Collectors.toMap(map -> map.getKey(),  map -> Optional.ofNullable(map.getValue()).orElse("")));
-
-		Map<String, String> error = treeMap.entrySet()
-				.stream()
-				.filter(map -> map.getKey().startsWith("error"))
-				.collect(Collectors.toMap(map -> map.getKey(),  map -> Optional.ofNullable(map.getValue()).orElse("")));
-
-		Map<String, String> header = treeMap.entrySet()
-				.stream()
-				.filter(map -> map.getKey().startsWith("header"))
-				.collect(Collectors.toMap(map -> map.getKey(),  map -> Optional.ofNullable(map.getValue()).orElse("")));
-
-		Map<String, String> service = treeMap.entrySet()
-				.stream()
-				.filter(map -> map.getKey().startsWith("service"))
-				.collect(Collectors.toMap(map -> map.getKey(),  map -> Optional.ofNullable(map.getValue()).orElse("")));
-
-		Map<String, String> route = treeMap.entrySet()
-				.stream()
-				.filter(map -> map.getKey().startsWith("route"))
-				.collect(Collectors.toMap(map -> map.getKey(),  map -> Optional.ofNullable(map.getValue()).orElse("")));
-				
-		System.out.println("");
-		System.out.println("FLOW CONFIGURATION");
-		System.out.println("-----------------------------------------------------------\n");
-
-		for(Map.Entry<String,String> entry : id.entrySet()) {
-
-			String key = entry.getKey();
-			String value = entry.getValue();
-			System.out.printf("%-30s %s\n", key + ":", value);
-
+		System.out.println("print treemap: ");
+		for (Map.Entry<String,String> entry : treeMap.entrySet()) {
+			System.out.println("key: " + entry.getKey() + "; value: " + entry.getValue());
 		}
 
-		for(Map.Entry<String,String> entry : flow.entrySet()) {
 
-			String key = entry.getKey();
-			String value = entry.getValue();
-			System.out.printf("%-30s %s\n", key + ":", value);
+			System.out.println("");
+		System.out.println("CONFIGURATION");
+		System.out.println("-----------------------------------------------------------------\n");
 
-		}
+		List<String> items = Arrays.asList( "id", "flow", "from", "to", "response", "error", "header", "service", "route", "routeConfiguration");
 
-		if(!from.isEmpty()) {
+		Map<String, String> subMap = null;
 
-			System.out.println("\nENDPOINTS\n");
+		for (String item : items) {
 
-			for(Map.Entry<String,String> entry : from.entrySet()) {
+			subMap = treeMap.entrySet()
+					.stream()
+					.filter(map -> map.getKey().startsWith(item))
+					.collect(Collectors.toMap(map -> map.getKey(), map -> Optional.ofNullable(map.getValue()).orElse("")));
 
-				String key = entry.getKey();
-				String value = entry.getValue();
-				System.out.printf("%-30s %s\n", key + ":", value);
+			if(subMap.size() > 0) {
 
-			}
+				System.out.println("\n" + item.toUpperCase() + "\n");
 
-		} 
-		
-		for(Map.Entry<String,String> entry : to.entrySet()) {
+				for(Map.Entry<String,String> entry : subMap.entrySet()) {
 
-			String key = entry.getKey();
-			String value = entry.getValue();
-			System.out.printf("%-30s %s\n", key + ":", value);
+					String key = entry.getKey();
+					String value = entry.getValue();
 
-		}
+					if (key.contains("password"))
+						System.out.printf("%-30s %s\n", key + ":", "***********");
+					else if (key.endsWith("route") || key.endsWith("routeConfiguration"))
+						System.out.printf("%-30s \n\n%s\n", key + ":", value);
+					else {
+						System.out.printf("%-30s %s\n", key + ":", value);
+					}
 
-		if(!response.isEmpty()) {
-			for (Map.Entry<String, String> entry : response.entrySet()) {
-
-				String key = entry.getKey();
-				String value = entry.getValue();
-				System.out.printf("%-30s %s\n", key + ":", value);
-
-			}
-		}
-
-		for(Map.Entry<String,String> entry : error.entrySet()) {
-
-			String key = entry.getKey();
-			String value = entry.getValue();
-			System.out.printf("%-30s %s\n", key + ":", value);
-
-		}
-
-		if(!header.isEmpty()) {
-
-			System.out.println("\nHEADERS\n");
-
-			for(Map.Entry<String,String> entry : header.entrySet()) {
-
-				String key = entry.getKey();
-				String value = entry.getValue();
-				if(key.contains("password"))
-					System.out.printf("%-30s %s\n", key + ":", "***********");
-				else {
-					System.out.printf("%-30s %s\n", key + ":", value);
 				}
-
 			}
+
 		}
 
-		if(!service.isEmpty()) {
-
-			System.out.println("\nSERVICES\n");
-
-			for(Map.Entry<String,String> entry : service.entrySet()) {
-
-				String key = entry.getKey();
-				String value = entry.getValue();
-				if(key.contains("password"))
-					System.out.printf("%-30s %s\n", key + ":", "***********");
-				else {
-					System.out.printf("%-30s %s\n", key + ":", value);
-				}
-
-			}
-		}
-
-		if(!route.isEmpty()) {
-
-			System.out.println("\nROUTES\n");
-
-			for(Map.Entry<String,String> entry : route.entrySet()) {
-				String key = entry.getKey();
-				String value = entry.getValue();
-				if(key.endsWith("route"))
-					System.out.printf("%-30s \n\n%s\n", key + ":", value);
-				else {
-					System.out.printf("%-30s %s\n", key + ":", value);
-				}				
-			}
-		}
-		
-		System.out.println("-----------------------------------------------------------\n");
+		System.out.println("-----------------------------------------------------------------\n");
 
 	}	
 	

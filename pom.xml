@@ -20,7 +20,6 @@
 		<module>springBase</module>
 		<module>testBase</module>
 		<module>utils</module>
-		<module>camelCustomComponents</module>
 	</modules>
 
 	<properties>
@@ -52,6 +51,7 @@
 		<commons-text.version>1.9</commons-text.version>
 		<db2-jdbc.version>db2jcc4</db2-jdbc.version>
 		<docconverter.version>1.5.0</docconverter.version>
+		<gson.version>2.9.0</gson.version>
 		<guava.version>31.1-jre</guava.version>
 		<informix-jdbc.version>4.50.8</informix-jdbc.version>
 		<jackson.version>2.13.3</jackson.version>
@@ -65,6 +65,7 @@
 		<jasypt.version>1.9.3</jasypt.version>
 		<jeka.version>0.9.20.RC26</jeka.version>
 		<json.version>20220320</json.version>
+		<jsonassert.version>1.5.1</jsonassert.version>
 		<json-path.version>2.7.0</json-path.version>
 		<junit.version>4.13.2</junit.version>
 		<httpclient.version>4.5.13</httpclient.version>
@@ -72,8 +73,12 @@
 		<oracle12.version>21.5.0.0</oracle12.version>
 		<mysql-connector-java.version>8.0.29</mysql-connector-java.version>
 		<mssql-jdbc.version>10.2.0.jre11</mssql-jdbc.version>
+		<!--<mockito.version>1.10.19</mockito.version>-->
+		<mockito.version>3.3.3</mockito.version>
 		<mongo.version>3.12.11</mongo.version>
 		<postgresql.version>42.4.0</postgresql.version>
+		<!--<powermock.version>1.7.4</powermock.version>-->
+		<powermock.version>2.0.9</powermock.version>
 		<qpid-proton-j.version>0.33.10</qpid-proton-j.version>
 		<slf4j.version>1.7.36</slf4j.version>
 		<sonic.version>10.0.18</sonic.version>
@@ -82,6 +87,7 @@
 		<sqlite-jdbc.version>3.36.0.3</sqlite-jdbc.version>
 		<tika.version>1.28.4</tika.version>
 		<xmlunit.version>1.6</xmlunit.version>
+		<xmlunit-core.version>2.9.0</xmlunit-core.version>
 	</properties>
 
 	<dependencyManagement>

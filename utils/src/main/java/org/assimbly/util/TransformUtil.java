@@ -25,17 +25,23 @@ public final class TransformUtil {
     protected static Logger log = LoggerFactory.getLogger("org.assimbly.util.TransformUtil");
 
 	public static String convertCamelToAssimblyFormat(String xml){
-		
+
+        System.out.println("XML 1: " + xml);
+
 		//convert camel2 to camel3
 		xml = camel2ToCamel3(xml);
-	
-		ClassLoader classloader = Thread.currentThread().getContextClassLoader();
+
+        System.out.println("XML 2: " + xml);
+
+        ClassLoader classloader = Thread.currentThread().getContextClassLoader();
 		InputStream is = classloader.getResourceAsStream("transform-to-assimbly.xsl");
 
 		//transform to Assimbly format
 		xml = transformXML(xml,is);
-	
-		return xml;
+
+        System.out.println("XML 3: " + xml);
+
+        return xml;
 	}
 			
 	private static String camel2ToCamel3(String input){
@@ -58,8 +64,11 @@ public final class TransformUtil {
         map.put("<custom ref=\"csv-","<customDataFormat ref=\"csv-");
         map.put("quartz2:","quartz:");
         map.put("http4:","http:");
-        map.put("https4:","https:");
-		
+        map.put("https4:","https:");		
+        map.put("sql-component:","sql-custom:");
+        map.put("pdf2txt:","pdftotext:");
+        map.put("form2xml:","formtoxml:");
+
 		String output = replaceMultipleStrings(input, map, true);
 		
 		//you may uncheck the method below, because it maybe faster on large maps
