@@ -20,14 +20,33 @@ To build a specific module
 
 ---
 
+## buildandtest
+
+Builds the project or module and then run the unit tests.
+
+### Usage:
+
+To build and test the complete project:
+
+```buildandtest```
+
+To build and test a specific module
+
+```buildandtest modulename```
+
+---
+
 ## versions
 
 Checks the Maven dependencies for the latest versions.
 
-The patterns in the rules.xml are excluded.
+The patterns in the rules.xml are excluded. The rules.xml is
+in the root directory of the project.
 
 ### Usage:
 
 To print a report:
 
 ```versions```
+
+
