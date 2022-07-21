@@ -1,0 +1,10 @@
+@echo off
+
+if [%1]==[] goto usage
+git add -A
+git commit -m %1
+goto :eof
+:usage
+@echo Usage: %0 ^<Commit Message^>
+exit /B 1
+

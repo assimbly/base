@@ -26,16 +26,10 @@
             <artifactId>db2jcc</artifactId>
             <version>${db2-jdbc.version}</version>
         </dependency>
-        <!--BEWARE: Informix requires BSON from version 4.10.12, but doesn't include it as a dependency-->
         <dependency>
             <groupId>com.ibm.informix</groupId>
             <artifactId>jdbc</artifactId>
             <version>${informix-jdbc.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.mongodb</groupId>
-            <artifactId>bson</artifactId>
-            <version>${bson.version}</version>
         </dependency>
         <dependency>
             <groupId>com.microsoft.sqlserver</groupId>
