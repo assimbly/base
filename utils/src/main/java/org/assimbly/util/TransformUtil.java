@@ -26,12 +26,8 @@ public final class TransformUtil {
 
 	public static String convertCamelToAssimblyFormat(String xml){
 
-        System.out.println("XML 1: " + xml);
-
 		//convert camel2 to camel3
 		xml = camel2ToCamel3(xml);
-
-        System.out.println("XML 2: " + xml);
 
         ClassLoader classloader = Thread.currentThread().getContextClassLoader();
 		InputStream is = classloader.getResourceAsStream("transform-to-assimbly.xsl");
@@ -39,9 +35,8 @@ public final class TransformUtil {
 		//transform to Assimbly format
 		xml = transformXML(xml,is);
 
-        System.out.println("XML 3: " + xml);
-
         return xml;
+
 	}
 			
 	private static String camel2ToCamel3(String input){

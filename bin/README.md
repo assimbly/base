@@ -36,6 +36,22 @@ To build and test a specific module
 
 ---
 
+## lazygit
+
+Add all files to the staging area, commit the files and push it to origin (GitHub). Shortcut for:
+
+```
+git add -A
+git commit -m "<commit message"
+git push
+```
+
+### Usage:
+
+```lazygit "my message"```
+
+---
+
 ## versions
 
 Checks the Maven dependencies for the latest versions.

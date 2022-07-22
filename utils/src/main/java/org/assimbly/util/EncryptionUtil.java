@@ -13,6 +13,7 @@ public final class EncryptionUtil {
         this.textEncryptor.setPassword(password);
         this.textEncryptor.setAlgorithm(algorithm);
         this.textEncryptor.setIvGenerator(new RandomIvGenerator());
+
     }
 
     public StandardPBEStringEncryptor getTextEncryptor() {
