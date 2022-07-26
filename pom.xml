@@ -30,10 +30,10 @@
 
 		<aopalliance.version>1.0</aopalliance.version>
 		<axiom.version>1.4.0</axiom.version>
-		<assimbly.version>3.7.0</assimbly.version>
+		<assimbly.version>3.8.0</assimbly.version>
 		<activemq-classic.version>5.17.1</activemq-classic.version>
 		<activemq-artemis.version>2.23.1</activemq-artemis.version>
-		<activemq-artemis-native.version>1.0.2</activemq-artemis-native.version>
+		<activemq-artemis-native.version>2.0.0</activemq-artemis-native.version>
 		<bouncycastle.version>1.70</bouncycastle.version>
 		<commons-beanutils.version>1.9.4</commons-beanutils.version>
 		<commons-cli.version>1.5.0</commons-cli.version>
@@ -62,7 +62,7 @@
 		<jaxb-core.version>3.0.2</jaxb-core.version>
 		<jaxb-impl.version>3.0.2</jaxb-impl.version>
 		<jasypt.version>1.9.3</jasypt.version>
-		<jeka.version>0.9.20.RC26</jeka.version>
+		<jeka.version>0.9.20.RC28</jeka.version>
 		<json.version>20220320</json.version>
 		<jsonassert.version>1.5.1</jsonassert.version>
 		<json-path.version>2.7.0</json-path.version>
@@ -70,8 +70,8 @@
 		<jwt.version>0.11.5</jwt.version>
 		<httpclient.version>4.5.13</httpclient.version>
 		<logback-classic.version>1.2.11</logback-classic.version>
-		<oracle12.version>21.5.0.0</oracle12.version>
-		<mysql-connector-java.version>8.0.29</mysql-connector-java.version>
+		<oracle12.version>21.6.0.0.1</oracle12.version>
+		<mysql-connector-java.version>8.0.30</mysql-connector-java.version>
 		<mssql-jdbc.version>10.2.0.jre11</mssql-jdbc.version>
 		<mockito.version>4.6.1</mockito.version>
 		<mockserver.version>5.13.2</mockserver.version>
@@ -81,8 +81,8 @@
 		<qpid-proton-j.version>0.33.10</qpid-proton-j.version>
 		<slf4j.version>1.7.36</slf4j.version>
 		<sonic.version>10.0.18</sonic.version>
-		<spring.version>5.3.21</spring.version>
-		<spring-data.version>2.6.6</spring-data.version>
+		<spring.version>5.3.22</spring.version>
+		<spring-data.version>2.7.2</spring-data.version>
 		<sqlite-jdbc.version>3.36.0.3</sqlite-jdbc.version>
 		<tika.version>1.28.4</tika.version>
 		<xmlunit.version>1.6</xmlunit.version>
