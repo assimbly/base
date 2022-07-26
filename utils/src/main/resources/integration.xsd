@@ -60,15 +60,15 @@
 			<xs:element type="xs:string" name="created" minOccurs="0"/>
 			<xs:element type="xs:string" name="lastModified" minOccurs="0"/>
 			<xs:element type="componentsType" name="components" minOccurs="0" maxOccurs="1"/>
-			<xs:element type="endpointsType" name="endpoints"  minOccurs="0" />
+			<xs:element type="stepsType" name="steps"  minOccurs="0" />
 		</xs:choice>
 	</xs:complexType>
-	<xs:complexType name="endpointsType">
+	<xs:complexType name="stepsType">
 		<xs:sequence>
-			<xs:element type="endpointType" name="endpoint" minOccurs="1" maxOccurs="unbounded" />
+			<xs:element type="stepType" name="step" minOccurs="1" maxOccurs="unbounded" />
 		</xs:sequence>
 	</xs:complexType>
-	<xs:complexType name="endpointType">
+	<xs:complexType name="stepType">
 		<xs:choice minOccurs="0" maxOccurs="unbounded">
 			<xs:element type="xs:string" name="id" minOccurs="0" maxOccurs="1"/>
 			<xs:element type="xs:string" name="type" minOccurs="1" maxOccurs="1"/>
