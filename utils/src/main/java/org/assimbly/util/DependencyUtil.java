@@ -120,6 +120,7 @@ public class DependencyUtil {
         JMS("jms"),
         JETTY("jetty"),
         KAFKA("kafka"),
+        KAMELET("kamelet"),
         LOG("log"),
         NETTY("netty"),
         NETTYHTTP("netty-http"),
