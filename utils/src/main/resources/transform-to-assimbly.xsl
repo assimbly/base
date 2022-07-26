@@ -55,9 +55,9 @@
                             </component>
                           </xsl:for-each-group>
                      </components>  					  
-                      <endpoints>
+                      <steps>
                         <xsl:for-each select="//*:route">
-                            <endpoint>
+                            <step>
                               <id>
                                  <xsl:choose>
                                     <xsl:when test="@id">
@@ -78,10 +78,10 @@
                                     </xsl:otherwise>                            
                                 </xsl:choose>                                  
                               </route_id>
-                            </endpoint>                            
+                            </step>
                         </xsl:for-each>
                         <xsl:for-each select="//*:camelContext/*:onException">
-                            <endpoint>
+                            <step>
                                 <id>
                                     <xsl:choose>
                                         <xsl:when test="//*:camelContext/@id">
@@ -103,9 +103,9 @@
                                         </xsl:otherwise>
                                     </xsl:choose>
                                 </route_id>
-                            </endpoint>
+                            </step>
                         </xsl:for-each>
-                      </endpoints>
+                      </steps>
                     </flow>
                   </flows>
                   <routes>                    
