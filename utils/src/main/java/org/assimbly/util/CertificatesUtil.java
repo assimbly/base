@@ -74,7 +74,7 @@ import org.slf4j.LoggerFactory;
 
 public final class CertificatesUtil {
 
-	protected static Logger log = LoggerFactory.getLogger("org.assimbly.connector.util.CertificatesUtil");
+	protected static Logger log = LoggerFactory.getLogger("org.assimbly.util.CertificatesUtil");
 	
     public static final String PEER_CERTIFICATES = "PEER_CERTIFICATES";
 
