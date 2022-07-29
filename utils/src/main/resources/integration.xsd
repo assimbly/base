@@ -52,6 +52,7 @@
 			<xs:element type="xs:string" name="autostart" minOccurs="0" maxOccurs="1"/>
 			<xs:element type="xs:string" name="offloading" minOccurs="0" maxOccurs="1"/>
 			<xs:element type="xs:string" name="parallelProcessing" minOccurs="0" maxOccurs="1"/>
+			<xs:element type="xs:string" name="transport" minOccurs="0" maxOccurs="1"/>
 			<xs:element type="xs:string" name="maximumRedeliveries" minOccurs="0"/>
 			<xs:element type="xs:string" name="redeliveryDelay" minOccurs="0"/>
 			<xs:element type="xs:string" name="assimblyHeaders" minOccurs="0" maxOccurs="1"/>
@@ -74,6 +75,7 @@
 			<xs:element type="xs:string" name="type" minOccurs="1" maxOccurs="1"/>
 			<xs:element type="xs:string" name="uri" minOccurs="0" maxOccurs="1"/>
 			<xs:element type="optionsType" name="options" minOccurs="0" />
+			<xs:element type="linksType" name="links" minOccurs="0" />
 			<xs:element type="xs:string" name="response_id" minOccurs="0" />
 			<xs:element type="xs:string" name="service_id" minOccurs="0" />
 			<xs:element type="xs:string" name="header_id" minOccurs="0" />
@@ -86,6 +88,16 @@
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="optionsType">
+		<xs:sequence maxOccurs="unbounded">
+			<xs:any namespace="##any" minOccurs="0" processContents="lax" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="linksType">
+		<xs:choice minOccurs="0" maxOccurs="unbounded">
+			<xs:element type="linkType" name="link" minOccurs="0" />
+		</xs:choice>
+	</xs:complexType>
+	<xs:complexType name="linkType">
 		<xs:sequence maxOccurs="unbounded">
 			<xs:any namespace="##any" minOccurs="0" processContents="lax" />
 		</xs:sequence>
