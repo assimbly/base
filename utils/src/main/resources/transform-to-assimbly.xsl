@@ -10,6 +10,32 @@
         <xsl:when test="integrations">
             <xsl:copy-of select="/"/>            
         </xsl:when>
+        <xsl:when test="flows">
+            <integrations>
+                <integration>
+                    <id>1</id>
+                    <name>default</name>
+                    <type>FULL</type>
+                    <environmentName>PRODUCTION</environmentName>
+                    <stage>PRODUCTION</stage>
+                    <xsl:copy-of select="/"/>
+                </integration>
+            </integrations>
+        </xsl:when>
+        <xsl:when test="flow">
+            <integrations>
+                <integration>
+                    <id>1</id>
+                    <name>default</name>
+                    <type>FULL</type>
+                    <environmentName>PRODUCTION</environmentName>
+                    <stage>PRODUCTION</stage>
+                    <flows>
+                        <xsl:copy-of select="/"/>
+                    </flows>
+                </integration>
+            </integrations>
+        </xsl:when>
         <xsl:when test="//*:route">
 
             <integrations>
