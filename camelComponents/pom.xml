@@ -183,23 +183,21 @@
         </dependency>
 
         <!-- kamelets -->
-        <!--
         <dependency>
             <groupId>org.apache.camel.kamelets</groupId>
             <artifactId>camel-kamelets</artifactId>
-            <version>0.7.1</version>
+            <version>0.8.1</version>
         </dependency>
         <dependency>
             <groupId>org.apache.camel.kamelets</groupId>
             <artifactId>camel-kamelets-utils</artifactId>
-            <version>0.7.1</version>
+            <version>0.8.1</version>
         </dependency>
         <dependency>
             <groupId>org.apache.camel.kamelets</groupId>
             <artifactId>camel-kamelets-catalog</artifactId>
-            <version>0.7.1</version>
-        </dependency>-->
-
+            <version>0.8.1</version>
+        </dependency>
 
     </dependencies>
 

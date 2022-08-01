@@ -80,6 +80,7 @@
 			<xs:element type="xs:string" name="service_id" minOccurs="0" />
 			<xs:element type="xs:string" name="header_id" minOccurs="0" />
 			<xs:element type="xs:string" name="route_id" minOccurs="0" />
+			<xs:element type="xs:string" name="routeconfiguration_id" minOccurs="0" />
 		</xs:choice>
 	</xs:complexType>
 	<xs:complexType name="componentsType">

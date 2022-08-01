@@ -93,7 +93,7 @@
                                     </xsl:choose>
                                 </id>
                                 <type>error</type>
-                                <route_id>
+                                <routeconfiguration_id>
                                     <xsl:choose>
                                         <xsl:when test="//*:camelContext/@id">
                                             <xsl:value-of select="//*:camelContext/@id"/>
@@ -102,7 +102,7 @@
                                             <xsl:value-of  select="generate-id(.)"/>
                                         </xsl:otherwise>
                                     </xsl:choose>
-                                </route_id>
+                                </routeconfiguration_id>
                             </step>
                         </xsl:for-each>
                       </steps>
