@@ -122,6 +122,7 @@ public class DependencyUtil {
         KAFKA("kafka"),
         KAMELET("kamelet"),
         LOG("log"),
+        MLLP("mllp"),
         NETTY("netty"),
         NETTYHTTP("netty-http"),
         QUARTZ("quartz"),
