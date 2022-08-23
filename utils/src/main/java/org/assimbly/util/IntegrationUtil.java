@@ -172,7 +172,7 @@ public final class IntegrationUtil {
 		System.out.println("CONFIGURATION");
 		System.out.println("-----------------------------------------------------------------\n");
 
-		List<String> items = Arrays.asList( "id", "flow", "from", "to", "response", "error", "header", "service", "route", "routeConfiguration");
+		List<String> items = Arrays.asList( "id", "flow", "from", "to", "response", "error", "header", "connection", "route", "routeConfiguration");
 
 		Map<String, String> subMap = null;
 
