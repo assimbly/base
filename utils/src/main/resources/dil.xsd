@@ -1,6 +1,8 @@
 <?xml version="1.0"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
 	attributeFormDefault="unqualified" elementFormDefault="qualified">
+
+	<!-- Schema for DIL (Data Integration Language) -->
 	<xs:element name="dil" type="dilType"/>
 	<xs:complexType name="dilType">
 		<xs:choice minOccurs="0" maxOccurs="unbounded">
@@ -9,6 +11,8 @@
 			<xs:element type="coreType" name="core" />
 		</xs:choice>
 	</xs:complexType>
+
+	<!-- Components on various levels -->
 	<xs:complexType name="integrationsType">
 		<xs:sequence>
 			<xs:element type="integrationType" name="integration" minOccurs="0" maxOccurs="unbounded" />
@@ -16,23 +20,8 @@
 	</xs:complexType>
 	<xs:complexType name="integrationType">
 		<xs:choice minOccurs="0" maxOccurs="unbounded">
-			<xs:element type="xs:string" name="id" minOccurs="0" maxOccurs="1"/>
-			<xs:element type="xs:string" name="name" minOccurs="0" maxOccurs="1"/>
-			<xs:element type="xs:string" name="type" minOccurs="1" maxOccurs="1"/>
-			<xs:element type="xs:string" name="uri" minOccurs="0" maxOccurs="1"/>
-			<xs:element type="optionsType" name="options" minOccurs="0" />
-			<xs:element type="xs:string" name="version" minOccurs="0"/>
-			<xs:element type="xs:string" name="notes" minOccurs="0" maxOccurs="1"/>
-			<xs:element type="linksType" name="links" minOccurs="0" />
-			<xs:element type="coordinatesType" name="coordinates" minOccurs="0" />
+			<xs:group ref="component"/>
 			<xs:element type="flowsType" name="flows" />
-
-			<!-- to be deleted -->
-			<xs:element type="connectionsType" name="connections" />
-			<xs:element type="headersType" name="headers" />
-			<xs:element type="routesType" name="routes" />
-			<xs:element type="routeConfigurationsType" name="routeConfigurations" />
-			<xs:element type="environmentVariablesType" name="environmentVariables" />
 		</xs:choice>
 	</xs:complexType>
 	<xs:complexType name="flowsType">
@@ -43,29 +32,8 @@
 	</xs:complexType>
 	<xs:complexType name="flowType">
 		<xs:choice minOccurs="0" maxOccurs="unbounded">
-			<xs:element type="xs:string" name="id" minOccurs="1" maxOccurs="1"/>
-			<xs:element type="xs:string" name="name" minOccurs="0" maxOccurs="1"/>
-			<xs:element type="xs:string" name="type" minOccurs="0" maxOccurs="1"/>
-			<xs:element type="xs:string" name="uri" minOccurs="0" maxOccurs="1"/>
-			<xs:element type="optionsType" name="options" minOccurs="0" />
-			<xs:element type="xs:string" name="version" minOccurs="0"/>
-			<xs:element type="xs:string" name="notes" minOccurs="0" maxOccurs="1"/>
-			<xs:element type="linksType" name="links" minOccurs="0" />
-			<xs:element type="coordinatesType" name="coordinates" minOccurs="0" />
-			<xs:element type="componentsType" name="components" minOccurs="0" maxOccurs="1"/>
+			<xs:group ref="component"/>
 			<xs:element type="stepsType" name="steps"  minOccurs="0" />
-
-			<!-- to be deleted -->
-			<xs:element type="xs:string" name="autostart" minOccurs="0" maxOccurs="1"/>
-			<xs:element type="xs:string" name="offloading" minOccurs="0" maxOccurs="1"/>
-			<xs:element type="xs:string" name="parallelProcessing" minOccurs="0" maxOccurs="1"/>
-			<xs:element type="xs:string" name="transport" minOccurs="0" maxOccurs="1"/>
-			<xs:element type="xs:string" name="maximumRedeliveries" minOccurs="0"/>
-			<xs:element type="xs:string" name="redeliveryDelay" minOccurs="0"/>
-			<xs:element type="xs:string" name="assimblyHeaders" minOccurs="0" maxOccurs="1"/>
-			<xs:element type="xs:string" name="logLevel" minOccurs="0"/>
-			<xs:element type="xs:string" name="created" minOccurs="0"/>
-			<xs:element type="xs:string" name="lastModified" minOccurs="0"/>
 		</xs:choice>
 	</xs:complexType>
 	<xs:complexType name="stepsType">
@@ -75,23 +43,8 @@
 	</xs:complexType>
 	<xs:complexType name="stepType">
 		<xs:choice minOccurs="0" maxOccurs="unbounded">
-			<xs:element type="xs:string" name="id" minOccurs="0" maxOccurs="1"/>
-			<xs:element type="xs:string" name="name" minOccurs="0" maxOccurs="1"/>
-			<xs:element type="xs:string" name="type" minOccurs="1" maxOccurs="1"/>
-			<xs:element type="xs:string" name="uri" minOccurs="0" maxOccurs="1"/>
-			<xs:element type="optionsType" name="options" minOccurs="0" />
-			<xs:element type="xs:string" name="version" minOccurs="0"/>
-			<xs:element type="xs:string" name="notes" minOccurs="0" maxOccurs="1"/>
-			<xs:element type="linksType" name="links" minOccurs="0" />
-			<xs:element type="coordinatesType" name="coordinates" minOccurs="0" />
+			<xs:group ref="component"/>
 			<xs:element type="blocksType" name="blocks"  minOccurs="0" />
-
-			<!-- to be deleted -->
-			<xs:element type="xs:string" name="response_id" minOccurs="0" />
-			<xs:element type="xs:string" name="connection_id" minOccurs="0" />
-			<xs:element type="xs:string" name="header_id" minOccurs="0" />
-			<xs:element type="xs:string" name="route_id" minOccurs="0" />
-			<xs:element type="xs:string" name="routeconfiguration_id" minOccurs="0" />
 		</xs:choice>
 	</xs:complexType>
 	<xs:complexType name="blocksType">
@@ -101,22 +54,25 @@
 	</xs:complexType>
 	<xs:complexType name="blockType">
 		<xs:choice minOccurs="0" maxOccurs="unbounded">
+			<xs:group ref="component"/>
+		</xs:choice>
+	</xs:complexType>
+
+	<!-- A generic component -->
+	<xs:group name="component">
+		<xs:choice>
 			<xs:element type="xs:string" name="id" minOccurs="0" maxOccurs="1"/>
 			<xs:element type="xs:string" name="name" minOccurs="0" maxOccurs="1"/>
 			<xs:element type="xs:string" name="type" minOccurs="1" maxOccurs="1"/>
-			<xs:element type="xs:string" name="uri" minOccurs="0" maxOccurs="1"/>
-			<xs:element type="optionsType" name="options" minOccurs="0" />
-			<xs:element type="xs:string" name="version" minOccurs="0"/>
+			<xs:element type="xs:string" name="version" minOccurs="0" maxOccurs="1"/>
 			<xs:element type="xs:string" name="notes" minOccurs="0" maxOccurs="1"/>
-			<xs:element type="linksType" name="links" minOccurs="0" />
-			<xs:element type="coordinatesType" name="coordinates" minOccurs="0" />
+			<xs:element type="xs:string" name="uri" minOccurs="0" maxOccurs="1"/>
+			<xs:element type="optionsType" name="options" minOccurs="0" maxOccurs="1"/>
+			<xs:element type="linksType" name="links" minOccurs="0" maxOccurs="1"/>
+			<xs:element type="coordinatesType" name="coordinates" minOccurs="0" maxOccurs="1"/>
+			<xs:element type="dependenciesType" name="dependencies" minOccurs="0" maxOccurs="1"/>
 		</xs:choice>
-	</xs:complexType>
-	<xs:complexType name="componentsType">
-		<xs:sequence maxOccurs="unbounded">
-			<xs:any namespace="##any" minOccurs="0" processContents="lax" />
-		</xs:sequence>
-	</xs:complexType>
+	</xs:group>
 	<xs:complexType name="optionsType">
 		<xs:sequence maxOccurs="unbounded">
 			<xs:any namespace="##any" minOccurs="0" processContents="lax" />
@@ -138,38 +94,23 @@
 			<xs:element type="xs:string" name="y" minOccurs="1" maxOccurs="1"/>
 		</xs:choice>
 	</xs:complexType>
-
-	<xs:complexType name="coreType">
-		<xs:choice minOccurs="0" maxOccurs="unbounded">
-			<xs:element type="connectionsType" name="connections" />
-			<xs:element type="headersType" name="headers" />
-			<xs:element type="routesType" name="routes" />
-			<xs:element type="routeConfigurationsType" name="routeConfigurations" />
-			<xs:element type="environmentVariablesType" name="environmentVariables" />
-		</xs:choice>
-	</xs:complexType>
-
-	<xs:complexType name="connectionsType">
-		<xs:sequence minOccurs="0">
-			<xs:element type="connectionType" name="connection" minOccurs="0" maxOccurs="unbounded"/>
-		</xs:sequence>
-	</xs:complexType>
-	<xs:complexType name="connectionType">
-		<xs:sequence minOccurs="0" maxOccurs="unbounded">
-			<xs:any namespace="##any" processContents="lax" />
-		</xs:sequence>
-	</xs:complexType>
-
-	<xs:complexType name="headersType">
-		<xs:sequence minOccurs="0">
-			<xs:element type="headerType" name="header" minOccurs="0" maxOccurs="unbounded"/>
-		</xs:sequence>
-	</xs:complexType>
-	<xs:complexType name="headerType">
-		<xs:sequence minOccurs="0" maxOccurs="unbounded">
+	<xs:complexType name="dependenciesType">
+		<xs:sequence maxOccurs="unbounded">
 			<xs:any namespace="##any" minOccurs="0" processContents="lax" />
 		</xs:sequence>
 	</xs:complexType>
+
+	<!-- Core components -->
+	<xs:complexType name="coreType">
+		<xs:choice minOccurs="0" maxOccurs="unbounded">
+			<xs:element type="routesType" name="routes"  minOccurs="0" maxOccurs="1"/>
+			<xs:element type="routeConfigurationsType" name="routeConfigurations"  minOccurs="0" maxOccurs="1"/>
+			<xs:element type="connectionsType" name="connections"  minOccurs="0" maxOccurs="1"/>
+			<xs:element type="headersType" name="headers"  minOccurs="0" maxOccurs="1"/>
+			<xs:element type="environmentVariablesType" name="environmentVariables"  minOccurs="0" maxOccurs="1"/>
+		</xs:choice>
+	</xs:complexType>
+
 	<xs:complexType name="routesType">
 		<xs:sequence minOccurs="0">
 			<xs:element name="route" minOccurs="0" maxOccurs="unbounded">
@@ -195,6 +136,26 @@
 			</xs:element>
 		</xs:sequence>
 	</xs:complexType>
+	<xs:complexType name="connectionsType">
+		<xs:sequence minOccurs="0">
+			<xs:element type="connectionType" name="connection" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="connectionType">
+		<xs:sequence minOccurs="0" maxOccurs="unbounded">
+			<xs:any namespace="##any" processContents="lax" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="headersType">
+		<xs:sequence minOccurs="0">
+			<xs:element type="headerType" name="header" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="headerType">
+		<xs:sequence minOccurs="0" maxOccurs="unbounded">
+			<xs:any namespace="##any" minOccurs="0" processContents="lax" />
+		</xs:sequence>
+	</xs:complexType>
 	<xs:complexType name="environmentVariablesType">
 		<xs:sequence minOccurs="0">
 			<xs:element type="environmentVariableType" name="environmentVariable" minOccurs="0" maxOccurs="unbounded"/>
@@ -207,4 +168,5 @@
 			<xs:element type="xs:string" name="encrypted" maxOccurs="1" />
 		</xs:choice>
 	</xs:complexType>
+
 </xs:schema>
