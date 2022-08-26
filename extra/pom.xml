@@ -44,6 +44,13 @@
             <version>${sonic.version}</version>
         </dependency>
 
+        <!-- MQ -->
+        <dependency>
+            <groupId>com.ibm.mq</groupId>
+            <artifactId>com.ibm.mq.allclient</artifactId>
+            <version>${ibmmq-client.version}</version>
+        </dependency>
+
     </dependencies>
 
 </project>
