@@ -167,12 +167,11 @@ public final class IntegrationUtil {
 			System.out.println("key: " + entry.getKey() + "; value: " + entry.getValue());
 		}
 
-
-			System.out.println("");
+		System.out.println("");
 		System.out.println("CONFIGURATION");
 		System.out.println("-----------------------------------------------------------------\n");
 
-		List<String> items = Arrays.asList( "id", "flow", "from", "to", "response", "error", "header", "connection", "route", "routeConfiguration");
+		List<String> items = Arrays.asList( "id", "flow", "from", "to", "response", "error", "header", "connection", "route", "routeConfiguration", "routeTemplate");
 
 		Map<String, String> subMap = null;
 
@@ -194,7 +193,7 @@ public final class IntegrationUtil {
 
 					if (key.contains("password"))
 						System.out.printf("%-30s %s\n", key + ":", "***********");
-					else if (key.endsWith("route") || key.endsWith("routeConfiguration"))
+					else if (key.endsWith("route") || key.endsWith("routeConfiguration") || key.endsWith("routeTemplate") )
 						System.out.printf("%-30s \n\n%s\n", key + ":", value);
 					else {
 						System.out.printf("%-30s %s\n", key + ":", value);

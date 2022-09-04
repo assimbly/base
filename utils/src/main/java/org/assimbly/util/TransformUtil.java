@@ -24,13 +24,13 @@ public final class TransformUtil {
 
     protected static Logger log = LoggerFactory.getLogger("org.assimbly.util.TransformUtil");
 
-	public static String convertCamelToAssimblyFormat(String xml){
+	public static String transformToDil(String xml){
 
 		//convert camel2 to camel3
 		xml = camel2ToCamel3(xml);
 
         ClassLoader classloader = Thread.currentThread().getContextClassLoader();
-		InputStream is = classloader.getResourceAsStream("transform-to-assimbly.xsl");
+		InputStream is = classloader.getResourceAsStream("transform-to-dil.xsl");
 
 		//transform to Assimbly format
 		xml = transformXML(xml,is);

@@ -86,7 +86,37 @@ public class DependencyUtil {
         return getClassNamesFromJar(new JarInputStream(new FileInputStream(jarPath)));
     }
 
-    //These component are part of baseComponentsModule
+    public enum PredefinedBlocks {
+
+        PRINT("print"),
+        HTTP("http"),
+        HTTPS("https"),
+        SETBODY("setbody"),
+        VELOCITY("velocity"),
+        XMLTOJSON("xmltojson")
+        ;
+
+        private static Map<String, PredefinedBlocks> BY_LABEL = new HashMap<>();
+
+        static {
+            for (PredefinedBlocks cd : values()) {
+                BY_LABEL.put(cd.label, cd);
+            }
+        }
+
+        public final String label;
+
+        PredefinedBlocks(final String label) {
+            this.label = label;
+        }
+
+        public static boolean hasBlock(String label){
+            return BY_LABEL.containsKey(label);
+        }
+    }
+
+
+    //These components are part of baseComponentsModule
     public enum CompiledDependency {
 
         ACTIVEMQ("activemq"),

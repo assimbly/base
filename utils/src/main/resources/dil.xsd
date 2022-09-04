@@ -105,6 +105,7 @@
 		<xs:choice minOccurs="0" maxOccurs="unbounded">
 			<xs:element type="routesType" name="routes"  minOccurs="0" maxOccurs="1"/>
 			<xs:element type="routeConfigurationsType" name="routeConfigurations"  minOccurs="0" maxOccurs="1"/>
+			<xs:element type="routeTemplatesType" name="routeTemplates"  minOccurs="0" maxOccurs="1"/>
 			<xs:element type="connectionsType" name="connections"  minOccurs="0" maxOccurs="1"/>
 			<xs:element type="headersType" name="headers"  minOccurs="0" maxOccurs="1"/>
 			<xs:element type="environmentVariablesType" name="environmentVariables"  minOccurs="0" maxOccurs="1"/>
@@ -127,6 +128,18 @@
 	<xs:complexType name="routeConfigurationsType">
 		<xs:sequence minOccurs="0">
 			<xs:element name="routeConfiguration" minOccurs="0" maxOccurs="unbounded">
+				<xs:complexType>
+					<xs:sequence minOccurs="0" maxOccurs="unbounded">
+						<xs:any namespace="##any" minOccurs="0" processContents="lax" />
+					</xs:sequence>
+					<xs:attribute name="id" type="xs:string" />
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="routeTemplatesType">
+		<xs:sequence minOccurs="0">
+			<xs:element name="routeTemplate" minOccurs="0" maxOccurs="unbounded">
 				<xs:complexType>
 					<xs:sequence minOccurs="0" maxOccurs="unbounded">
 						<xs:any namespace="##any" minOccurs="0" processContents="lax" />
