@@ -88,12 +88,25 @@ public class DependencyUtil {
 
     public enum PredefinedBlocks {
 
-        PRINT("print"),
         HTTP("http"),
         HTTPS("https"),
+        PRINT("print"),
+        QUEUETHROTTLE("queuethrottle"),
         SETBODY("setbody"),
+        SETBODYBYCONSTANT("setbodybyconstant"),
+        SETBODYBYGROOVY("setbodybygroovy"),
+        SETBODYBYHEADER("setbodybyheader"),
+        SETBODYBYJSONPATH("setbodybyjsonpath"),
+        SETBODYBYSIMPLE("setbodybysimple"),
+        SETBODYBYXPATH("setbodybyxpath"),
+        SETHEADERS("setheaders"),
+        THROTTLE("throttle"),
         VELOCITY("velocity"),
-        XMLTOJSON("xmltojson")
+        WIRETAP("wiretap"),
+        XMLTOEDI("xmltoedi"),
+        XMLTOEDIFACT("xmltoedifact"),
+        XMLTOJSON("xmltojson"),
+        XSLT("xslt"),
         ;
 
         private static Map<String, PredefinedBlocks> BY_LABEL = new HashMap<>();
