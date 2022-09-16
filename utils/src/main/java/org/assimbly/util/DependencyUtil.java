@@ -88,18 +88,18 @@ public class DependencyUtil {
 
     public enum PredefinedBlocks {
 
+        APPENDTOBODY("appendtobody"),
         HTTP("http"),
         HTTPS("https"),
+        PREPENDTOBODY("prependtobody"),
         PRINT("print"),
         QUEUETHROTTLE("queuethrottle"),
         SETBODY("setbody"),
-        SETBODYBYCONSTANT("setbodybyconstant"),
-        SETBODYBYGROOVY("setbodybygroovy"),
         SETBODYBYHEADER("setbodybyheader"),
-        SETBODYBYJSONPATH("setbodybyjsonpath"),
-        SETBODYBYSIMPLE("setbodybysimple"),
-        SETBODYBYXPATH("setbodybyxpath"),
+        SETHEADER("setheader"),
         SETHEADERS("setheaders"),
+        SETMESSAGE("setmessage"),
+        SETPROPERTY("setproperty"),
         THROTTLE("throttle"),
         VELOCITY("velocity"),
         WIRETAP("wiretap"),

@@ -106,9 +106,10 @@
 			<xs:element type="routesType" name="routes"  minOccurs="0" maxOccurs="1"/>
 			<xs:element type="routeConfigurationsType" name="routeConfigurations"  minOccurs="0" maxOccurs="1"/>
 			<xs:element type="routeTemplatesType" name="routeTemplates"  minOccurs="0" maxOccurs="1"/>
-			<xs:element type="connectionsType" name="connections"  minOccurs="0" maxOccurs="1"/>
 			<xs:element type="headersType" name="headers"  minOccurs="0" maxOccurs="1"/>
+			<xs:element type="connectionsType" name="connections"  minOccurs="0" maxOccurs="1"/>
 			<xs:element type="environmentVariablesType" name="environmentVariables"  minOccurs="0" maxOccurs="1"/>
+			<xs:element type="messagesType" name="messages"  minOccurs="0" maxOccurs="1"/>
 		</xs:choice>
 	</xs:complexType>
 
@@ -159,16 +160,6 @@
 			<xs:any namespace="##any" processContents="lax" />
 		</xs:sequence>
 	</xs:complexType>
-	<xs:complexType name="headersType">
-		<xs:sequence minOccurs="0">
-			<xs:element type="headerType" name="header" minOccurs="0" maxOccurs="unbounded"/>
-		</xs:sequence>
-	</xs:complexType>
-	<xs:complexType name="headerType">
-		<xs:sequence minOccurs="0" maxOccurs="unbounded">
-			<xs:any namespace="##any" minOccurs="0" processContents="lax" />
-		</xs:sequence>
-	</xs:complexType>
 	<xs:complexType name="environmentVariablesType">
 		<xs:sequence minOccurs="0">
 			<xs:element type="environmentVariableType" name="environmentVariable" minOccurs="0" maxOccurs="unbounded"/>
@@ -181,5 +172,33 @@
 			<xs:element type="xs:string" name="encrypted" maxOccurs="1" />
 		</xs:choice>
 	</xs:complexType>
-
+	<xs:complexType name="messagesType">
+		<xs:sequence minOccurs="0">
+			<xs:element type="messageType" name="message" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="messageType">
+		<xs:choice minOccurs="0" maxOccurs="unbounded">
+			<xs:element type="xs:string" name="id" maxOccurs="1" />
+			<xs:element type="xs:string" name="name" maxOccurs="1" />
+			<xs:element type="bodyType" name="body" maxOccurs="1" />
+			<xs:element type="headersType" name="headers" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element type="attachmentsType" name="attachments" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:choice>
+	</xs:complexType>
+	<xs:complexType name="bodyType">
+		<xs:sequence minOccurs="0" maxOccurs="unbounded">
+			<xs:any namespace="##any" processContents="lax" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="headersType">
+		<xs:sequence minOccurs="0" maxOccurs="unbounded">
+			<xs:any namespace="##any" processContents="lax" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="attachmentsType">
+		<xs:sequence minOccurs="0" maxOccurs="unbounded">
+			<xs:any namespace="##any" processContents="lax" />
+		</xs:sequence>
+	</xs:complexType>
 </xs:schema>

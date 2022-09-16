@@ -32,8 +32,10 @@ public final class TransformUtil {
         ClassLoader classloader = Thread.currentThread().getContextClassLoader();
 		InputStream is = classloader.getResourceAsStream("transform-to-dil.xsl");
 
-		//transform to Assimbly format
+		//transform to DIL format
 		xml = transformXML(xml,is);
+
+        System.out.println("The DIL format:\n\n" + xml);
 
         return xml;
 
