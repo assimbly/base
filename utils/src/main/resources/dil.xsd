@@ -1,6 +1,7 @@
 <?xml version="1.0"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
-	attributeFormDefault="unqualified" elementFormDefault="qualified">
+	attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning"
+		   vc:minVersion="1.1">
 
 	<!-- Schema for DIL (Data Integration Language) -->
 	<xs:element name="dil" type="dilType"/>
@@ -177,13 +178,17 @@
 			<xs:element type="messageType" name="message" minOccurs="0" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
-	<xs:complexType name="messageType">
+	<xs:complexType name="messageType" mixed="true">
 		<xs:choice minOccurs="0" maxOccurs="unbounded">
-			<xs:element type="xs:string" name="id" maxOccurs="1" />
+			<xs:any namespace="##any" processContents="lax" />
+			<!--<xs:element type="xs:string" name="id" maxOccurs="1" />
 			<xs:element type="xs:string" name="name" maxOccurs="1" />
-			<xs:element type="bodyType" name="body" maxOccurs="1" />
+			<xs:element name="body">
+				<xs:alternative test="@kind='string'" type="xs:string"/>
+				<xs:alternative type="bodyType"/>
+			</xs:element>
 			<xs:element type="headersType" name="headers" minOccurs="0" maxOccurs="unbounded"/>
-			<xs:element type="attachmentsType" name="attachments" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element type="attachmentsType" name="attachments" minOccurs="0" maxOccurs="unbounded"/>-->
 		</xs:choice>
 	</xs:complexType>
 	<xs:complexType name="bodyType">
