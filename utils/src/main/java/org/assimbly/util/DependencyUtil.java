@@ -89,6 +89,8 @@ public class DependencyUtil {
     public enum PredefinedBlocks {
 
         APPENDTOBODY("appendtobody"),
+        EDITOXML("editoxml"),
+        EDIFACTTOXML("edifacttoxml"),
         HTTP("http"),
         HTTPS("https"),
         PREPENDTOBODY("prependtobody"),
