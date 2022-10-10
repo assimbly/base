@@ -89,6 +89,8 @@ public class DependencyUtil {
     public enum PredefinedBlocks {
 
         APPENDTOBODY("appendtobody"),
+        EDITOXML("editoxml"),
+        EDIFACTTOXML("edifacttoxml"),
         HTTP("http"),
         HTTPS("https"),
         PREPENDTOBODY("prependtobody"),
@@ -165,6 +167,7 @@ public class DependencyUtil {
         KAFKA("kafka"),
         KAMELET("kamelet"),
         LOG("log"),
+        MLLP("mllp"),
         NETTY("netty"),
         NETTYHTTP("netty-http"),
         QUARTZ("quartz"),
