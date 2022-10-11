@@ -12,11 +12,11 @@ Builds the project or module.
 
 To build the complete project:
 
-```build```
+```sh build.sh```
 
 To build a specific module
 
-```build modulename```
+```sh build.sh modulename```
 
 ---
 
@@ -28,11 +28,11 @@ Builds the project or module and then run the unit tests.
 
 To build and test the complete project:
 
-```buildandtest```
+```sh buildandtest.sh```
 
 To build and test a specific module
 
-```buildandtest modulename```
+```sh buildandtest.sh modulename```
 
 ---
 
@@ -48,7 +48,7 @@ git push
 
 ### Usage:
 
-```lazygit "my message"```
+```sh lazygit.sh "my message"```
 
 ---
 
@@ -63,7 +63,7 @@ in the root directory of the project.
 
 To print a report:
 
-```checkversions```
+```sh checkversions.sh```
 
 ---
 
@@ -75,8 +75,8 @@ Update the version number of the Maven project and its submodules.
 
 To print a report:
 
-```updateversion <versionnumber>```
+```sh updateversion.sh <versionnumber>```
 
 example
 
-```updateversion 1.1.0```
+```sh updateversion.sh 1.1.0```
