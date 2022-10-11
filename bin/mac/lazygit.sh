@@ -6,5 +6,5 @@ if [ -n "$1" ]; then
   git push
 else
     printf "\nUsage:\n"
-    printf "\nsh lazygit.sh <Commit Message>\n"
+    printf "\nlazygit.sh <Commit Message>\n"
 fi

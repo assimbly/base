@@ -3,5 +3,5 @@ if [ -n "$1" ]; then
     mvn -f ../../pom.xml versions:set -DgenerateBackupPoms=false -DnewVersion="$1" 
 else
     printf "\nUsage:\n"
-    printf "\nsh updateversion.sh <versionnumber>\n"
+    printf "\nupdateversion.sh <versionnumber>\n"
 fi
