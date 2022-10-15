@@ -88,20 +88,27 @@ public class DependencyUtil {
 
     public enum PredefinedBlocks {
 
+        AGGREGATE("aggregate"),
         APPENDTOBODY("appendtobody"),
+        CSVTOXML("csvtoxml"),
         EDITOXML("editoxml"),
         EDIFACTTOXML("edifacttoxml"),
+        FILTER("filter"),
+        GROOVY("groovy"),
         HTTP("http"),
         HTTPS("https"),
         PREPENDTOBODY("prependtobody"),
         PRINT("print"),
         QUEUETHROTTLE("queuethrottle"),
+        REMOVEHEADERS("removeheaders"),
         SETBODY("setbody"),
         SETBODYBYHEADER("setbodybyheader"),
         SETHEADER("setheader"),
         SETHEADERS("setheaders"),
         SETMESSAGE("setmessage"),
         SETPROPERTY("setproperty"),
+        SIMPLEREPLACE("simplereplace"),
+        SPLIT("split"),
         THROTTLE("throttle"),
         VELOCITY("velocity"),
         WIRETAP("wiretap"),
@@ -135,7 +142,7 @@ public class DependencyUtil {
     public enum CompiledDependency {
 
         ACTIVEMQ("activemq"),
-        ALERIS("aleris"),        
+        ALERIS("aleris"),
         AMAZON("amazon"),
         AMQP("amqp"),
         ARCHIVE("archive"),
