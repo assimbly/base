@@ -91,6 +91,7 @@ public class DependencyUtil {
         AGGREGATE("aggregate"),
         AMAZON("amazon"),
         APPENDTOBODY("appendtobody"),
+        ARCHIVE("archive"),
         BASE64TOTEXT("base64totext"),
         CONTINUEFLOW("continueflow"),
         CSVTOXML("csvtoxml"),
