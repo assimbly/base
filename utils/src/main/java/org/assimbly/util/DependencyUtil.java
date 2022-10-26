@@ -91,7 +91,6 @@ public class DependencyUtil {
         AGGREGATE("aggregate"),
         AMAZON("amazon"),
         APPENDTOBODY("appendtobody"),
-        ARCHIVE("archive"),
         BASE64TOTEXT("base64totext"),
         CONTINUEFLOW("continueflow"),
         CSVTOXML("csvtoxml"),
@@ -129,12 +128,14 @@ public class DependencyUtil {
         SPLIT("split"),
         TEXTTOBASE64("texttobase64"),
         THROTTLE("throttle"),
+        UNZIP("unzip"),
         VELOCITY("velocity"),
         WIRETAP("wiretap"),
         XMLTOEDI("xmltoedi"),
         XMLTOEDIFACT("xmltoedifact"),
         XMLTOJSON("xmltojson"),
         XSLT("xslt"),
+        ZIP("zip"),
         ;
 
         private static Map<String, PredefinedBlocks> BY_LABEL = new HashMap<>();
