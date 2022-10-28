@@ -67,7 +67,7 @@
             http://activemq.apache.org/jmx.html
         -->
         <managementContext>
-            <managementContext createConnector="true"/>
+            <managementContext createConnector="true" connectorPort="1099"/>
         </managementContext>
 
         <!--

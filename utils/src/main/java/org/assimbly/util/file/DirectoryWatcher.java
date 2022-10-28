@@ -130,7 +130,7 @@ public class DirectoryWatcher implements Runnable, Service {
 					if (mFilter.accept(path) && EVENT_MAP.containsKey(kind)) {
 						if (event.kind().equals(ENTRY_DELETE)) {
 							mListener.onEvent(EVENT_MAP.get(kind), path);
-						}else if(Files.exists(path) && Files.size(path)> 0 && path.toString().toLowerCase().endsWith(".xml")){
+						}else if(Files.exists(path) && Files.size(path)> 0 && (path.toString().toLowerCase().endsWith(".xml") || path.toString().toLowerCase().endsWith(".json") || path.toString().toLowerCase().endsWith(".yaml"))){
 							mListener.onEvent(EVENT_MAP.get(kind), path);
 						}
 					}
