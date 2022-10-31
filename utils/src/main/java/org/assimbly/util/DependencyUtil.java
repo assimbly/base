@@ -139,6 +139,8 @@ public class DependencyUtil {
         WIRETAP("wiretap"),
         XMLTOEDI("xmltoedi"),
         XMLTOEDIFACT("xmltoedifact"),
+        XMLTOCSV("xmltocsv"),
+        XMLTOEXCEL("xmltoexcel"),
         XMLTOJSON("xmltojson"),
         XSLT("xslt"),
         ;
@@ -215,6 +217,7 @@ public class DependencyUtil {
         SFTP("sftp"),
         SEDA("seda"),
         SERVLET("servlet"),
+        SETBODY("setbody"),
         SIMPLEREPLACE("simplereplace"),
         SJMS("sjms"),
         SJMS2("sjms2"),
