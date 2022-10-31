@@ -135,6 +135,7 @@ public class DependencyUtil {
         SPLIT("split"),
         TEXTTOBASE64("texttobase64"),
         THROTTLE("throttle"),
+        UNZIP("unzip"),
         VELOCITY("velocity"),
         WIRETAP("wiretap"),
         XMLTOEDI("xmltoedi"),
@@ -143,6 +144,7 @@ public class DependencyUtil {
         XMLTOEXCEL("xmltoexcel"),
         XMLTOJSON("xmltojson"),
         XSLT("xslt"),
+        ZIP("zip"),
         ;
 
         private static Map<String, PredefinedBlocks> BY_LABEL = new HashMap<>();
