@@ -89,6 +89,7 @@ public class DependencyUtil {
     public enum PredefinedBlocks {
 
         AGGREGATE("aggregate"),
+        ALERIS("aleris"),
         AMAZON("amazon"),
         APPENDTOBODY("appendtobody"),
         BASE64TOTEXT("base64totext"),
