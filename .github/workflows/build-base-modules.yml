@@ -1,0 +1,20 @@
+name: Build Assimbly Modules
+
+on:
+  push:
+    branches:
+      - develop
+
+jobs:
+  run_build_tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v2
+
+      - name: Build module
+        working-directory: ./bin/mac
+        run: |
+            chmod +x ./build.sh
+            ./build.sh
+        shell: bash
