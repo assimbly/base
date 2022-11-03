@@ -105,6 +105,7 @@ public class DependencyUtil {
         EXCELTOXML("exceltoxml"),
         FILTER("filter"),
         FORMTOXML("formtoxml"),
+        GOOGLEDRIVE("googledrive"),
         GROOVY("groovy"),
         HTTP("http"),
         HTTPS("https"),
