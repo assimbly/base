@@ -24,12 +24,17 @@ jobs:
         uses: actions/setup-java@v2
         with: 
           java-version: '11'
-          distribution: 'adopt'
+          distribution: 'temurin'
           cache: 'maven'
+      
+      - uses: cactuslab/maven-toolchains-xml-action@v1
+        with:
+        toolchains: |
+          [
+            {"jdkVersion": "11", "jdkHome": "${{steps.setupJava.outputs.path}}"}
+          ]
 
-      - name: Build module
+      - name: Build with maven
         working-directory: ./bin/mac
-        run: |
-            chmod +x ./build.sh
-            ./build.sh
+        run: mvn -B package --file pom.xml
         shell: bash
