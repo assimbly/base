@@ -26,13 +26,6 @@ jobs:
           java-version: '11'
           distribution: 'temurin'
           cache: 'maven'
-      
-      - uses: cactuslab/maven-toolchains-xml-action@v1
-        with:
-        toolchains: |
-          [
-            {"jdkVersion": "11", "jdkHome": "${{steps.setupJava.outputs.path}}"}
-          ]
 
       - name: Build with maven
         working-directory: ./bin/mac
