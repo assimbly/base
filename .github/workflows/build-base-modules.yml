@@ -1,0 +1,35 @@
+name: Build Assimbly Modules
+
+on:
+  push:
+    branches:
+      - develop
+
+jobs:
+  run_build_tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v2
+
+      - name: Configure cache for Maven
+        uses: actions/cache@v1
+        with:
+          path: ~/.m2/repository
+          key: ${{ runner.os }}-maven-${{ hashFiles('/pom.xml') }}
+          restore-keys: |
+            ${{ runner.os }}-maven-
+
+      - name: Setup Java 11
+        uses: actions/setup-java@v2
+        with: 
+          java-version: '11'
+          distribution: 'temurin'
+          cache: 'maven'
+
+      - name: Build with maven
+        working-directory: ./bin/mac
+        run: |
+            chmod +x ./build.sh
+            ./build.sh
+        shell: bash
