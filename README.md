@@ -25,5 +25,30 @@ For example:
 cd ./databaseDrivers
 mvn clean install
 ```
+# deploy
 
+The base can be deployed with Maven:
 
+```mvn clean deploy```
+
+It's also possible to deploy only one module at the time
+or deploy all modules.
+
+For example for a single module deploy:
+
+```
+cd ./activemqBase
+mvn clean deploy
+```
+
+For deploying all modules:
+
+MacOS
+```
+sh ./bin/mac/deploymodules.sh
+```
+
+Windows
+```
+sh ./bin/win/deploymodules.sh
+```
