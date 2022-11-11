@@ -11,7 +11,7 @@
         <version>3.8.0</version>
     </parent>
 
-    <artifactId>activemqbase</artifactId>
+    <artifactId>activemq-base</artifactId>
 
     <properties>
   	  	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
