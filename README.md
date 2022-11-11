@@ -1,8 +1,4 @@
----
-title: Base
----
-
-
+# Base
 Contains base modules used in Assimbly.
 
 The base has two kind of modules:
@@ -13,8 +9,9 @@ integration or broker modules.
 2. Modules that contain util classes. (Currently the utils modules)
 
 See how to:
-- [Build](#build)
-- [Deploy](#deploy)
+- [Base](#base)
+  - [Build](#build)
+  - [Deploy](#deploy)
 
 
 ## Build
