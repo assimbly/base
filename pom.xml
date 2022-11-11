@@ -11,14 +11,14 @@
 	<version>3.8.0</version>
 
 	<modules>
-		<module>activemq-base</module>
-		<module>camel-base</module>
-		<module>camel-components</module>
-		<module>database-drivers</module>
-		<module>common-base</module>
+		<module>activemqBase</module>
+		<module>camelBase</module>
+		<module>camelComponents</module>
+		<module>databaseDrivers</module>
+		<module>commonBase</module>
 		<module>extra</module>
-		<module>spring-base</module>
-		<module>test-base</module>
+		<module>springBase</module>
+		<module>testBase</module>
 		<module>utils</module>
 	</modules>
 
