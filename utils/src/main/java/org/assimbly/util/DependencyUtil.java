@@ -208,6 +208,7 @@ public class DependencyUtil {
         JMS("jms"),
         JAVA("java"),
         JETTY("jetty"),
+        JETTYNOSSL("jetty-nossl"),
         KAFKA("kafka"),
         KAMELET("kamelet"),
         LOG("log"),
