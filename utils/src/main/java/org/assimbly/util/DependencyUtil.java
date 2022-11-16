@@ -114,6 +114,7 @@ public class DependencyUtil {
         MANAGEFLOW("manageflow"),
         MULTIPART("multipart"),
         PAUSEFLOW("pauseflow"),
+        PDF("pdf"),
         POLLENRICH("pollenrich"),
         PREPENDTOBODY("prependtobody"),
         PRINT("print"),
