@@ -114,6 +114,7 @@ public class DependencyUtil {
         LOG("log"),
         MANAGEFLOW("manageflow"),
         MULTIPART("multipart"),
+        OAUTH2TOKEN("oauth2token"),
         PAUSEFLOW("pauseflow"),
         PDF("pdf"),
         POLLENRICH("pollenrich"),
