@@ -204,6 +204,7 @@ public class DependencyUtil {
         FORMTOXML("form2xml"),
         FTP("ftp"),
         FTPS("ftps"),
+        GOOGLEDRIVE("googledrive"),
         GROOVY("groovy"),
         HTTP("http"),
         HTTPS("https"),
