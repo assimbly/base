@@ -8,10 +8,10 @@
     <parent>
         <artifactId>base</artifactId>
         <groupId>org.assimbly</groupId>
-        <version>3.7.0</version>
+        <version>3.8.0</version>
     </parent>
 
-    <artifactId>camelComponents</artifactId>
+    <artifactId>camel-components</artifactId>
 
     <properties>
   	  	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -19,16 +19,16 @@
         <maven.versions-rules>file:///${parent.basedir}/rules.xml</maven.versions-rules>
     </properties>
 
+    <distributionManagement> 
+        <repository>
+            <id>github</id> 
+            <name>Temporary Staging Repository</name> 
+            <url>https://maven.pkg.github.com/assimbly/base</url> 
+        </repository> 
+    </distributionManagement>
+
     <!-- list of Camel components in alphabetic order -->
     <dependencies>
-        <dependency>
-            <groupId>org.apache.camel</groupId>
-            <artifactId>camel-activemq</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.camel</groupId>
-            <artifactId>camel-amqp</artifactId>
-        </dependency>
         <dependency>
             <groupId>org.apache.camel</groupId>
             <artifactId>camel-as2</artifactId>
@@ -36,10 +36,6 @@
         <dependency>
             <groupId>org.apache.camel</groupId>
             <artifactId>camel-aws2-s3</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.camel</groupId>
-            <artifactId>camel-direct</artifactId>
         </dependency>
         <dependency>
             <groupId>org.apache.camel</groupId>
@@ -59,7 +55,7 @@
         </dependency>
         <dependency>
             <groupId>org.apache.camel</groupId>
-            <artifactId>camel-http</artifactId>
+            <artifactId>camel-hl7</artifactId>
         </dependency>
         <dependency>
             <groupId>org.apache.camel</groupId>
@@ -67,11 +63,11 @@
         </dependency>
         <dependency>
             <groupId>org.apache.camel</groupId>
-            <artifactId>camel-jms</artifactId>
+            <artifactId>camel-kafka</artifactId>
         </dependency>
         <dependency>
             <groupId>org.apache.camel</groupId>
-            <artifactId>camel-kafka</artifactId>
+            <artifactId>camel-kamelet</artifactId>
         </dependency>
         <dependency>
             <groupId>org.apache.camel</groupId>
@@ -88,6 +84,10 @@
         <dependency>
             <groupId>org.apache.camel</groupId>
             <artifactId>camel-netty-http</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-python</artifactId>
         </dependency>
         <dependency>
             <groupId>org.apache.camel</groupId>
@@ -119,15 +119,7 @@
         </dependency>
         <dependency>
             <groupId>org.apache.camel</groupId>
-            <artifactId>camel-sjms</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.camel</groupId>
             <artifactId>camel-sjms2</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.camel</groupId>
-            <artifactId>camel-sql</artifactId>
         </dependency>
         <dependency>
             <groupId>org.apache.camel</groupId>
@@ -171,12 +163,34 @@
         </dependency>
         <dependency>
             <groupId>org.apache.camel</groupId>
+            <artifactId>camel-whatsapp</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.camel</groupId>
             <artifactId>camel-xslt</artifactId>
         </dependency>        
         <dependency>
             <groupId>org.apache.camel</groupId>
             <artifactId>camel-xslt-saxon</artifactId>
         </dependency>
+
+        <!-- kamelets -->
+        <dependency>
+            <groupId>org.apache.camel.kamelets</groupId>
+            <artifactId>camel-kamelets</artifactId>
+            <version>${kamelet.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.camel.kamelets</groupId>
+            <artifactId>camel-kamelets-utils</artifactId>
+            <version>${kamelet.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.camel.kamelets</groupId>
+            <artifactId>camel-kamelets-catalog</artifactId>
+            <version>${kamelet.version}</version>
+        </dependency>
+
     </dependencies>
 
 </project>

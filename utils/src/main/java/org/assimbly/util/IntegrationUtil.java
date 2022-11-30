@@ -1,6 +1,8 @@
 package org.assimbly.util;
 
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.StringReader;
 import java.net.InetSocketAddress;
 import java.net.Socket;
@@ -8,6 +10,7 @@ import java.net.SocketAddress;
 import java.net.SocketTimeoutException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.nio.charset.StandardCharsets;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -20,10 +23,15 @@ import org.slf4j.LoggerFactory;
 
 import java.net.URL;
 
+import org.w3c.dom.Document;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 import org.xml.sax.InputSource;
 
 import javax.xml.XMLConstants;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.transform.Source;
 import javax.xml.transform.stream.StreamSource;
 import javax.xml.validation.*;
@@ -33,6 +41,7 @@ import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
 
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParserFactory;
+import javax.xml.xpath.*;
 
 
 public final class IntegrationUtil {
@@ -159,6 +168,50 @@ public final class IntegrationUtil {
 		return keyList;
 	}
 
+	public static Node getNode(XMLConfiguration xmlConfiguration, String xpath) throws XPathExpressionException {
+
+		Document doc = xmlConfiguration.getDocument();
+
+		XPath xpathFactory = XPathFactory.newInstance().newXPath();
+		XPathExpression expr = xpathFactory.compile(xpath);
+		Node node = (Node) expr.evaluate(doc, XPathConstants.NODE);
+
+		return node;
+
+	}
+
+
+	public static NodeList getNodeList(String xml, String nodeName) throws IOException, SAXException, ParserConfigurationException {
+
+		InputStream isr = new ByteArrayInputStream(xml.getBytes(StandardCharsets.UTF_8));
+		DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+		DocumentBuilder db = dbf.newDocumentBuilder();
+		Document doc = db.parse(isr);
+
+		NodeList nodeList = doc.getElementsByTagName(nodeName);
+
+		return nodeList;
+	}
+
+	public static Iterable<Node> iterable(final NodeList nodeList) {
+		return () -> new Iterator<Node>() {
+
+			private int index = 0;
+
+			@Override
+			public boolean hasNext() {
+				return index < nodeList.getLength();
+			}
+
+			@Override
+			public Node next() {
+				if (!hasNext())
+					throw new NoSuchElementException();
+				return nodeList.item(index++);
+			}
+		};
+	}
+
 
 	public static void printTreemap(TreeMap<String, String> treeMap) throws Exception {
 
@@ -167,12 +220,11 @@ public final class IntegrationUtil {
 			System.out.println("key: " + entry.getKey() + "; value: " + entry.getValue());
 		}
 
-
-			System.out.println("");
+		System.out.println("");
 		System.out.println("CONFIGURATION");
 		System.out.println("-----------------------------------------------------------------\n");
 
-		List<String> items = Arrays.asList( "id", "flow", "from", "to", "response", "error", "header", "service", "route", "routeConfiguration");
+		List<String> items = Arrays.asList( "id", "flow", "from", "to", "response", "error", "header", "connection", "route", "routeConfiguration", "routeTemplate");
 
 		Map<String, String> subMap = null;
 
@@ -194,7 +246,7 @@ public final class IntegrationUtil {
 
 					if (key.contains("password"))
 						System.out.printf("%-30s %s\n", key + ":", "***********");
-					else if (key.endsWith("route") || key.endsWith("routeConfiguration"))
+					else if (key.endsWith("route") || key.endsWith("routeConfiguration") || key.endsWith("routeTemplate") )
 						System.out.printf("%-30s \n\n%s\n", key + ":", value);
 					else {
 						System.out.printf("%-30s %s\n", key + ":", value);

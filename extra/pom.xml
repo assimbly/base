@@ -8,7 +8,7 @@
     <parent>
         <artifactId>base</artifactId>
         <groupId>org.assimbly</groupId>
-        <version>3.7.0</version>
+        <version>3.8.0</version>
     </parent>
 
     <artifactId>extra</artifactId>
@@ -24,6 +24,14 @@
             <url>https://int-factory.aurea.com/nexus/content/repositories/sonic-releases/</url>
         </repository>
     </repositories>
+
+    <distributionManagement> 
+        <repository>
+            <id>github</id> 
+            <name>Temporary Staging Repository</name> 
+            <url>https://maven.pkg.github.com/assimbly/base</url> 
+        </repository> 
+    </distributionManagement>
 
     <dependencies>
         
@@ -42,6 +50,13 @@
             <groupId>com.aurea.sonic.mq</groupId>
             <artifactId>sonic_XMessage</artifactId>
             <version>${sonic.version}</version>
+        </dependency>
+
+        <!-- MQ -->
+        <dependency>
+            <groupId>com.ibm.mq</groupId>
+            <artifactId>com.ibm.mq.allclient</artifactId>
+            <version>${ibmmq-client.version}</version>
         </dependency>
 
     </dependencies>

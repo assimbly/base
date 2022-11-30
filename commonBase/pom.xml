@@ -8,16 +8,24 @@
     <parent>
         <artifactId>base</artifactId>
         <groupId>org.assimbly</groupId>
-        <version>3.7.0</version>
+        <version>3.8.0</version>
     </parent>
 
-    <artifactId>commonBase</artifactId>
+    <artifactId>common-base</artifactId>
 
     <properties>
   	  	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     	<maven.compiler.release>11</maven.compiler.release>
         <maven.versions-rules>file:///${parent.basedir}/rules.xml</maven.versions-rules>
     </properties>
+
+    <distributionManagement> 
+        <repository>
+            <id>github</id> 
+            <name>Temporary Staging Repository</name> 
+            <url>https://maven.pkg.github.com/assimbly/base</url> 
+        </repository> 
+    </distributionManagement>
 
     <dependencies>
 
@@ -131,6 +139,13 @@
             <version>${jwt.version}</version>
         </dependency>
 
+        <!-- Netty depedencies-->
+        <dependency>
+            <groupId>io.netty</groupId>
+            <artifactId>netty-all</artifactId>
+            <version>${netty.version}</version>
+        </dependency>
+
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>
             <artifactId>httpclient</artifactId>
@@ -198,6 +213,44 @@
             <artifactId>json</artifactId>
             <version>${json.version}</version>
         </dependency>
+
+        <!-- -->
+      <!--  <dependency>
+            <groupId>xerces</groupId>
+            <artifactId>xercesImpl</artifactId>
+            <version>2.12.2</version>
+        </dependency>-->
+        <dependency>
+            <groupId>org.exist-db.thirdparty.xerces</groupId>
+            <artifactId>xercesImpl</artifactId>
+            <version>2.12.2</version>
+            <classifier>xml-schema-1.1</classifier>
+        </dependency>
+        <dependency>
+            <groupId>org.exist-db.thirdparty.org.eclipse.wst.xml</groupId>
+            <artifactId>xpath2</artifactId>
+            <version>1.2.0</version>
+        </dependency>
+
+        <!--<dependency>
+            <groupId>org.apache</groupId>
+            <artifactId>xerces</artifactId>
+            <version>2.9.0</version>
+        </dependency>-->
+        <!--
+        <dependency>
+            <groupId>org.eclipse.wst.xml.xpath2</groupId>
+            <artifactId>processor</artifactId>
+            <version>2.1.100</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.apache</groupId>
+                    <artifactId>xerces</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        -->
+
 
         <!-- log dependencies -->
         <dependency>

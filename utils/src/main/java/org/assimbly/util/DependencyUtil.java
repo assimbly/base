@@ -86,11 +86,102 @@ public class DependencyUtil {
         return getClassNamesFromJar(new JarInputStream(new FileInputStream(jarPath)));
     }
 
-    //These component are part of baseComponentsModule
+    public enum PredefinedBlocks {
+
+        AGGREGATE("aggregate"),
+        AMAZON("amazon"),
+        APPENDTOBODY("appendtobody"),
+        BASE64TOTEXT("base64totext"),
+        CONTINUEFLOW("continueflow"),
+        CSVTOXML("csvtoxml"),
+        DELAY("delay"),
+        DYNAMIC("dynamic"),
+        EDITOXML("editoxml"),
+        EDIFACTTOXML("edifacttoxml"),
+        EDIFACTSTANDARDSTOXML("edifactstandardstoxml"),
+        ENRICH("enrich"),
+        EXCELTOXML("exceltoxml"),
+        FILTER("filter"),
+        FMUTA("fmuta"),
+        FORMTOXML("formtoxml"),
+        GOOGLEDRIVE("googledrive"),
+        GROOVY("groovy"),
+        HTTP("http"),
+        HTTPS("https"),
+        JAVA("java"),
+        JOOR("joor"),
+        JSONTOXML("jsontoxml"),
+        LOG("log"),
+        MANAGEFLOW("manageflow"),
+        MULTIPART("multipart"),
+        OAUTH2TOKEN("oauth2token"),
+        PAUSEFLOW("pauseflow"),
+        PDF("pdf"),
+        POLLENRICH("pollenrich"),
+        PREPENDTOBODY("prependtobody"),
+        PRINT("print"),
+        PYTHON("python"),
+        QUEUETHROTTLE("queuethrottle"),
+        RABBITMQ("rabbitmq"),
+        REMOVEHEADERS("removeheaders"),
+        REMOVECOOKIE("removecookie"),
+        REPLACE("replace"),
+        RESUMEFLOW("resumeflow"),
+        SETBODY("setbody"),
+        SETBODYBYHEADER("setbodybyheader"),
+        SETCOOKIE("setcookie"),
+        SETHEADER("setheader"),
+        SETHEADERS("setheaders"),
+        SETMESSAGE("setmessage"),
+        SETPATTERN("setpattern"),
+        SETPROPERTY("setproperty"),
+        SIMPLE("simple"),
+        SIMPLEREPLACE("simplereplace"),
+        STARTFLOW("startflow"),
+        STOPFLOW("stopflow"),
+        SUSPENDFLOW("suspendflow"),
+        SPLIT("split"),
+        TEXTTOBASE64("texttobase64"),
+        THROTTLE("throttle"),
+        UNIVOCITYCSV("univocity-csv"),
+        UNZIP("unzip"),
+        VELOCITY("velocity"),
+        WIRETAP("wiretap"),
+        XMLTOEDI("xmltoedi"),
+        XMLTOEDIFACT("xmltoedifact"),
+        XMLTOEDIFACTSTANDARDS("xmltoedifactstandards"),
+        XMLTOCSV("xmltocsv"),
+        XMLTOEXCEL("xmltoexcel"),
+        XMLTOJSON("xmltojson"),
+        XSLT("xslt"),
+        ZIP("zip"),
+        ;
+
+        private static Map<String, PredefinedBlocks> BY_LABEL = new HashMap<>();
+
+        static {
+            for (PredefinedBlocks cd : values()) {
+                BY_LABEL.put(cd.label, cd);
+            }
+        }
+
+        public final String label;
+
+        PredefinedBlocks(final String label) {
+            this.label = label;
+        }
+
+        public static boolean hasBlock(String label){
+            return BY_LABEL.containsKey(label);
+        }
+    }
+
+
+    //These components are part of baseComponentsModule
     public enum CompiledDependency {
 
         ACTIVEMQ("activemq"),
-        ALERIS("aleris"),        
+        ALERIS("aleris"),
         AMAZON("amazon"),
         AMQP("amqp"),
         ARCHIVE("archive"),
@@ -113,14 +204,20 @@ public class DependencyUtil {
         FORMTOXML("form2xml"),
         FTP("ftp"),
         FTPS("ftps"),
+        GOOGLEDRIVE("googledrive"),
+        GROOVY("groovy"),
         HTTP("http"),
         HTTPS("https"),
         IMAP("imap"),
         IMAPS("imaps"),
         JMS("jms"),
+        JAVA("java"),
         JETTY("jetty"),
+        JETTYNOSSL("jetty-nossl"),
         KAFKA("kafka"),
+        KAMELET("kamelet"),
         LOG("log"),
+        MLLP("mllp"),
         NETTY("netty"),
         NETTYHTTP("netty-http"),
         QUARTZ("quartz"),
@@ -134,6 +231,7 @@ public class DependencyUtil {
         SFTP("sftp"),
         SEDA("seda"),
         SERVLET("servlet"),
+        SETBODY("setbody"),
         SIMPLEREPLACE("simplereplace"),
         SJMS("sjms"),
         SJMS2("sjms2"),
@@ -148,6 +246,7 @@ public class DependencyUtil {
         STUB("stub"),
         TIMER("timer"),
         UNDERTOW("undertow"),
+        UNIVOCITYCSV("univocity-csv"),
         VELOCITY("velocity"),
         VERTXHTTP("vertx-http"),
         VM("vm"),
