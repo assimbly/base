@@ -8,7 +8,7 @@
     <parent>
         <artifactId>base</artifactId>
         <groupId>org.assimbly</groupId>
-        <version>3.8.0</version>
+        <version>3.8.1</version>
     </parent>
 
     <artifactId>extra</artifactId>
