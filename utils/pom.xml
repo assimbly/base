@@ -27,22 +27,22 @@
 
       <dependency>
         <groupId>org.assimbly</groupId>
-        <artifactId>camelBase</artifactId>
+        <artifactId>camel-base</artifactId>
         <version>${assimbly.version}</version>
       </dependency>
       <dependency>
         <groupId>org.assimbly</groupId>
-        <artifactId>commonBase</artifactId>
+        <artifactId>common-base</artifactId>
         <version>${assimbly.version}</version>
       </dependency>
       <dependency>
         <groupId>org.assimbly</groupId>
-        <artifactId>springBase</artifactId>
+        <artifactId>spring-base</artifactId>
         <version>${assimbly.version}</version>
       </dependency>
       <dependency>
           <groupId>org.assimbly</groupId>
-          <artifactId>testBase</artifactId>
+          <artifactId>test-base</artifactId>
           <version>${assimbly.version}</version>
           <scope>test</scope>
       </dependency>
