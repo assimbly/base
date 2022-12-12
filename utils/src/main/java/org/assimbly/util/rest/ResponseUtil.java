@@ -112,10 +112,38 @@ public final class ResponseUtil {
     	}
 		
 		return response;
-	}	
+	}
 
-    
-    public static ResponseEntity<String> createFailureResponseWithHeaders(long connectorId, String mediaType, String path, String message, String headerMessage, String headerParam) throws Exception{
+	public static ResponseEntity<String> createFailureResponse(long connectorId, String mediaType, String path, String message, boolean plainResponse) throws Exception{
+
+		log.error("REST request with path " + path + " for gateway with id " + connectorId + " failed.");
+
+		if(plainResponse) {
+			response = ResponseEntity.ok()
+					.body(message);
+		}else {
+			switch (mediaType.toLowerCase()) {
+				case "application/json":
+					response = ResponseEntity.badRequest()
+							.body(BodyUtil.createFailureJSONResponse(connectorId, path, message));
+					break;
+				case "application/xml":
+					response = ResponseEntity.badRequest()
+							.body(BodyUtil.createFailureXMLResponse(connectorId, path, message));
+
+					break;
+				default:
+					response = ResponseEntity.badRequest()
+							.body(BodyUtil.createFailureTEXTResponse(message));
+					break;
+			}
+		}
+
+		return response;
+	}
+
+
+	public static ResponseEntity<String> createFailureResponseWithHeaders(long connectorId, String mediaType, String path, String message, String headerMessage, String headerParam) throws Exception{
 
 		log.error("REST request with path " + path + " for gateway with id " + connectorId + " failed.");
 
