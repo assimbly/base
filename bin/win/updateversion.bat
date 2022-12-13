@@ -11,4 +11,4 @@ echo:
 echo:
 @echo example:
 @echo updateversion 1.0.0
-exit /B 1
+exit /B 1u
