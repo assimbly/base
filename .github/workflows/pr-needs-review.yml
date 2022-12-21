@@ -1,4 +1,4 @@
-name: Move new issues into Sprint Backlog
+name: Move issues with required review into 'Needs Review'
 
 on:
   pull_request:
