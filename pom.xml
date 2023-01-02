@@ -30,8 +30,7 @@
         </repository> 
     </distributionManagement>
 
-	<!-- In the following properties, versions of dependencies are centrally managed.
-	     Note: Camel is separately after the properties -->
+	<!-- In the following properties, versions of dependencies are centrally managed. -->
 	<properties>
 		<maven.compiler.source>11</maven.compiler.source>
 		<maven.compiler.target>11</maven.compiler.target>
@@ -45,6 +44,7 @@
 		<activemq-artemis.version>2.27.1</activemq-artemis.version>
 		<activemq-artemis-native.version>2.0.0</activemq-artemis-native.version>
 		<bouncycastle.version>1.70</bouncycastle.version>
+		<camel.version>3.20.0</camel.version>
 		<commons-beanutils.version>1.9.4</commons-beanutils.version>
 		<commons-cli.version>1.5.0</commons-cli.version>
 		<commons-codec.version>1.15</commons-codec.version>
@@ -108,13 +108,12 @@
 			<dependency>
 				<groupId>org.apache.camel</groupId>
 				<artifactId>camel-bom</artifactId>
-				<version>3.20.0</version>
+				<version>${camel.version}</version>
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
-
 
 	<repositories>
 		<repository>
