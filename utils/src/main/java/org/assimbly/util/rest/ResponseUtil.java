@@ -165,5 +165,14 @@ public final class ResponseUtil {
 		
 		return response;
 	}
+
+
+	public static ResponseEntity<String> createNoContentResponse(long connectorId, String path) throws Exception{
+
+		log.debug("REST request with path " + path + " for gateway with id " + connectorId);
+
+		response = ResponseEntity.noContent().build();
+		return response;
+	}
     
 }
