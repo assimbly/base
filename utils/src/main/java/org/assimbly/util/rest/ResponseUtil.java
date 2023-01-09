@@ -2,6 +2,7 @@ package org.assimbly.util.rest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
 /**
@@ -172,6 +173,15 @@ public final class ResponseUtil {
 		log.debug("REST request with path " + path + " for gateway with id " + connectorId);
 
 		response = ResponseEntity.noContent().build();
+		return response;
+	}
+
+
+	public static ResponseEntity<String> createNotModifiedResponse(long connectorId, String path) throws Exception{
+
+		log.debug("REST request with path " + path + " for gateway with id " + connectorId);
+
+		response = ResponseEntity.status(HttpStatus.NOT_MODIFIED).build();
 		return response;
 	}
     
