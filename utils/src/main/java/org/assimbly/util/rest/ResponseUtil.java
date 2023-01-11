@@ -119,7 +119,7 @@ public final class ResponseUtil {
 		log.error("REST request with path " + path + " for gateway with id " + connectorId + " failed.");
 
 		if(plainResponse) {
-			response = ResponseEntity.ok()
+			response = ResponseEntity.badRequest()
 					.body(message);
 		}else {
 			switch (mediaType.toLowerCase()) {
