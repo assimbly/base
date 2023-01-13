@@ -75,11 +75,11 @@
 		<jaxb-core.version>3.0.2</jaxb-core.version>
 		<jaxb-impl.version>3.0.2</jaxb-impl.version>
 		<jasypt.version>1.9.3</jasypt.version>
-		<jeka.version>0.10.4</jeka.version>
+		<jeka.version>0.10.5</jeka.version>
 		<json.version>20220924</json.version>
 		<jsonassert.version>1.5.1</jsonassert.version>
 		<json-path.version>2.7.0</json-path.version>
-		<junit.version>5.9.1</junit.version>
+		<junit.version>5.9.2</junit.version>
 		<jwt.version>0.11.5</jwt.version>
 		<jolokia.version>1.7.2</jolokia.version>
 		<httpclient.version>4.5.14</httpclient.version>
@@ -97,13 +97,13 @@
 		<qpid-proton-j.version>0.34.0</qpid-proton-j.version>
 		<slf4j.version>2.0.6</slf4j.version>
 		<sonic.version>10.0.18</sonic.version>
-		<spring.version>5.3.24</spring.version>
+		<spring.version>5.3.25</spring.version>
 		<spring-data.version>2.7.6</spring-data.version>
 		<springdoc-openapi-ui.version>1.6.14</springdoc-openapi-ui.version>
 		<sqlite-jdbc.version>3.40.0.0</sqlite-jdbc.version>
 		<tika.version>1.28.5</tika.version>
 		<xmlunit.version>1.6</xmlunit.version>
-		<xmlunit-core.version>2.9.0</xmlunit-core.version>
+		<xmlunit-core.version>2.9.1</xmlunit-core.version>
 
 	</properties>
 
