@@ -30,19 +30,22 @@
         </repository> 
     </distributionManagement>
 
+	<!-- In the following properties, versions of dependencies are centrally managed. -->
 	<properties>
 		<maven.compiler.source>11</maven.compiler.source>
 		<maven.compiler.target>11</maven.compiler.target>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<main.basedir>${project.basedir}</main.basedir>
 
+		<!-- Manage the versions of all dependencies here -->
 		<aopalliance.version>1.0</aopalliance.version>
 		<axiom.version>1.4.0</axiom.version>
-		<assimbly.version>3.8.0</assimbly.version>
+		<assimbly.version>3.8.1</assimbly.version>
 		<activemq-classic.version>5.17.3</activemq-classic.version>
 		<activemq-artemis.version>2.27.1</activemq-artemis.version>
 		<activemq-artemis-native.version>2.0.0</activemq-artemis-native.version>
 		<bouncycastle.version>1.70</bouncycastle.version>
+		<camel.version>3.20.1</camel.version>
 		<commons-beanutils.version>1.9.4</commons-beanutils.version>
 		<commons-cli.version>1.5.0</commons-cli.version>
 		<commons-codec.version>1.15</commons-codec.version>
@@ -58,7 +61,9 @@
 		<commons-text.version>1.10.0</commons-text.version>
 		<db2-jdbc.version>db2jcc4</db2-jdbc.version>
 		<docconverter.version>1.6.1</docconverter.version>
-		<gson.version>2.10</gson.version>
+		<dropwizard-metrics.version>4.2.15</dropwizard-metrics.version>
+		<gson.version>2.10.1</gson.version>
+		<groovy-script.version>3.0.14</groovy-script.version>
 		<guava.version>31.1-jre</guava.version>
 		<ibmmq-client.version>9.3.1.0</ibmmq-client.version>
 		<informix-jdbc.version>4.50.9</informix-jdbc.version>
@@ -71,33 +76,36 @@
 		<jaxb-core.version>3.0.2</jaxb-core.version>
 		<jaxb-impl.version>3.0.2</jaxb-impl.version>
 		<jasypt.version>1.9.3</jasypt.version>
-		<jeka.version>0.10.0</jeka.version>
+		<jeka.version>0.10.5</jeka.version>
+		<jsch.version>0.1.48_1</jsch.version>
 		<json.version>20220924</json.version>
 		<jsonassert.version>1.5.1</jsonassert.version>
 		<json-path.version>2.7.0</json-path.version>
-		<junit.version>5.9.1</junit.version>
+		<junit.version>5.9.2</junit.version>
 		<jwt.version>0.11.5</jwt.version>
+		<jolokia.version>1.7.2</jolokia.version>
 		<httpclient.version>4.5.14</httpclient.version>
-		<kamelet.version>0.9.3</kamelet.version>
+		<kamelet.version>3.20.0</kamelet.version>
 		<logback-classic.version>1.4.5</logback-classic.version>
 		<mysql-connector-java.version>8.0.31</mysql-connector-java.version>
 		<mssql-jdbc.version>10.2.1.jre11</mssql-jdbc.version>
-		<mockito.version>4.9.0</mockito.version>
+		<mockito.version>4.11.0</mockito.version>
 		<mockserver.version>5.14.0</mockserver.version>
 		<mongo.version>3.12.11</mongo.version>
-		<netty.version>4.1.85.Final</netty.version>
-		<oracle12.version>21.7.0.0</oracle12.version>
+		<netty.version>4.1.86.Final</netty.version>
+		<oracle12.version>21.8.0.0</oracle12.version>
 		<postgresql.version>42.5.1</postgresql.version>
 		<powermock.version>2.0.9</powermock.version>
 		<qpid-proton-j.version>0.34.0</qpid-proton-j.version>
-		<slf4j.version>1.7.36</slf4j.version>
+		<slf4j.version>2.0.6</slf4j.version>
 		<sonic.version>10.0.18</sonic.version>
-		<spring.version>5.3.24</spring.version>
+		<spring.version>5.3.25</spring.version>
 		<spring-data.version>2.7.6</spring-data.version>
+		<springdoc-openapi-ui.version>1.6.14</springdoc-openapi-ui.version>
 		<sqlite-jdbc.version>3.40.0.0</sqlite-jdbc.version>
 		<tika.version>1.28.5</tika.version>
 		<xmlunit.version>1.6</xmlunit.version>
-		<xmlunit-core.version>2.9.0</xmlunit-core.version>
+		<xmlunit-core.version>2.9.1</xmlunit-core.version>
 
 	</properties>
 
@@ -106,13 +114,19 @@
 			<dependency>
 				<groupId>org.apache.camel</groupId>
 				<artifactId>camel-bom</artifactId>
-				<version>3.19.0</version>
+				<version>${camel.version}</version>
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
+			<dependency>
+				<groupId>org.apache.maven.plugin-tools</groupId>
+				<artifactId>maven-plugin-annotations</artifactId>
+				<version>3.7.0</version>
+				<scope>provided</scope> <!-- annotations are not used at runtime because @Retention(value=CLASS), they are needed only to build the plugin -->
+			</dependency>
 		</dependencies>
-	</dependencyManagement>
 
+	</dependencyManagement>
 
 	<repositories>
 		<repository>
@@ -169,20 +183,20 @@
 				<!-- clean lifecycle, see https://maven.apache.org/ref/current/maven-core/lifecycles.html#clean_Lifecycle -->
 				<plugin>
 					<artifactId>maven-clean-plugin</artifactId>
-					<version>3.1.0</version>
+					<version>3.2.0</version>
 				</plugin>
 				<!-- default lifecycle, jar packaging: see https://maven.apache.org/ref/current/maven-core/default-bindings.html#Plugin_bindings_for_jar_packaging -->
 				<plugin>
 					<artifactId>maven-resources-plugin</artifactId>
-					<version>3.2.0</version>
+					<version>3.3.0</version>
 				</plugin>
 				<plugin>
 					<artifactId>maven-compiler-plugin</artifactId>
-					<version>3.8.1</version>
+					<version>3.10.1</version>
 				</plugin>
 				<plugin>
 					<artifactId>maven-toolchains-plugin</artifactId>
-					<version>3.0.0</version>
+					<version>3.1.0</version>
 					<executions>
 						<execution>
 							<goals>
@@ -204,11 +218,11 @@
 				</plugin>
 				<plugin>
 					<artifactId>maven-jar-plugin</artifactId>
-					<version>3.2.0</version>
+					<version>3.3.0</version>
 				</plugin>
 				<plugin>
 					<artifactId>maven-install-plugin</artifactId>
-					<version>2.5.2</version>
+					<version>3.1.0</version>
 				</plugin>
 				<plugin>
 					<artifactId>maven-deploy-plugin</artifactId>
@@ -242,7 +256,7 @@
 				</plugin>
 				<plugin>
 					<artifactId>maven-project-info-reports-plugin</artifactId>
-					<version>3.1.2</version>
+					<version>3.4.1</version>
 				</plugin>
 			</plugins>
 		</pluginManagement>
