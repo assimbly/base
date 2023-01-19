@@ -8,7 +8,7 @@
 	<name>org.assimbly.camelconnector</name>
 	<url>http://maven.apache.org</url>
 
-	<version>3.8.2</version>
+	<version>3.8.1</version>
 
 	<modules>
 		<module>activemqBase</module>
