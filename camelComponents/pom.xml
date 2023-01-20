@@ -57,10 +57,10 @@
             <groupId>org.apache.camel</groupId>
             <artifactId>camel-hl7</artifactId>
         </dependency>
-        <dependency>
+      <!-- <dependency>
             <groupId>org.apache.camel</groupId>
             <artifactId>camel-javascript</artifactId>
-        </dependency>
+        </dependency>-->
         <dependency>
             <groupId>org.apache.camel</groupId>
             <artifactId>camel-jetty</artifactId>
@@ -89,10 +89,10 @@
             <groupId>org.apache.camel</groupId>
             <artifactId>camel-netty-http</artifactId>
         </dependency>
-        <dependency>
+       <!-- <dependency>
             <groupId>org.apache.camel</groupId>
             <artifactId>camel-python</artifactId>
-        </dependency>
+        </dependency>-->
         <dependency>
             <groupId>org.apache.camel</groupId>
             <artifactId>camel-rest</artifactId>
@@ -165,10 +165,10 @@
             <groupId>org.apache.camel</groupId>
             <artifactId>camel-websocket</artifactId>
         </dependency>
-        <dependency>
+        <!--<dependency>
             <groupId>org.apache.camel</groupId>
             <artifactId>camel-whatsapp</artifactId>
-        </dependency>
+        </dependency>-->
         <dependency>
             <groupId>org.apache.camel</groupId>
             <artifactId>camel-xslt</artifactId>
