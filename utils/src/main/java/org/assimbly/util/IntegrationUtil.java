@@ -145,7 +145,7 @@ public final class IntegrationUtil {
 			}
 		}
 
-		return "Connection succesful";
+		return "Connection successful";
 	}
 
 

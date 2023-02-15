@@ -19,7 +19,7 @@ public final class BodyUtil {
         responseBody.put("id", id.toString());
         responseBody.put("timestamp", new Timestamp(System.currentTimeMillis()));
         responseBody.put("status", 200);
-        responseBody.put("details", "succesful");
+        responseBody.put("details", "successful");
         responseBody.put("path", path);
         responseBody.put("message", message);
         
@@ -47,7 +47,7 @@ public final class BodyUtil {
         responseBody.put("id", id.toString());
         responseBody.put("timestamp", new Timestamp(System.currentTimeMillis()));
         responseBody.put("status", 200);
-        responseBody.put("details", "succesful");
+        responseBody.put("details", "successful");
         responseBody.put("path", path);
         responseBody.put("message", message);
         
