@@ -41,11 +41,11 @@
 		<aopalliance.version>1.0</aopalliance.version>
 		<axiom.version>1.4.0</axiom.version>
 		<assimbly.version>4.0.0</assimbly.version>
-		<activemq-classic.version>5.17.4</activemq-classic.version>
+		<activemq-classic.version>5.18.0</activemq-classic.version>
 		<activemq-artemis.version>2.28.0</activemq-artemis.version>
 		<activemq-artemis-native.version>2.0.0</activemq-artemis-native.version>
 		<bouncycastle.version>1.70</bouncycastle.version>
-		<camel.version>3.20.2</camel.version>
+		<camel.version>3.20.3</camel.version>
 		<commons-beanutils.version>1.9.4</commons-beanutils.version>
 		<commons-cli.version>1.5.0</commons-cli.version>
 		<commons-codec.version>1.15</commons-codec.version>
@@ -67,7 +67,7 @@
 		<groovy-script.version>3.0.16</groovy-script.version>
 		<guava.version>31.1-jre</guava.version>
 		<ibmmq-client.version>9.3.2.0</ibmmq-client.version>
-		<informix-jdbc.version>4.50.9</informix-jdbc.version>
+		<informix-jdbc.version>4.50.10</informix-jdbc.version>
 		<jackson.version>2.14.2</jackson.version>
 		<javax-servlet-api.version>4.0.1</javax-servlet-api.version>
 		<javax-json-api.version>1.1.4</javax-json-api.version>
@@ -77,7 +77,7 @@
 		<jaxb-core.version>3.0.2</jaxb-core.version>
 		<jaxb-impl.version>3.0.2</jaxb-impl.version>
 		<jasypt.version>1.9.3</jasypt.version>
-		<jeka.version>0.10.10</jeka.version>
+		<jeka.version>0.10.11</jeka.version>
 		<jsch.version>0.1.55_1</jsch.version>
 		<json.version>20230227</json.version>
 		<jsonassert.version>1.5.1</jsonassert.version>
@@ -93,17 +93,17 @@
 		<mockito.version>4.11.0</mockito.version>
 		<mockserver.version>5.15.0</mockserver.version>
 		<mongo.version>3.12.11</mongo.version>
-		<netty.version>4.1.89.Final</netty.version>
+		<netty.version>4.1.90.Final</netty.version>
 		<oracle12.version>21.9.0.0</oracle12.version>
-		<postgresql.version>42.5.4</postgresql.version>
+		<postgresql.version>42.6.0</postgresql.version>
 		<powermock.version>2.0.9</powermock.version>
 		<qpid-proton-j.version>0.34.1</qpid-proton-j.version>
 		<slf4j.version>1.7.36</slf4j.version>
 		<sonic.version>10.0.18</sonic.version>
-		<spring.version>5.3.25</spring.version>
-		<spring-data.version>2.7.8</spring-data.version>
+		<spring.version>5.3.26</spring.version>
+		<spring-data.version>2.7.10</spring-data.version>
 		<springdoc-openapi-ui.version>1.6.15</springdoc-openapi-ui.version>
-		<sqlite-jdbc.version>3.41.0.0</sqlite-jdbc.version>
+		<sqlite-jdbc.version>3.41.2.1</sqlite-jdbc.version>
 		<tika.version>1.28.5</tika.version>
 		<xmlunit.version>1.6</xmlunit.version>
 		<xmlunit-core.version>2.9.1</xmlunit-core.version>
