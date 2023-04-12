@@ -67,14 +67,14 @@ jobs:
                         }
                     ]
         
-                    servers: >
-                        [
-                            {
-                                "id": "github",
-                                "username": "$GITHUB_ACTOR",
-                                "password": "$GITHUB_TOKEN"
-                            }
-                        ]
+                servers: >
+                    [
+                        {
+                            "id": "github",
+                            "username": "$GITHUB_ACTOR",
+                            "password": "$GITHUB_TOKEN"
+                        }
+                    ]
     
 
             - name: Publish to Github Packages
