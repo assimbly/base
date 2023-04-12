@@ -81,7 +81,7 @@ jobs:
                 cat $MAVEN_PATH/conf/settings.xml
 
             - name: Publish to Github Packages
-              run: mvn clean deploy
+              run: sh bin/mac/deploy.sh
               env:
                 GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
