@@ -6,12 +6,92 @@ on:
       - 'workflows'
 
 jobs:
-    delete_packages:
+    delete_base:
         runs-on: ubuntu-latest
-
         steps:
             - uses: actions/delete-package-versions@v4
               with:
                 package-name: 'org.assimbly.base'
+                package-type: 'maven'
+                min-versions-to-keep: 2
+    
+    delete_common-base:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/delete-package-versions@v4
+                with:
+                package-name: 'org.assimbly.common-base'
+                package-type: 'maven'
+                min-versions-to-keep: 2
+        
+    delete_camel-base:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/delete-package-versions@v4
+                with:
+                package-name: 'org.assimbly.camel-base'
+                package-type: 'maven'
+                min-versions-to-keep: 2
+
+    delete_spring-base:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/delete-package-versions@v4
+                with:
+                package-name: 'org.assimbly.spring-base'
+                package-type: 'maven'
+                min-versions-to-keep: 2
+
+    delete_activemq-base:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/delete-package-versions@v4
+                with:
+                package-name: 'org.assimbly.activemq-base'
+                package-type: 'maven'
+                min-versions-to-keep: 2
+    
+    delete_test-base:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/delete-package-versions@v4
+                with:
+                package-name: 'org.assimbly.test-base'
+                package-type: 'maven'
+                min-versions-to-keep: 2
+                
+    delete_database-drivers:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/delete-package-versions@v4
+                with:
+                package-name: 'org.assimbly.database-drivers'
+                package-type: 'maven'
+                min-versions-to-keep: 2
+
+    delete_camel-components:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/delete-package-versions@v4
+                with:
+                package-name: 'org.assimbly.camel-components'
+                package-type: 'maven'
+                min-versions-to-keep: 2
+
+    delete_utils:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/delete-package-versions@v4
+                with:
+                package-name: 'org.assimbly.utils'
+                package-type: 'maven'
+                min-versions-to-keep: 2
+
+    delete_extra:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/delete-package-versions@v4
+                with:
+                package-name: 'org.assimbly.extra'
                 package-type: 'maven'
                 min-versions-to-keep: 2
