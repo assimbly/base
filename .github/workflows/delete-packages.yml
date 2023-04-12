@@ -10,7 +10,7 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - uses: actions/delete-package-versions@v4
-                with:
+              with:
                 package-name: 'org.assimbly.base'
                 package-type: 'maven'
                 min-versions-to-keep: 2
@@ -19,7 +19,7 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - uses: actions/delete-package-versions@v4
-                with:
+              with:
                 package-name: 'org.assimbly.common-base'
                 package-type: 'maven'
                 min-versions-to-keep: 2
@@ -28,7 +28,7 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - uses: actions/delete-package-versions@v4
-                with:
+              with:
                 package-name: 'org.assimbly.camel-base'
                 package-type: 'maven'
                 min-versions-to-keep: 2
@@ -37,7 +37,7 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - uses: actions/delete-package-versions@v4
-                with:
+              with:
                 package-name: 'org.assimbly.spring-base'
                 package-type: 'maven'
                 min-versions-to-keep: 2
@@ -46,7 +46,7 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - uses: actions/delete-package-versions@v4
-                with:
+              with:
                 package-name: 'org.assimbly.activemq-base'
                 package-type: 'maven'
                 min-versions-to-keep: 2
@@ -55,7 +55,7 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - uses: actions/delete-package-versions@v4
-                with:
+              with:
                 package-name: 'org.assimbly.test-base'
                 package-type: 'maven'
                 min-versions-to-keep: 2
@@ -73,7 +73,7 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - uses: actions/delete-package-versions@v4
-                with:
+              with:
                 package-name: 'org.assimbly.camel-components'
                 package-type: 'maven'
                 min-versions-to-keep: 2
@@ -82,7 +82,7 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - uses: actions/delete-package-versions@v4
-                with:
+              with:
                 package-name: 'org.assimbly.utils'
                 package-type: 'maven'
                 min-versions-to-keep: 2
@@ -91,7 +91,7 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - uses: actions/delete-package-versions@v4
-                with:
+              with:
                 package-name: 'org.assimbly.extra'
                 package-type: 'maven'
                 min-versions-to-keep: 2
