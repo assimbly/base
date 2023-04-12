@@ -13,8 +13,6 @@ jobs:
 
             - name: Checkout the code
               uses: actions/checkout@v3
-              with:
-                ref: 'develop'
             
             - name: Get current date
               id: date
@@ -81,7 +79,7 @@ jobs:
                 cat $MAVEN_PATH/conf/settings.xml
 
             - name: Publish to Github Packages
-              run: mvn deploy
+              run: sh bin/mac/deploy.sh
               env:
                 GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
