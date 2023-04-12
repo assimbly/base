@@ -14,7 +14,7 @@ jobs:
                 organization: assimbly
                 type: maven
                 keep: 2
-                version-pattern: "*-SNAPSHOT"
+                version-pattern: "^\\d+\\.\\d+\\.\\d+-SNAPSHOT\\d+$"
                 names: |
                     base
                     common-base
