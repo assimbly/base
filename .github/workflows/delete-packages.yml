@@ -72,10 +72,10 @@ jobs:
               id: date
               run: echo "::set-output name=date::$(date +'%Y-%m-%d')"
   
-              - name: Update POM Version
-                env:
-                  VERSION: ${{ steps.date.outputs.date }}-SNAPSHOT
-                run: |
+            - name: Update POM Version
+              env:
+                VERSION: ${{ steps.date.outputs.date }}-SNAPSHOT
+              run: |
                   echo "Updating to version: ${VERSION}"
                   mvn versions:set -DnewVersion=${VERSION}
 
