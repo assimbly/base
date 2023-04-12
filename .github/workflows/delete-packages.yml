@@ -8,11 +8,27 @@ on:
 jobs:
     delete_base:
         runs-on: ubuntu-latest
+        
+        env:
+            VERSION: "SNAPSHOT"
+
         steps:
+
+            - name: Checkout the code
+              uses: actions/checkout@v3
+
+            - name: Update POM Version
+              run: |
+                echo "Updating to version: ${VERSION}"
+                mvn versions:set -DnewVersion=${VERSION}
+
+            - name: Publish to Github Packages
+              run: ./gradlew clean publish --settings-file ./settings.gradle -Pprod
+
             - uses: smartsquaregmbh/delete-old-packages@v0.6.0
               with:
                 organization: assimbly
-                type: mvn
+                type: maven
                 keep: 2
                 version-pattern: "^\\d+\\.\\d+\\.\\d+-SNAPSHOT\\d+$"
                 names: |
