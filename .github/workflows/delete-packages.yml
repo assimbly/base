@@ -8,10 +8,6 @@ on:
 jobs:
     delete_base:
         runs-on: ubuntu-latest
-        
-        env:
-            GITHUB_ACTOR: ${{ secrets.GITHUB_ACTOR }}
-            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
         steps:
 
@@ -39,6 +35,9 @@ jobs:
 
             - name: Setup Maven settings.xml
               uses: whelk-io/maven-settings-xml-action@v20
+              env:
+                GITHUB_ACTOR: ${{ secrets.GITHUB_ACTOR }}
+                GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
               with:
                 
                 repositories: >
@@ -83,6 +82,8 @@ jobs:
 
             - name: Publish to Github Packages
               run: mvn clean deploy
+              env:
+                GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
             - uses: smartsquaregmbh/delete-old-packages@v0.6.0
               with:
