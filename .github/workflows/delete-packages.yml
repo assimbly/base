@@ -9,8 +9,9 @@ jobs:
     delete_packages:
         runs-on: ubuntu-latest
 
-    - uses: actions/delete-package-versions@v4
-      with:
-        package-name: 'com.assimbly.base'
-        package-type: 'maven'
-        min-versions-to-keep: 2
+        steps:
+            - uses: actions/delete-package-versions@v4
+              with:
+                package-name: 'com.assimbly.base'
+                package-type: 'maven'
+                min-versions-to-keep: 2
