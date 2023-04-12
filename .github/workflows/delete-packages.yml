@@ -14,7 +14,7 @@ jobs:
                 organization: assimbly
                 type: maven
                 keep: 2
-                semver-pattern: "*-SNAPSHOT"
+                version-pattern: "*-SNAPSHOT"
                 names: |
                     base
                     common-base
