@@ -9,7 +9,7 @@ jobs:
     delete_base:
         runs-on: ubuntu-latest
         steps:
-            - uses: smartsquaregmbh/delete-old-packages@v0.7.0
+            - uses: smartsquaregmbh/delete-old-packages@v0.6.0
               with:
                 organization: assimbly
                 type: maven
