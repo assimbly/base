@@ -12,7 +12,7 @@ jobs:
             - uses: smartsquaregmbh/delete-old-packages@v0.6.0
               with:
                 organization: assimbly
-                type: maven
+                type: mvn
                 keep: 2
                 version-pattern: "^\\d+\\.\\d+\\.\\d+-SNAPSHOT\\d+$"
                 names: |
