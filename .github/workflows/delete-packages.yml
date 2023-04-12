@@ -64,7 +64,7 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - uses: actions/delete-package-versions@v4
-                with:
+              with:
                 package-name: 'org.assimbly.database-drivers'
                 package-type: 'maven'
                 min-versions-to-keep: 2
