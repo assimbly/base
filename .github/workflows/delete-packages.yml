@@ -8,6 +8,9 @@ on:
 jobs:
     delete_base:
         runs-on: ubuntu-latest
+        permissions:
+            contents: read
+            packages: write
 
         env:
             GITHUB_ACTOR: ${{ secrets.GITHUB_ACTOR }}
@@ -17,6 +20,8 @@ jobs:
 
             - name: Checkout the code
               uses: actions/checkout@v3
+              with:
+                ref: "develop"
             
             - name: Set up JDK 11
               uses: actions/setup-java@v3
