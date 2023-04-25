@@ -7,12 +7,14 @@ on:
       - 'snapshots-tests'
 
 jobs:
+
   publish:
     runs-on: ubuntu-latest 
     permissions: 
       contents: read
       packages: write 
-    steps:
+    
+      steps:
       
       - name: Checkout the code
         uses: actions/checkout@v3
@@ -83,7 +85,7 @@ jobs:
           echo '</settings>' >> "$MAVEN_PATH/conf/settings.xml"
           cat $MAVEN_PATH/conf/settings.xml
       
-      - name: Publish package
-        run: maven clean deploy
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Build and Deploy
+        uses: jamesdbloom/action-maven@master
+        with:
+          args: clean deploy -DskipTests=true
