@@ -61,7 +61,7 @@
 		<commons-math3.version>3.6.1</commons-math3.version>
 		<commons-text.version>1.10.0</commons-text.version>
 		<db2-jdbc.version>db2jcc4</db2-jdbc.version>
-		<docconverter.version>1.7.0</docconverter.version>
+		<docconverter.version>1.0.4</docconverter.version>
 		<dropwizard-metrics.version>4.2.18</dropwizard-metrics.version>
 		<elasticsearch-rest-client.version>8.7.0</elasticsearch-rest-client.version>
 		<gson.version>2.10.1</gson.version>
