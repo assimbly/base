@@ -2,6 +2,9 @@ name: Publish package to GitHub Packages
 on:
   release:
     types: [ released ]
+  push:
+    branches:
+      - 'snapshots-tests'
 
 jobs:
   publish:
@@ -10,12 +13,77 @@ jobs:
       contents: read
       packages: write 
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-java@v3
+      
+      - name: Checkout the code
+        uses: actions/checkout@v3
+
+      - name: Setup Java
+        uses: actions/setup-java@v3
         with:
           java-version: '11'
           distribution: 'adopt'
+      
+      - name: Setup Maven settings.xml
+        uses: whelk-io/maven-settings-xml-action@v20
+        with:
+          
+          repositories: >
+            [
+              {
+                "id": "maven",
+                "name": "Maven Central",
+                "url": "https://repo1.maven.org/maven2"
+              },
+              {
+                "id": "github",
+                "name": "Assimbly Base Repository",
+                "url": "https://maven.pkg.github.com/assimbly/base",
+                "snapshots": {
+                  "enabled": "true"
+                }
+              },
+              {
+                "id": "github",
+                "name": "Assimbly Runtime Repository",
+                "url": "https://maven.pkg.github.com/assimbly/runtime",
+                "snapshots": {
+                  "enabled": "true"
+                }
+              },
+              {
+                "id": "github",
+                "name": "Assimbly Custom-Components Repository",
+                "url": "https://maven.pkg.github.com/assimbly/custom-components",
+                "snapshots": {
+                  "enabled": "true"
+                }
+              },
+              {
+                "id": "aurea",
+                "name": "Aurea Sonic Repository",
+                "url": "https://int-factory.aurea.com/nexus/content/repositories/sonic-releases/"
+              }
+            ]
+
+          servers: >
+            [
+              {
+                "id": "github",
+                "username": "$GITHUB_ACTOR",
+                "password": "$GITHUB_TOKEN"
+              }
+            ]
+
+      - name: Remove HTTP blocker from the built in settings.xml
+        run: |
+          export MAVEN_PATH=$(mvn -X | grep "home" | head -1 | cut -d " " -f 3)
+          echo "this is the path: $MAVEN_PATH"
+          echo '<?xml version="1.0" encoding="UTF-8"?>' > "$MAVEN_PATH/conf/settings.xml"
+          echo '<settings xmlns="http://maven.apache.org/SETTINGS/1.2.0" xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.2.0 https://maven.apache.org/xsd/settings-1.2.0.xsd">' >> "$MAVEN_PATH/conf/settings.xml"
+          echo '</settings>' >> "$MAVEN_PATH/conf/settings.xml"
+          cat $MAVEN_PATH/conf/settings.xml
+      
       - name: Publish package
-        run: ./bin/mac/deploy.sh
+        run: maven clean deploy
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
