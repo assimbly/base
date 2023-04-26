@@ -32,20 +32,20 @@ jobs:
                   echo "Updating to version: ${VERSION}"
                   mvn versions:set -DnewVersion=${VERSION}
 
-            - uses: smartsquaregmbh/delete-old-packages@v0.6.0
+            - name: Delete older snapshots
+              uses: smartsquaregmbh/delete-old-packages@v0.7.0
               with:
                 organization: assimbly
                 type: maven
-                keep: 0
-                version-pattern: "^\\d+\\.\\d+\\.\\d+-SNAPSHOT\\d+$"
+                keep: 1
+                version-pattern: "^\\S+\\-SNAPSHOT$"
                 names: |
-                    base
-                    common-base
-                    camel-base
-                    spring-base
-                    activemq-base
-                    test-base
-                    database-drivers
-                    camel-components
-                    utils
-                    extra
+                  org.assimbly.base
+                  org.assimbly.common-base
+                  org.assimbly.spring-base
+                  org.assimbly.activemq-base
+                  org.assimbly.test-base
+                  org.assimbly.database-drivers
+                  org.assimbly.camel-components
+                  org.assimbly.utils
+                  org.assimbly.extra
