@@ -72,14 +72,10 @@ jobs:
                 echo '<settings xmlns="http://maven.apache.org/SETTINGS/1.2.0" xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.2.0 https://maven.apache.org/xsd/settings-1.2.0.xsd">' >> "$MAVEN_PATH/conf/settings.xml"
                 echo '</settings>' >> "$MAVEN_PATH/conf/settings.xml"
                 cat $MAVEN_PATH/conf/settings.xml
-
-            - name: Get current date
-              id: date
-              run: echo "::set-output name=date::$(date +'%Y-%m-%d')"
   
             - name: Update POM Version
               env:
-                VERSION: ${{ steps.date.outputs.date }}-SNAPSHOT
+                VERSION: 4.0.0-SNAPSHOT
               run: |
                   echo "Updating to version: ${VERSION}"
                   mvn versions:set -DnewVersion=${VERSION}
@@ -93,7 +89,7 @@ jobs:
               with:
                 organization: assimbly
                 type: maven
-                keep: 2
+                keep: 0
                 version-pattern: "^\\d+\\.\\d+\\.\\d+-SNAPSHOT\\d+$"
                 names: |
                     base
