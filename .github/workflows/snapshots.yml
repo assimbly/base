@@ -8,7 +8,37 @@ on:
       - 'snapshots-tests'
 
 jobs:
+  delete_older_snapshots:
+
+    runs-on: ubuntu-latest
+    permissions:
+        contents: read
+        packages: write
+
+    steps:
+
+      - name: Delete older snapshots
+        uses: smartsquaregmbh/delete-old-packages@v0.7.0
+        with:
+          organization: assimbly
+          type: maven
+          keep: 0
+          version-pattern: "^\\S+\\-SNAPSHOT$"
+          names: |
+            org.assimbly.base
+            org.assimbly.common-base
+            org.assimbly.camel-base
+            org.assimbly.spring-base
+            org.assimbly.activemq-base
+            org.assimbly.test-base
+            org.assimbly.database-drivers
+            org.assimbly.camel-components
+            org.assimbly.utils
+            org.assimbly.extra
+
   publish_base_snapshot:
+    needs: [delete_older_packages]
+
     runs-on: ubuntu-latest
     permissions:
         contents: read
@@ -39,32 +69,3 @@ jobs:
         run: mvn --batch-mode deploy
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-  delete_older_snapshots:
-    needs: [publish_base_snapshot]
-
-    runs-on: ubuntu-latest
-    permissions:
-        contents: read
-        packages: write
-
-    steps:
-
-      - name: Delete older snapshots
-        uses: smartsquaregmbh/delete-old-packages@v0.7.0
-        with:
-          organization: assimbly
-          type: maven
-          keep: 1
-          version-pattern: "^\\S+\\-SNAPSHOT$"
-          names: |
-            org.assimbly.base
-            org.assimbly.common-base
-            org.assimbly.camel-base
-            org.assimbly.spring-base
-            org.assimbly.activemq-base
-            org.assimbly.test-base
-            org.assimbly.database-drivers
-            org.assimbly.camel-components
-            org.assimbly.utils
-            org.assimbly.extra
