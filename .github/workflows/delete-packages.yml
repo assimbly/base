@@ -32,11 +32,6 @@ jobs:
                   echo "Updating to version: ${VERSION}"
                   mvn versions:set -DnewVersion=${VERSION}
 
-            - name: Publish to Github Packages
-              run: mvn --batch-mode deploy
-              env:
-                GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
             - uses: smartsquaregmbh/delete-old-packages@v0.6.0
               with:
                 organization: assimbly
