@@ -37,7 +37,7 @@ jobs:
               with:
                 organization: assimbly
                 type: maven
-                keep: 1
+                keep: 0
                 version-pattern: "^\\S+\\-SNAPSHOT$"
                 names: |
                   org.assimbly.base
