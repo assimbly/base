@@ -30,7 +30,8 @@ jobs:
                 VERSION: 4.0.0-SNAPSHOT
               run: |
                   echo "Updating to version: ${VERSION}"
-                  mvn versions:set -DnewVersion=${VERSION}
+                  mvn versions:set -DgenerateBackupPoms=false -DnewVersion=${VERSION}
+                  mvn versions:set-property -Dproperty=assimbly.version -DnewVersion=${VERSION}
 
             - name: Publish package
               run: mvn --batch-mode deploy
