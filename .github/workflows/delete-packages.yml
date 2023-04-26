@@ -81,7 +81,7 @@ jobs:
                   mvn versions:set -DnewVersion=${VERSION}
 
             - name: Publish to Github Packages
-              run: mvn clean deploy
+              run: mvn --batch-mode deploy
               env:
                 GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
