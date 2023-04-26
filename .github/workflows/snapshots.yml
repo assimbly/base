@@ -37,7 +37,7 @@ jobs:
             org.assimbly.extra
 
   publish_base_snapshot:
-    needs: [delete_older_packages]
+    needs: [delete_older_snapshots]
 
     runs-on: ubuntu-latest
     permissions:
