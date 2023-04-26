@@ -80,11 +80,11 @@
           <version>${tika.version}</version>
       </dependency>
 
-<!--      <dependency>
+      <dependency>
           <groupId>io.github.assimbly</groupId>
           <artifactId>docconverter</artifactId>
           <version>${docconverter.version}</version>
-      </dependency> -->
+      </dependency>
 
   </dependencies>
 
