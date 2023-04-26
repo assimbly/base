@@ -42,6 +42,7 @@ jobs:
                 names: |
                   org.assimbly.base
                   org.assimbly.common-base
+                  org.assimbly.camel-base
                   org.assimbly.spring-base
                   org.assimbly.activemq-base
                   org.assimbly.test-base
