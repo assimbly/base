@@ -94,7 +94,7 @@
 		<mockito.version>4.11.0</mockito.version>
 		<mockserver.version>5.15.0</mockserver.version>
 		<mongo.version>3.12.11</mongo.version>
-		<netty.version>4.1.90.Final</netty.version>
+		<netty.version>4.1.91.Final</netty.version>
 		<oracle12.version>23.2.0.0</oracle12.version>
 		<postgresql.version>42.6.0</postgresql.version>
 		<powermock.version>2.0.9</powermock.version>
