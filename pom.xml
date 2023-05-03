@@ -100,7 +100,7 @@
 		<powermock.version>2.0.9</powermock.version>
 		<qpid-proton-j.version>0.34.1</qpid-proton-j.version>
 		<slf4j.version>1.7.36</slf4j.version>
-		<sonic.version>10.0.18</sonic.version>
+		<sonic.version>12.0.2</sonic.version>
 		<spring.version>5.3.27</spring.version>
 		<spring-data.version>2.7.11</spring-data.version>
 		<springdoc-openapi-ui.version>1.7.0</springdoc-openapi-ui.version>
