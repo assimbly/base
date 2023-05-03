@@ -24,11 +24,11 @@ jobs:
     - name: Checkout the code
       uses: actions/checkout@v3
       with:
-        ref: ${BRANCH}
+        ref: ${{ inputs.BRANCH }}
 
     - name: Update POM Version
       env:
-        VERSION: ${BRANCH}
+        VERSION: ${{ inputs.VERSION }}
       run: |
         echo "Updating to version: $VERSION"
         mvn versions:set -DnewVersion=$VERSION
