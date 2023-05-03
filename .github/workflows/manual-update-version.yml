@@ -11,13 +11,9 @@ on:
           - develop
           - master
       VERSION:
-        description: '4.0.0'
+        description: 'Version'
         required: true
         default: '4.0.0'
-        
-  push:
-    branches:
-      - 'update-development-version'
 
 jobs:
   update_version:
