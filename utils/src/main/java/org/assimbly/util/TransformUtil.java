@@ -1,8 +1,6 @@
 package org.assimbly.util;
 
-import java.io.InputStream;
-import java.io.StringReader;
-import java.io.StringWriter;
+import java.io.*;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -111,4 +109,5 @@ public final class TransformUtil {
 		return sw.toString();
 
 	}
+
 }
