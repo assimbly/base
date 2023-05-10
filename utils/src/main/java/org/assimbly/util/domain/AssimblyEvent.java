@@ -3,7 +3,7 @@ package org.assimbly.util.domain;
 import java.io.Serializable;
 import java.util.Map;
 
-public class DovetailEvent implements Serializable {
+public class AssimblyEvent implements Serializable {
 
     private static final long serialVersionUID = -414325906494469280L;
 
@@ -15,7 +15,7 @@ public class DovetailEvent implements Serializable {
     private final String body;
     private final Map<String, Object> headers;
 
-    public DovetailEvent(String timestamp, String expiryDate, String bundleId, int flowVersion, String component, String body, Map<String, Object> headers) {
+    public AssimblyEvent(String timestamp, String expiryDate, String bundleId, int flowVersion, String component, String body, Map<String, Object> headers) {
         this.timestamp = timestamp;
         this.expiryDate = expiryDate;
         this.bundleId = bundleId;

@@ -8,7 +8,7 @@
     <parent>
         <artifactId>base</artifactId>
         <groupId>org.assimbly</groupId>
-        <version>3.9.0</version>
+        <version>4.0.0-SNAPSHOT</version>
     </parent>
 
     <artifactId>activemq-base</artifactId>
@@ -44,7 +44,6 @@
             <groupId>org.apache.activemq</groupId>
             <artifactId>activemq-kahadb-store</artifactId>
             <version>${activemq-classic.version}</version>
-            <scope>runtime</scope>
         </dependency>
         <dependency>
             <groupId>org.apache.activemq</groupId>

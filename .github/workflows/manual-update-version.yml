@@ -3,6 +3,13 @@ name: Manual Version Update
 on:
   workflow_dispatch:
     inputs:
+      BRANCH:
+        required: true
+        default: 'develop'
+        type: choice
+        options:
+          - develop
+          - master
       VERSION:
         description: 'Version'
         required: true
@@ -17,11 +24,11 @@ jobs:
     - name: Checkout the code
       uses: actions/checkout@v3
       with:
-        ref: 'develop'
+        ref: ${{ inputs.BRANCH }}
 
     - name: Update POM Version
       env:
-        VERSION: '4.0.0-SNAPSHOT'
+        VERSION: ${{ inputs.VERSION }}
       run: |
         echo "Updating to version: $VERSION"
         mvn versions:set -DnewVersion=$VERSION

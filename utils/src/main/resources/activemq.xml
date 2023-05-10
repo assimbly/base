@@ -1,8 +1,8 @@
 <beans
-  xmlns="http://www.springframework.org/schema/beans"
-  xmlns:amq="http://activemq.apache.org/schema/core"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://activemq.apache.org/schema/core http://activemq.apache.org/schema/core/activemq-core.xsd">
+        xmlns="http://www.springframework.org/schema/beans"
+        xmlns:amq="http://activemq.apache.org/schema/core"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://activemq.apache.org/schema/core http://activemq.apache.org/schema/core/activemq-core.xsd">
 
     <!-- Allows us to use system properties as variables in this configuration file 
     <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
@@ -14,7 +14,7 @@
     <!--
         The <broker> element is used to configure the ActiveMQ broker.
     -->
-    <broker xmlns="http://activemq.apache.org/schema/core" brokerName="localhost" useJmx="true" dataDirectory="${activemq.data}">
+    <broker xmlns="http://activemq.apache.org/schema/core" brokerName="localhost" useJmx="true" dataDirectory="${activemq.data}/data">
 
         <!--
             For better performances use VM cursor and small memory limit.
@@ -29,32 +29,32 @@
 
         <destinationPolicy>
             <policyMap>
-              <policyEntries>
-                <policyEntry topic=">" producerFlowControl="true">
-                    <!-- The constantPendingMessageLimitStrategy is used to prevent
-                         slow topic consumers to block producers and affect other consumers
-                         by limiting the number of messages that are retained
-                         For more information, see:
+                <policyEntries>
+                    <policyEntry topic=">" producerFlowControl="true">
+                        <!-- The constantPendingMessageLimitStrategy is used to prevent
+                             slow topic consumers to block producers and affect other consumers
+                             by limiting the number of messages that are retained
+                             For more information, see:
 
-                         http://activemq.apache.org/slow-consumer-handling.html
+                             http://activemq.apache.org/slow-consumer-handling.html
 
-                    -->
-                  <pendingMessageLimitStrategy>
-                    <constantPendingMessageLimitStrategy limit="1000"/>
-                  </pendingMessageLimitStrategy>
-                </policyEntry>
-                <policyEntry queue=">" producerFlowControl="true" memoryLimit="1mb">
-                  <!-- Use VM cursor for better latency
-                       For more information, see:
+                        -->
+                        <pendingMessageLimitStrategy>
+                            <constantPendingMessageLimitStrategy limit="1000"/>
+                        </pendingMessageLimitStrategy>
+                    </policyEntry>
+                    <policyEntry queue=">" producerFlowControl="true" memoryLimit="1mb">
+                        <!-- Use VM cursor for better latency
+                             For more information, see:
 
-                       http://activemq.apache.org/message-cursors.html
+                             http://activemq.apache.org/message-cursors.html
 
-                  <pendingQueuePolicy>
-                    <vmQueueCursor/>
-                  </pendingQueuePolicy>
-                  -->
-                </policyEntry>
-              </policyEntries>
+                        <pendingQueuePolicy>
+                          <vmQueueCursor/>
+                        </pendingQueuePolicy>
+                        -->
+                    </policyEntry>
+                </policyEntries>
             </policyMap>
         </destinationPolicy>
 
@@ -70,42 +70,35 @@
             <managementContext createConnector="true" connectorPort="1099"/>
         </managementContext>
 
-        <!--
-            Configure message persistence for the broker. The default persistence
-            mechanism is the KahaDB store (identified by the kahaDB tag).
-            For more information, see:
-
-            http://activemq.apache.org/persistence.html
-        -->
         <persistenceAdapter>
-            <kahaDB directory="${activemq.data}/kahadb"/>
+            <kahaDB directory="${activemq.data}/data"/>
         </persistenceAdapter>
 
 
-          <!--
-            The systemUsage controls the maximum amount of space the broker will
-            use before slowing down producers. For more information, see:
-            http://activemq.apache.org/producer-flow-control.html
-            If using ActiveMQ embedded - the following limits could safely be used:
+        <!--
+          The systemUsage controls the maximum amount of space the broker will
+          use before slowing down producers. For more information, see:
+          http://activemq.apache.org/producer-flow-control.html
+          If using ActiveMQ embedded - the following limits could safely be used:
 
+      <systemUsage>
+          <systemUsage>
+              <memoryUsage>
+                  <memoryUsage limit="20 mb"/>
+              </memoryUsage>
+              <storeUsage>
+                  <storeUsage limit="1 gb"/>
+              </storeUsage>
+              <tempUsage>
+                  <tempUsage limit="100 mb"/>
+              </tempUsage>
+          </systemUsage>
+      </systemUsage>
+      -->
         <systemUsage>
             <systemUsage>
                 <memoryUsage>
-                    <memoryUsage limit="20 mb"/>
-                </memoryUsage>
-                <storeUsage>
-                    <storeUsage limit="1 gb"/>
-                </storeUsage>
-                <tempUsage>
-                    <tempUsage limit="100 mb"/>
-                </tempUsage>
-            </systemUsage>
-        </systemUsage>
-        -->
-          <systemUsage>
-            <systemUsage>
-                <memoryUsage>
-                    <memoryUsage limit="64 mb"/>
+                    <memoryUsage limit="1024 mb"/>
                 </memoryUsage>
                 <storeUsage>
                     <storeUsage limit="100 gb"/>
@@ -134,12 +127,4 @@
 
     </broker>
 
-    <!--
-        Enable web consoles, REST and Ajax APIs and demos
-
-        Take a look at ${ACTIVEMQ_HOME}/conf/jetty.xml for more details
-
-    <import resource="jetty.xml"/>
-    -->
-	
 </beans>
