@@ -1,1 +1,1 @@
-mvn -f ..\..\pom.xml versions:display-dependency-updates -Dexcludes=org.apache.camel:* -DlogOutput=false
+cls & mvn -f ..\..\pom.xml versions:display-dependency-updates -Dexcludes=org.apache.camel:* -DignoredVersions="1\.0\.1,.+-M.,.*-SNAPSHOT" -DlogOutput=false

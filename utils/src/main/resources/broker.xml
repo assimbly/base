@@ -11,7 +11,7 @@
         <cluster-user>admin</cluster-user>
         <cluster-password>admin</cluster-password>
 
-        <journal-type>NIO</journal-type>
+        <!--<journal-type>NIO</journal-type>-->
         <paging-directory>data/paging</paging-directory>
         <bindings-directory>data/bindings</bindings-directory>
         <journal-directory>data/journal</journal-directory>
@@ -69,6 +69,8 @@
                 <auto-delete-addresses>true</auto-delete-addresses>
                 <auto-delete-addresses-delay>300000</auto-delete-addresses-delay> <!-- delete auto created queues after 7 days: 604800000 -->
                 <config-delete-addresses>OFF</config-delete-addresses>
+                <management-browse-page-size>1000</management-browse-page-size>
+                <management-message-attribute-size-limit>8192</management-message-attribute-size-limit>
             </address-setting>
             <!-- if you define auto-create on certain queues, management has to be auto-create -->
             <address-setting match="activemq.management#">
