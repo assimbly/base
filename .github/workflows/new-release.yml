@@ -1,0 +1,45 @@
+name: New Release Workflow
+
+on:
+  release:
+    types: [ released ]
+
+jobs:
+  get_release_version:
+    name: Get Release Version
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Get release
+        id: get_release
+        uses: bruceadams/get-release@v1.3.2
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+
+      - name: Print & save release version
+        env:
+          VERSION: ${{  github.ref_name }}
+        id: new_version
+        run: |
+          echo ${{  github.ref_name }}
+          echo "NEW_VERSION=${{  github.ref_name }}" >> "$GITHUB_OUTPUT"
+        
+          
+
+  update_poms_version:
+    name: Update POM's version
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          ref: 'master'
+
+      - name: Update POM's Version
+        run: |
+          echo "Updating to version: ${{ steps.new_version.outputs.NEW_VERSION }}"
+          mvn versions:set -DnewVersion=${{ steps.new_version.outputs.NEW_VERSION }}
+          mvn versions:set-property -Dproperty=assimbly.version -DnewVersion=${{ steps.new_version.outputs.NEW_VERSION }}
+
+
