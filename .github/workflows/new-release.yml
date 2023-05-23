@@ -27,6 +27,7 @@ jobs:
           
 
   update_poms_version:
+    needs: [get_release_version]
     name: Update POM's version
     runs-on: ubuntu-latest
     steps:
