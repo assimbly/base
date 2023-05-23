@@ -5,42 +5,65 @@ on:
     types: [ released ]
 
 jobs:
-  get_release_version:
-    name: Get Release Version
-    runs-on: ubuntu-latest
-    steps:
-
-      - name: Get release
-        id: get_release
-        uses: bruceadams/get-release@v1.3.2
-        env:
-          GITHUB_TOKEN: ${{ github.token }}
-
-      - name: Print & save release version
-        env:
-          VERSION: ${{  github.ref_name }}
-        id: new_version
-        run: |
-          echo ${{  github.ref_name }}
-          echo "NEW_VERSION=${{  github.ref_name }}" >> "$GITHUB_OUTPUT"
-        
-          
 
   update_poms_version:
-    needs: [get_release_version]
+
     name: Update POM's version
     runs-on: ubuntu-latest
     steps:
 
       - name: Checkout code
         uses: actions/checkout@v3
-        with:
-          ref: 'develop'
 
       - name: Update POM's Version
         run: |
-          echo "Updating to version: ${{ steps.new_version.outputs.NEW_VERSION }}"
-          mvn versions:set -DnewVersion=${{ steps.new_version.outputs.NEW_VERSION }}
-          mvn versions:set-property -Dproperty=assimbly.version -DnewVersion=${{ steps.new_version.outputs.NEW_VERSION }}
+          echo "Updating to version: ${{  github.ref_name }}"
+          mvn versions:set -DnewVersion=${{  github.ref_name }}
+          mvn versions:set-property -Dproperty=assimbly.version -DnewVersion=${{  github.ref_name }}
+
+  publish_packages:
+    needs: [update_poms_version]
+
+    name: Publish Packages
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Java
+        uses: actions/setup-java@v3
+        with:
+          java-version: '11'
+          distribution: 'temurin'
+
+      - name: Publish package
+        run: mvn --batch-mode deploy
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  publish_snapshot_packages:
+    needs: [update_poms_version]
+
+    name: Publish Snapshot Packages
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Java
+        uses: actions/setup-java@v3
+        with:
+          java-version: '11'
+          distribution: 'temurin'
+
+      - name: Update to snapshot version
+        env:
+          VERSION: ${{  github.ref_name }}-SNAPSHOT
+        run: |
+            echo "Updating to version: ${VERSION}"
+            mvn versions:set -DgenerateBackupPoms=false -DnewVersion=${VERSION}
+            mvn versions:set-property -Dproperty=assimbly.version -DnewVersion=${VERSION}
 
 
