@@ -6,6 +6,17 @@
     <ignoreVersion type="regex">.*-beta.</ignoreVersion>
     <ignoreVersion type="regex">.*_ALPHA</ignoreVersion>
     <ignoreVersion type="regex">.*-alpha12</ignoreVersion>
-	<ignoreVersion type="regex">.*[-_\.](alpha|Alpha|ALPHA|b|beta|Beta|BETA|rc|RC|M|EA)[-_\.]?[0-9]*</ignoreVersion>
+	<ignoreVersion type="regex">.*[-_\.](alpha|Alpha|ALPHA|b|beta|Beta|BETA|preview|rc|RC|M|EA)[-_\.]?[0-9]*</ignoreVersion>
+    <ignoreVersion type="regex">(?i).*Alpha(?:-?\d+)?</ignoreVersion>
+    <ignoreVersion type="regex">(?i).*a(?:-?\d+)?</ignoreVersion>
+    <ignoreVersion type="regex">(?i).*Beta(?:-?\d+)?</ignoreVersion>
+    <ignoreVersion type="regex">(?i).*-B(?:-?\d+)?</ignoreVersion>
+    <ignoreVersion type="regex">(?i).*RC(?:-?\d+)?</ignoreVersion>
+    <ignoreVersion type="regex">(?i).*CR(?:-?\d+)?</ignoreVersion>
+    <ignoreVersion type="regex">(?i).*M(?:-?\d+)?</ignoreVersion>
+    <ignoreVersion type="regex">4.0.0-M3</ignoreVersion>
+    <ignoreVersion type="regex">(?i).*(-alpha|.alpha|beta|-ea|-m1|-m2|-m3|-m4|cr|rc).*</ignoreVersion>
+
   </ignoreVersions>
+
 </ruleset>
