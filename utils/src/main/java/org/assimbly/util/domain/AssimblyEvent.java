@@ -1,6 +1,7 @@
 package org.assimbly.util.domain;
 
 import java.io.Serializable;
+import java.util.HashMap;
 import java.util.Map;
 
 public class AssimblyEvent implements Serializable {
@@ -22,7 +23,7 @@ public class AssimblyEvent implements Serializable {
         this.flowVersion = flowVersion;
         this.component = component;
         this.body = body;
-        this.headers = headers;
+        this.headers = new HashMap<>(headers);
     }
 
     public String getExpiryDate() {
@@ -50,6 +51,6 @@ public class AssimblyEvent implements Serializable {
     }
 
     public Map<String, Object> getHeaders() {
-        return headers;
+        return new HashMap<>(headers);
     }
 }

@@ -38,7 +38,7 @@ public class FlowRegistry {
         return registeredFlows.get(flowId);
     }
 
-    public HashMap<String, FlowInfo> getRegisteredFlows() { return registeredFlows; }
+    public HashMap<String, FlowInfo> getRegisteredFlows() { return new HashMap<>(registeredFlows); }
 
     public void unregister(String bundleId) { registeredFlows.remove(bundleId); }
 

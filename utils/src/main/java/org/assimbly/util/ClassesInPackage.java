@@ -7,6 +7,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -19,13 +20,30 @@ public class ClassesInPackage {
 
         public Set<Class> findClasses(String packageName) {
 
+            BufferedReader reader = null;
+            Set<Class> classes;
             InputStream stream = ClassLoader.getSystemClassLoader().getResourceAsStream(packageName.replaceAll("[.]", "/"));
-            BufferedReader reader = new BufferedReader(new InputStreamReader(stream));
 
-            return reader.lines()
-                    .filter(line -> line.endsWith(".class"))
-                    .map(line -> getClass(line, packageName))
-                    .collect(Collectors.toSet());
+            try {
+
+                reader = new BufferedReader(new InputStreamReader(stream,StandardCharsets.UTF_8));
+                classes = reader.lines()
+                        .filter(line -> line.endsWith(".class"))
+                        .map(line -> getClass(line, packageName))
+                        .collect(Collectors.toSet());
+            } finally {
+                // this block will be executed in every case, success or caught exception
+                if (reader != null) {
+                    // again, a resource is involved, so try-catch another time
+                    try {
+                        reader.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+
+            return classes;
         }
 
         private Class getClass(String className, String packageName) {
