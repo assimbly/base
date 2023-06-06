@@ -1,28 +1,13 @@
 name: New Release Workflow
 
 on:
+  
   release:
     types: [ released ]
 
 jobs:
 
-  update_poms_version:
-
-    name: Update POM's version
-    runs-on: ubuntu-latest
-    steps:
-
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      - name: Update POM's Version
-        run: |
-          echo "Updating to version: ${{  github.ref_name }}"
-          mvn versions:set -DnewVersion=${{  github.ref_name }}
-          mvn versions:set-property -Dproperty=assimbly.version -DnewVersion=${{  github.ref_name }}
-
-  publish_packages:
-    needs: [update_poms_version]
+  update_prod_version:
 
     name: Publish Packages
     runs-on: ubuntu-latest
@@ -36,14 +21,27 @@ jobs:
         with:
           java-version: '11'
           distribution: 'temurin'
+      
+      - name: Update POM's Version
+        env: 
+          VERSION: ${{ github.ref_name }}
+        run: |
+          echo "Updating to version: ${VERSION}"
+          mvn versions:set -DnewVersion=${VERSION}
+          mvn versions:set-property -Dproperty=assimbly.version -DnewVersion=${VERSION}
 
-      - name: Publish package
-        run: mvn --batch-mode deploy
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Diff check
+        run: git diff
+  
+      - name: Add & Commit
+        uses: EndBug/add-and-commit@v9.1.1
+        with:
+          add: '.'
+          default_author: github_actions
+          push: origin HEAD:main --force
 
-  publish_snapshot_packages:
-    needs: [update_poms_version]
+  publish_prod_packages:
+    needs: [update_prod_version]
 
     name: Publish Snapshot Packages
     runs-on: ubuntu-latest
@@ -51,6 +49,8 @@ jobs:
 
       - name: Checkout code
         uses: actions/checkout@v3
+        with:
+          ref: 'main'
 
       - name: Setup Java
         uses: actions/setup-java@v3
@@ -60,10 +60,46 @@ jobs:
 
       - name: Update to snapshot version
         env:
-          VERSION: ${{  github.ref_name }}-SNAPSHOT
+          VERSION: ${{ github.ref_name }}
         run: |
             echo "Updating to version: ${VERSION}"
             mvn versions:set -DgenerateBackupPoms=false -DnewVersion=${VERSION}
             mvn versions:set-property -Dproperty=assimbly.version -DnewVersion=${VERSION}
+
+      - name: Publish package
+        run: mvn --batch-mode deploy
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  publish_snapshot_packages:
+    needs: [update_prod_version]
+
+    name: Publish Snapshot Packages
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          ref: 'develop'
+
+      - name: Setup Java
+        uses: actions/setup-java@v3
+        with:
+          java-version: '11'
+          distribution: 'temurin'
+
+      - name: Update to snapshot version
+        env:
+          SNAPSHOT_VERSION: ${{ github.ref_name }}-SNAPSHOT
+        run: |
+            echo "Updating to version: ${SNAPSHOT_VERSION}"
+            mvn versions:set -DgenerateBackupPoms=false -DnewVersion=${SNAPSHOT_VERSION}
+            mvn versions:set-property -Dproperty=assimbly.version -DnewVersion=${SNAPSHOT_VERSION}
+
+      - name: Publish package
+        run: mvn --batch-mode deploy
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 
