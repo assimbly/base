@@ -5,8 +5,8 @@ import java.text.SimpleDateFormat;
 import java.util.TimeZone;
 
 public class DateFormats {
-    public static final DateFormat ISO8601;
-    public static final DateFormat ISO8601_MILLIS;
+    private static final DateFormat ISO8601;
+    private static final DateFormat ISO8601_MILLIS;
 
     static {
         ISO8601 = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZ");

@@ -20,7 +20,7 @@ import javax.xml.transform.dom.DOMSource;
 
 public final class TransformUtil {
 
-    protected static Logger log = LoggerFactory.getLogger("org.assimbly.util.TransformUtil");
+    protected final static Logger log = LoggerFactory.getLogger("org.assimbly.util.TransformUtil");
 
     public static String transformXML(String xml, InputStream xslFile) {
         String outputXML = null;
