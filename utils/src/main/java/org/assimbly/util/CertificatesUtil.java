@@ -8,6 +8,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.math.BigInteger;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
@@ -74,7 +75,7 @@ import org.slf4j.LoggerFactory;
 
 public final class CertificatesUtil {
 
-	protected static Logger log = LoggerFactory.getLogger("org.assimbly.util.CertificatesUtil");
+	protected final static Logger log = LoggerFactory.getLogger("org.assimbly.util.CertificatesUtil");
 	
     public static final String PEER_CERTIFICATES = "PEER_CERTIFICATES";
 
@@ -351,7 +352,7 @@ public final class CertificatesUtil {
 
 		org.apache.commons.codec.binary.Base64 encoder = new org.apache.commons.codec.binary.Base64(64);
 		byte[] derCertificate = certificate.getEncoded();
-		String pemCertificate = new String(encoder.encode(derCertificate));
+		String pemCertificate = new String(encoder.encode(derCertificate), StandardCharsets.UTF_8);
 
 		return "-----BEGIN CERTIFICATE-----\n" + pemCertificate + "-----END CERTIFICATE-----";
 
@@ -447,10 +448,16 @@ public final class CertificatesUtil {
 		Path path = file.toPath();
 
 		if (!securityPath.exists()) {
-			securityPath.mkdirs();
+			boolean dirsCreated = securityPath.mkdirs();;
+			if(!dirsCreated){
+				System.out.println("Keystore Directory: " + securityPath.getAbsolutePath() + " couldn't be created.");
+			}
 		}
 
-		file.createNewFile();
+		boolean newFile = file.createNewFile();
+		if(!newFile){
+			System.out.println("Keystore File: " + file.getAbsolutePath() + " couldn't be created.");
+		}
 
 		ClassLoader classloader = Thread.currentThread().getContextClassLoader();
 		InputStream is = classloader.getResourceAsStream("keystore.jks");

@@ -7,6 +7,8 @@ import java.io.FileInputStream;
 import java.net.URL;
 import java.net.URLClassLoader;
 import java.nio.file.Path;
+import java.security.AccessController;
+import java.security.PrivilegedAction;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -40,14 +42,29 @@ public class DependencyUtil {
         for(Path path: paths){
 
             URL url = path.toUri().toURL();
-            URLClassLoader child = new URLClassLoader(new URL[] {url}, this.getClass().getClassLoader());
 
-            ArrayList<String> classNames = getClassNamesFromJar(path.toString());
+            AccessController.doPrivileged((PrivilegedAction) () -> {
+                URLClassLoader child = new URLClassLoader(new URL[] {url}, this.getClass().getClassLoader());
 
-            for (String className : classNames) {
-                Class classToLoad = Class.forName(className, true, child);
-                classes.add(classToLoad);
-            }
+                ArrayList<String> classNames = null;
+                try {
+                    classNames = getClassNamesFromJar(path.toString());
+                } catch (Exception e) {
+                    throw new RuntimeException(e);
+                }
+
+                for (String className : classNames) {
+                    Class classToLoad = null;
+                    try {
+                        classToLoad = Class.forName(className, true, child);
+                    } catch (ClassNotFoundException e) {
+                        throw new RuntimeException(e);
+                    }
+                    classes.add(classToLoad);
+                }
+                return classes;
+            });
+
         }
 
         return classes;

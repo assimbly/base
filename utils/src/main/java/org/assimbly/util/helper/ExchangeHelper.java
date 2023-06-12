@@ -39,6 +39,8 @@ public final class ExchangeHelper {
                 case BODY_VARIABLE_REGEX:
                     value = exchange.getIn().getBody(String.class);
                     break;
+                default:
+                    return stringBuffer.toString();
             }
             if(value != null) {
                 value = escapeDollarSign(value);

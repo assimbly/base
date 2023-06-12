@@ -46,7 +46,7 @@ import javax.xml.xpath.*;
 
 public final class IntegrationUtil {
 
-	protected static Logger log = LoggerFactory.getLogger("org.assimbly.util.IntegrationUtil");
+	protected final static Logger log = LoggerFactory.getLogger("org.assimbly.util.IntegrationUtil");
 
 	public static boolean isValidUri(String name) throws Exception {
 		try {
@@ -245,11 +245,11 @@ public final class IntegrationUtil {
 					String value = entry.getValue();
 
 					if (key.contains("password"))
-						System.out.printf("%-30s %s\n", key + ":", "***********");
+						System.out.printf("%-30s %s%n", key + ":", "***********");
 					else if (key.endsWith("route") || key.endsWith("routeConfiguration") || key.endsWith("routeTemplate") )
-						System.out.printf("%-30s \n\n%s\n", key + ":", value);
+						System.out.printf("%-30s %n%n%s%n", key + ":", value);
 					else {
-						System.out.printf("%-30s %s\n", key + ":", value);
+						System.out.printf("%-30s %s%n", key + ":", value);
 					}
 
 				}

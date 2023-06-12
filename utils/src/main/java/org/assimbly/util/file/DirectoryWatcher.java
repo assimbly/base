@@ -80,13 +80,9 @@ public class DirectoryWatcher implements Runnable, Service {
 
         for (Path dir : mWatched) {
             try {
-                if (mPreExistingAsCreated) {
-                    try (DirectoryStream<Path> stream = Files.newDirectoryStream(dir)) {
-                        for (Path path : stream) {
-                            if (mFilter.accept(path)) {
-                                mListener.onEvent(Event.ENTRY_CREATE, dir.resolve(path));
-                            }
-                        }
+                try (DirectoryStream<Path> stream = Files.newDirectoryStream(dir)) {
+                    for (Path path : stream) {
+                        mListener.onEvent(Event.ENTRY_CREATE, dir.resolve(path));
                     }
                 }
 
