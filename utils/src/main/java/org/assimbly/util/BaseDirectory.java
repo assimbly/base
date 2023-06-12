@@ -19,7 +19,10 @@ public class BaseDirectory {
     public void setBaseDirectory(String baseDirectory) {
         File directory = new File(baseDirectory);
         if (! directory.exists()){
-            directory.mkdirs();
+            boolean dirsCreated = directory.mkdirs();
+            if(!dirsCreated){
+                System.out.println("Base Directory: " + baseDirectory + " couldn't be created.");
+            }
         }
         this.baseDirectory = baseDirectory;
     }

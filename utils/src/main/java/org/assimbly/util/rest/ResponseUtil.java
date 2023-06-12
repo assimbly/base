@@ -10,7 +10,7 @@ import org.springframework.http.ResponseEntity;
  */
 public final class ResponseUtil {
 
-	protected static Logger log = LoggerFactory.getLogger("org.assimbly.util.rest.ResponseUtil");
+	protected final static Logger log = LoggerFactory.getLogger("org.assimbly.util.rest.ResponseUtil");
 	
     private static ResponseEntity<String> response;
 
