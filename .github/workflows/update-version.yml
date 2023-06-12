@@ -5,8 +5,8 @@ on:
     types: [opened, reopened, synchronize]
     branches:
       - '!workflows'
-      - main
-
+      - master
+ 
 jobs:
   update_version:
     runs-on: ubuntu-latest 
