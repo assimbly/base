@@ -33,13 +33,13 @@ jobs:
 
       - name: Check version to delete
         run: |
-          if ${{ github.event.inputs.is_SNAPSHOT }} == 'true'; then
-            echo "${VERSION}"
-            echo "VERSION_TO_DELETE=${VERSION}-SNAPSHOT" >> $GITHUB_ENV
+          if ${{ inputs.is_SNAPSHOT }} == 'true'; then
+            echo "Version: ${{ inputs.VERSION }}"
+            echo "VERSION_TO_DELETE=${{ inputs.VERSION }}-SNAPSHOT" >> $GITHUB_ENV
             echo "Version to delete: ${{ env.VERSION_TO_DELETE }}"
           else
             echo "${VERSION}"
-            echo "VERSION_TO_DELETE=${VERSION}" >> $GITHUB_ENV
+            echo "VERSION_TO_DELETE=${{ inputs.VERSION }}" >> $GITHUB_ENV
             echo "Version to delete: ${{ env.VERSION_TO_DELETE }}"
           fi
         
