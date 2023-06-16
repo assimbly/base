@@ -1,0 +1,61 @@
+name: Delete Packages
+
+on:
+  workflow_dispatch:
+    inputs:
+      VERSION:
+        description: 'Version to delete'
+        required: true
+        default: '4.0.0'
+      is_SNAPSHOT:
+        description: 'Set to true to delete snapshots'
+        required: true
+        default: false
+        type: boolean
+
+jobs:
+  delete_base:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+
+      - name: Checkout the code
+        uses: actions/checkout@v3
+        
+      - name: Set up JDK 11
+        uses: actions/setup-java@v3
+        with:
+          java-version: '11'
+          distribution: 'temurin'
+
+      - name: Check version to delete
+        run: |
+          if ${{ github.event.inputs.is_SNAPSHOT }} == 'true'; then
+            echo "::set-env name=VERSION_TO_DELETE::${VERSION}-SNAPSHOT"
+            echo "Version to delete: ${{ env.VERSION_TO_DELETE }}"
+          else
+            echo "::set-env name=VERSION_TO_DELETE::${VERSION}"
+            echo "Version to delete: ${{ env.VERSION_TO_DELETE }}"
+          fi
+        
+      - name: Delete older snapshots
+        uses: smartsquaregmbh/delete-old-packages@v0.7.0
+        with:
+          organization: assimbly
+          type: maven
+          keep: 0
+          version-pattern: "^\\S+\\${{ env.VERSION_TO_DELETE }}$"
+          names: |
+            org.assimbly.base
+            org.assimbly.common-base
+            org.assimbly.camel-base
+            org.assimbly.spring-base
+            org.assimbly.activemq-base
+            org.assimbly.test-base
+            org.assimbly.database-drivers
+            org.assimbly.camel-components
+            org.assimbly.utils
+            org.assimbly.extra
