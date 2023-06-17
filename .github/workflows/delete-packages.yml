@@ -41,9 +41,11 @@ jobs:
             echo "Version: ${{ inputs.VERSION }}"
             echo "VERSION_TO_DELETE=${{ inputs.VERSION }}" >> "$GITHUB_OUTPUT"
           fi
-
-          echo "Version to delete: ${{ steps.check_version.outputs.VERSION_TO_DELETE }}"
         
+      - name: Print version
+        run: |
+          echo "Version to delete: ${{ steps.check_version.outputs.VERSION_TO_DELETE }}"
+
       - name: Delete older snapshots
         uses: smartsquaregmbh/delete-old-packages@v0.7.0
         with:
