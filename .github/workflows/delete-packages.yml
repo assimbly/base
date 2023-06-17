@@ -32,16 +32,18 @@ jobs:
           distribution: 'temurin'
 
       - name: Check version to delete
+        env:
+          VERSION_TO_DELETE: ${{ env.VERSION_TO_DELETE }}
         run: |
           if ${{ inputs.is_SNAPSHOT }} == 'true'; then
             echo "Version: ${{ inputs.VERSION }}"
             echo "VERSION_TO_DELETE=${{ inputs.VERSION }}-SNAPSHOT" >> "$GITHUB_ENV"
-            echo "Version to delete: ${{ env.VERSION_TO_DELETE }}"
           else
-            echo "${VERSION}"
+            echo "Version: ${{ inputs.VERSION }}"
             echo "VERSION_TO_DELETE=${{ inputs.VERSION }}" >> "$GITHUB_ENV"
-            echo "Version to delete: ${{ env.VERSION_TO_DELETE }}"
           fi
+
+          echo "Version to delete: ${VERSION_TO_DELETE}"
         
       - name: Delete older snapshots
         uses: smartsquaregmbh/delete-old-packages@v0.7.0
