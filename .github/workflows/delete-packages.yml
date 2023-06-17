@@ -52,7 +52,7 @@ jobs:
           organization: assimbly
           type: maven
           keep: 0
-          version-pattern: "^\\S+\\${{ steps.check_version.outputs.VERSION_TO_DELETE }}$"
+          version-pattern: "^${{ steps.check_version.outputs.VERSION_TO_DELETE }}$"
           names: |
             org.assimbly.base
             org.assimbly.common-base
