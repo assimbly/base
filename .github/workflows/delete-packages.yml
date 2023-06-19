@@ -14,7 +14,7 @@ on:
         type: boolean
 
 jobs:
-  delete_base:
+  delete_base_packages:
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -46,7 +46,7 @@ jobs:
         run: |
           echo "Version to delete: ${{ steps.check_version.outputs.VERSION_TO_DELETE }}"
 
-      - name: Delete older snapshots
+      - name: Delete packages
         uses: smartsquaregmbh/delete-old-packages@v0.7.0
         with:
           organization: assimbly
