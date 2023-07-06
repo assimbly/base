@@ -186,6 +186,7 @@ public class DependencyUtil {
         XMLTOCSV("xmltocsv"),
         XMLTOEXCEL("xmltoexcel"),
         XMLTOJSON("xmltojson"),
+        XMLTOJSONLEGACY("xmltojsonlegacy"),
         XSLT("xslt"),
         ZIP("zip"),
         ;
@@ -328,6 +329,7 @@ public class DependencyUtil {
         XMLTOEDIFACTSTANDARDS("xmltoedifactstandards"),
         XMLTOEXCEL("xmltoexcel"),
         XMLTOJSON("xmltojson"),
+        XMLTOJSONLEGACY("xmltojsonlegacy"),
         XSLT("xslt"),
         XSLTSAXON("xslt-saxon"),
         ZIP("zip"),
