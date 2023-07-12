@@ -212,19 +212,32 @@ public final class IntegrationUtil {
 		};
 	}
 
-
 	public static void printTreemap(TreeMap<String, String> treeMap) throws Exception {
 
-		System.out.println("print treemap: ");
+		System.out.println("print treemap: \n");
 		for (Map.Entry<String,String> entry : treeMap.entrySet()) {
 			System.out.println("key: " + entry.getKey() + "; value: " + entry.getValue());
 		}
 
-		System.out.println("");
-		System.out.println("CONFIGURATION");
-		System.out.println("-----------------------------------------------------------------\n");
+	}
 
-		List<String> items = Arrays.asList( "id", "flow", "from", "to", "response", "error", "header", "connection", "route", "routeConfiguration", "routeTemplate");
+	public static void printConfiguration(TreeMap<String, String> treeMap) throws Exception {
+
+		List<String> items = Arrays.asList( "id", "flow", "source", "action", "sink", "response", "error", "header", "connection", "route", "routeConfiguration", "routeTemplate");
+
+		String configuration = convertTreemapToString(treeMap, items);
+
+		System.out.println(configuration);
+
+	}
+
+	public static String convertTreemapToString(TreeMap<String, String> treeMap, List<String> items) throws Exception {
+
+		StringBuilder string = new StringBuilder();
+
+		string.append("\n");
+		string.append("Flow Configuration\n");
+		string.append("-----------------------------------------------------------------\n");
 
 		Map<String, String> subMap = null;
 
@@ -237,28 +250,26 @@ public final class IntegrationUtil {
 
 			if(subMap.size() > 0) {
 
-				System.out.println("\n" + item.toUpperCase() + "\n");
+				string.append("\n" + item.toUpperCase() + "\n");
 
 				for(Map.Entry<String,String> entry : subMap.entrySet()) {
 
 					String key = entry.getKey();
 					String value = entry.getValue();
 
-					if (key.contains("password"))
-						System.out.printf("%-30s %s%n", key + ":", "***********");
-					else if (key.endsWith("route") || key.endsWith("routeConfiguration") || key.endsWith("routeTemplate") )
-						System.out.printf("%-30s %n%n%s%n", key + ":", value);
-					else {
-						System.out.printf("%-30s %s%n", key + ":", value);
+					if (key.contains("password")){
+						value = "***********";
 					}
 
+					string.append(key + ":" + value + "\n");
 				}
 			}
 
 		}
 
-		System.out.println("-----------------------------------------------------------------\n");
+		string.append("\n");
 
-	}	
-	
+		return string.toString();
+	}
+
 }
