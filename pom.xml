@@ -90,19 +90,19 @@
 		<httpclient.version>4.5.14</httpclient.version>
 		<kamelet.version>3.20.6</kamelet.version>
 		<logback-classic.version>1.2.11</logback-classic.version>
-		<mysql-connector-java.version>8.0.33</mysql-connector-java.version>
+		<mysql-connector-java.version>8.1.0</mysql-connector-java.version>
 		<mssql-jdbc.version>12.2.0.jre11</mssql-jdbc.version>
 		<mockito.version>5.4.0</mockito.version>
 		<mockserver.version>5.15.0</mockserver.version>
 		<mongo.version>3.12.11</mongo.version>
-		<netty.version>4.1.94.Final</netty.version>
+		<netty.version>4.1.95.Final</netty.version>
 		<oracle12.version>23.2.0.0</oracle12.version>
 		<postgresql.version>42.6.0</postgresql.version>
 		<powermock.version>2.0.9</powermock.version>
 		<qpid-proton-j.version>0.34.1</qpid-proton-j.version>
 		<slf4j.version>1.7.36</slf4j.version>
 		<sonic.version>12.0.2</sonic.version>
-		<spring.version>5.3.28</spring.version>
+		<spring.version>5.3.29</spring.version>
 		<spring-data.version>2.7.13</spring-data.version>
 		<springdoc-openapi-ui.version>1.7.0</springdoc-openapi-ui.version>
 		<sqlite-jdbc.version>3.42.0.0</sqlite-jdbc.version>
