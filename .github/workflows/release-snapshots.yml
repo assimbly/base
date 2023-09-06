@@ -35,5 +35,5 @@ jobs:
             org.assimbly.extra
 
   call-release-jars:
-    uses: ./.github/workflows/call-release-jars.yml
+    uses: ./.github/workflows/release-jars.yml
     secrets: inherit
