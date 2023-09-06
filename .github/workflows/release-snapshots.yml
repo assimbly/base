@@ -4,9 +4,6 @@ on:
   workflow_dispatch:
   schedule:
     - cron: '0 0 * * *'
-  push:
-    branches:
-      - 'snapshots-tests'
 
 jobs:
   delete_old_snapshots:
@@ -36,3 +33,7 @@ jobs:
             org.assimbly.camel-components
             org.assimbly.utils
             org.assimbly.extra
+
+  call-release-jars:
+    uses: ./.github/workflows/call-release-jars.yml
+    secrets: inherit

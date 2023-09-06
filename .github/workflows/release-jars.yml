@@ -2,6 +2,7 @@ name: Release Jars
 
 on:
   workflow_dispatch:
+  workflow_call:
 
 jobs:
   publish_jar:
