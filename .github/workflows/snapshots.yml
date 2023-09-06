@@ -57,14 +57,6 @@ jobs:
           java-version: '11'
           distribution: 'temurin'
 
-      - name: Update POM Version
-        env:
-          VERSION: 4.0.0-SNAPSHOT
-        run: |
-            echo "Updating to version: ${VERSION}"
-            mvn versions:set -DgenerateBackupPoms=false -DnewVersion=${VERSION}
-            mvn versions:set-property -Dproperty=assimbly.version -DnewVersion=${VERSION}
-
       - name: Publish package
         run: mvn --batch-mode deploy
         env:
