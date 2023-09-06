@@ -9,7 +9,7 @@ on:
       - 'snapshots-tests'
 
 jobs:
-  delete_older_snapshots:
+  delete_old_snapshots:
 
     runs-on: ubuntu-latest
     permissions:
@@ -37,7 +37,7 @@ jobs:
             org.assimbly.utils
             org.assimbly.extra
 
-  publish_base_snapshot:
+  publish_new_snapshot:
     needs: [delete_older_snapshots]
 
     runs-on: ubuntu-latest
