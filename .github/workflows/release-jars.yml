@@ -3,9 +3,14 @@ name: Release Jars
 on:
   workflow_dispatch:
   workflow_call:
+    inputs:
+      branch:
+        description: 'Branch to use'
+        default: 'develop'
+        type: string
 
 jobs:
-  publish_jar:
+  release_jars:
 
     runs-on: ubuntu-latest
     permissions:
@@ -17,7 +22,7 @@ jobs:
       - name: Checkout the code
         uses: actions/checkout@v3
         with:
-          ref: "${{ github.ref_name }}"
+          ref: "${{ inputs.module }}"
       
       - name: Set up JDK 11
         uses: actions/setup-java@v3
