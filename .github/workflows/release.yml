@@ -1,7 +1,13 @@
-name: Release action for patch, minor or major releases
+name: Release
 
 on:
   workflow_dispatch:
+  workflow_call:
+    inputs:
+      branch:
+        description: 'Branch to use'
+        default: 'develop'
+        type: string
 
 jobs:
   release:
