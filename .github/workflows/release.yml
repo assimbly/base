@@ -1,0 +1,17 @@
+name: Release action for patch, minor or major releases
+
+on:
+  workflow_dispatch:
+
+jobs:
+  release:
+
+    runs-on: ubuntu-latest
+    permissions:
+        contents: read
+        packages: write
+
+    steps:
+
+      - name: Start release
+        run: echo "Start release of base"
