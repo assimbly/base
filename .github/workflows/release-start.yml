@@ -11,6 +11,7 @@ on:
       milestone:
         description: 'Milestone to use as version'
         type: string
+
 jobs:
   release:
 
@@ -23,3 +24,11 @@ jobs:
 
       - name: Start release
         run: echo "Start release of base"
+
+  call-update-version:
+    needs: release
+    uses: ./.github/workflows/update-version.yml
+    secrets: inherit
+    with:
+      branch: '${{inputs.milestone}}'
+      milestone: '${{inputs.milestone}}'
