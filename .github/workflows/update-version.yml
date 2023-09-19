@@ -14,23 +14,31 @@ on:
 
 jobs:
   update_version:
-    runs-on: ubuntu-latest 
+
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
 
     steps:
-    - uses: actions/checkout@v3
 
-    - name: Update POM Version
-      run: |
-        echo "Updating to version: ${{ inputs.milestone }}"
-        mvn versions:set -DnewVersion=${{ inputs.milestone }}
-        mvn versions:set-property -Dproperty=assimbly.version -DnewVersion=${{ inputs.milestone }}
+      - name: Checkout the code
+        uses: actions/checkout@v3
+        with:
+          ref: "${{ inputs.branch }}"
 
-    - name: Diff check
-      run: git diff
+      - name: Update POM Version
+        run: |
+          echo "Updating to version: ${{ inputs.milestone }}"
+          mvn versions:set -DnewVersion=${{ inputs.milestone }}
+          mvn versions:set-property -Dproperty=assimbly.version -DnewVersion=${{ inputs.milestone }}
 
-    - name: Add & Commit
-      uses: EndBug/add-and-commit@v9.1.1
-      with:
-        add: '.'
-        default_author: github_actions
-        push: origin HEAD:${{ inputs.branch }} --force
+      - name: Diff check
+        run: git diff
+
+      - name: Add & Commit
+        uses: EndBug/add-and-commit@v9.1.1
+        with:
+          add: '.'
+          default_author: github_actions
+          push: "origin HEAD:${{ inputs.branch }} --force"
