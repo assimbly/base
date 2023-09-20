@@ -35,4 +35,4 @@ jobs:
       branch: '${{inputs.branch}}'
       milestone: '${{inputs.milestone}}'
     secrets:
-      my-token:  '${{inputs.my-token}}'
+      my-token:  '${{secrets.my-token}}'
