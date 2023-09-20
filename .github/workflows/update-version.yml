@@ -20,6 +20,7 @@ on:
       milestone:
         description: 'Milestone to use as version'
         type: string
+    secrets:
       my-token:
         description: 'Milestone to use as version'
         type: string
