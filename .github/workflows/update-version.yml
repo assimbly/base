@@ -60,7 +60,7 @@ jobs:
       - name: Push changes
         uses: ad-m/github-push-action@master
         with:
-          github_token: ${{ secrets.my-token }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
           repository: assimbly/base
           branch: ${{ inputs.branch }}
           force: true
