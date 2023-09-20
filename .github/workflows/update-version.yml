@@ -38,6 +38,8 @@ jobs:
         with:
           repository: assimbly/base
           ref: "${{ inputs.branch }}"
+          fetch-depth: 0
+          token: ${{ secrets.RELEASE_TOKEN }}
 
       - name: Update POM Version
         run: |
@@ -53,8 +55,8 @@ jobs:
 
       - name: Commit files
         run: |
-          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git config --local user.name "github-actions[bot]"
+          git config --local user.email "raymondmeester@gmail.com "
+          git config --local user.name "skin27"
           git commit -a -m "Update version to ${{inputs.milestone}}"
 
       - name: Push changes
@@ -63,4 +65,4 @@ jobs:
           github_token: ${{ secrets.RELEASE_TOKEN }}
           repository: assimbly/base
           branch: ${{ inputs.branch }}
-          force: true
+          force_with_lease: true
