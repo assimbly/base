@@ -23,7 +23,6 @@ on:
     secrets:
       my-token:
         description: 'Milestone to use as version'
-        type: string
 
 jobs:
   update_version:
