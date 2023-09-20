@@ -24,10 +24,12 @@ on:
 jobs:
   update_version:
 
-    runs-on: ubuntu-latest
     permissions:
       contents: write
       packages: write
+      repository-projects: write
+
+    runs-on: ubuntu-latest
 
     steps:
 
@@ -36,6 +38,8 @@ jobs:
         with:
           repository: assimbly/base
           ref: "${{ inputs.branch }}"
+          persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal access token.
+          fetch-depth: 0
 
       - name: Update POM Version
         run: |
@@ -60,6 +64,7 @@ jobs:
       - name: Push changes
         uses: ad-m/github-push-action@master
         with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
           repository: assimbly/base
           branch: ${{ inputs.milestone }}
           force: true
