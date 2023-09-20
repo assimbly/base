@@ -32,9 +32,12 @@ jobs:
         with:
           java-version: '11'
           distribution: 'temurin'
-          
+
       - name: Update POM Version
         run: |
+          echo "Show current path"
+          pwd
+          ls -a
           echo "Updating to version: ${{ inputs.milestone }}"
           mvn versions:set -DnewVersion=${{ inputs.milestone }}
           mvn versions:set-property -Dproperty=assimbly.version -DnewVersion=${{ inputs.milestone }}
