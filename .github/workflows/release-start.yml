@@ -13,7 +13,6 @@ on:
         type: string
       my-token:
         description: 'Milestone to use as version'
-        default: ${{ secrets.GITHUB_TOKEN }}
         type: string
 
 jobs:
