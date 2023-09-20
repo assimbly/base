@@ -28,7 +28,6 @@ jobs:
   call-update-version:
     needs: release
     uses: ./.github/workflows/update-version.yml
-    secrets: inherit
     with:
       branch: '${{inputs.branch}}'
       milestone: '${{inputs.milestone}}'
