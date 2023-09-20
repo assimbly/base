@@ -55,7 +55,7 @@ jobs:
 
       - name: Commit files
         run: |
-          git config --local user.email "raymondmeester@gmail.com "
+          git config --local user.email "raymondmeester@gmail.com"
           git config --local user.name "skin27"
           git commit -a -m "Update version to ${{inputs.milestone}}"
 
