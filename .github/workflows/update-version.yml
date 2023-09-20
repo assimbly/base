@@ -65,7 +65,7 @@ jobs:
       - name: Push changes
         uses: ad-m/github-push-action@master
         with:
-          github_token: ${{ inputs.my-token }}
+          github_token: ${{ secrets.my-token }}
           repository: assimbly/base
           branch: ${{ inputs.milestone }}
           force: true
