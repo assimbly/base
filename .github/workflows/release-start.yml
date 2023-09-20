@@ -11,7 +11,10 @@ on:
       milestone:
         description: 'Milestone to use as version'
         type: string
-
+      my-token:
+        description: 'Milestone to use as version'
+        default: ${{ secrets.GITHUB_TOKEN }}
+        type: string
 
 jobs:
   release:
@@ -32,3 +35,4 @@ jobs:
     with:
       branch: '${{inputs.branch}}'
       milestone: '${{inputs.milestone}}'
+      my-token:  '${{inputs.my-token}}'

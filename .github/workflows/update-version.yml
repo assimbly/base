@@ -20,6 +20,10 @@ on:
       milestone:
         description: 'Milestone to use as version'
         type: string
+      my-token:
+        description: 'Milestone to use as version'
+        default: ${{ secrets.GITHUB_TOKEN }}
+        type: string
 
 jobs:
   update_version:
@@ -49,8 +53,6 @@ jobs:
           echo "Updating to version: ${{ inputs.milestone }}"
           mvn versions:set -DnewVersion=${{ inputs.milestone }}
           mvn versions:set-property -Dproperty=assimbly.version -DnewVersion=${{ inputs.milestone }}
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Diff check
         run: git diff
@@ -64,7 +66,7 @@ jobs:
       - name: Push changes
         uses: ad-m/github-push-action@master
         with:
-          ssh: true
+          github_token: ${{ inputs.my-token }}
           repository: assimbly/base
           branch: ${{ inputs.milestone }}
           force: true
