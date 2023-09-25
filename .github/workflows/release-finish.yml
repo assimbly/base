@@ -42,10 +42,11 @@ jobs:
 
       - name: create a new branch
         run: |
-          git fetch --all
-          git checkout -b ${{inputs.milestone}} -t origin/${{inputs.milestone}}
+          git fetch --all          
+          git config --global push.autoSetupRemote true
           git config --local user.email "raymondmeester@gmail.com"
           git config --local user.name "skin27"
+          git checkout -b ${{inputs.milestone}}
 
       - name: Push changes
         uses: ad-m/github-push-action@master
