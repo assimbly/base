@@ -42,7 +42,7 @@ jobs:
 
       - name: create a new branch
         run: |
-          git fetch
+          git fetch --all
           git checkout -b ${{inputs.milestone}} -t origin/${{inputs.milestone}}
           git config --local user.email "raymondmeester@gmail.com"
           git config --local user.name "skin27"
