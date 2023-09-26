@@ -75,14 +75,22 @@ jobs:
 
     steps:
 
-        - name: Merge release to main
-          uses: devmasx/merge-branch@master
-          with:
-            type: now
-            from_branch: ${{ inputs.milestone }}
-            target_branch: main
-            message: "Release ${{ inputs.milestone }}"
-            github_token: ${{ secrets.RELEASE_TOKEN }}
+      - name: Checkout the code
+        uses: actions/checkout@v3
+        with:
+          repository: assimbly/base
+          ref: ${{ inputs.milestone }}
+          fetch-depth: 0
+          token: ${{ secrets.RELEASE_TOKEN }}
+
+      - name: Merge release to main
+        uses: devmasx/merge-branch@master
+        with:
+          type: now
+          from_branch: ${{ inputs.milestone }}
+          target_branch: main
+          message: "Release ${{ inputs.milestone }}"
+          github_token: ${{ secrets.RELEASE_TOKEN }}
 
   delete-old-packages:
 
