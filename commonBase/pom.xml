@@ -8,7 +8,7 @@
     <parent>
         <artifactId>base</artifactId>
         <groupId>org.assimbly</groupId>
-        <version>4.0.1</version>
+        <version>4.0.3</version>
     </parent>
 
     <artifactId>common-base</artifactId>
@@ -94,11 +94,6 @@
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-text</artifactId>
             <version>${commons-text.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.servicemix.bundles</groupId>
-            <artifactId>org.apache.servicemix.bundles.jsch</artifactId>
-            <version>${jsch.version}</version>
         </dependency>
 
 

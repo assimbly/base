@@ -1,0 +1,32 @@
+name: Start Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      branch:
+        description: 'Branch to use'
+        default: 'develop'
+        type: string
+      milestone:
+        description: 'Milestone to use as version'
+        type: string
+
+jobs:
+  release:
+
+    runs-on: ubuntu-latest
+    permissions:
+        contents: write
+        packages: write
+
+    steps:
+
+      - name: Start release
+        run: echo "Start release of base"
+
+  call-update-version:
+    needs: release
+    uses: ./.github/workflows/update-version.yml
+    with:
+      branch: '${{inputs.branch}}'
+      milestone: '${{inputs.milestone}}'
