@@ -79,18 +79,18 @@ jobs:
         uses: actions/checkout@v3
         with:
           repository: assimbly/base
-          ref: ${{ inputs.milestone }}
+          ref: main
           fetch-depth: 0
           token: ${{ secrets.RELEASE_TOKEN }}
 
-      - name: Merge release to main
-        uses: devmasx/merge-branch@master
-        with:
-          type: now
-          from_branch: ${{ inputs.milestone }}
-          target_branch: main
-          message: "Release ${{ inputs.milestone }}"
-          github_token: ${{ secrets.RELEASE_TOKEN }}
+      - name: merge new branch
+        run: |
+          git fetch --all          
+          git config --global push.autoSetupRemote true
+          git config --local user.email "raymondmeester@gmail.com"
+          git config --local user.name "skin27"
+          git merge ${{inputs.milestone}}
+          git push 
 
   delete-old-packages:
 
