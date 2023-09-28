@@ -9,7 +9,7 @@ import java.util.regex.Pattern;
 public final class ExchangeHelper {
 
     private static final String HEADER_VARIABLE_REGEX = "\\$\\{header(?:s)?\\.(.+?)}";
-    private static final String BODY_VARIABLE_REGEX = "\\$\\{body}";
+    private static final String BODY_VARIABLE_REGEX = "\\$\\{body(As\\(String\\))?}";
 
     public static boolean hasVariables(String string){
         return (Pattern.compile(HEADER_VARIABLE_REGEX).matcher(string).find() || Pattern.compile(BODY_VARIABLE_REGEX).matcher(string).find());
