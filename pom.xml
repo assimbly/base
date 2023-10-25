@@ -33,8 +33,8 @@
 	<!-- In the following properties, versions of dependencies are centrally managed. -->
 	<properties>
 
-		<maven.compiler.source>11</maven.compiler.source>
-		<maven.compiler.target>11</maven.compiler.target>
+		<maven.compiler.source>21</maven.compiler.source>
+		<maven.compiler.target>21</maven.compiler.target>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<main.basedir>${project.basedir}</main.basedir>
 		<maven.versions.rules>file:///${project.basedir}/rules.xml</maven.versions.rules>
@@ -71,13 +71,12 @@
 		<ibmmq-client.version>9.3.4.0</ibmmq-client.version>
 		<informix-jdbc.version>4.50.10</informix-jdbc.version>
 		<jackson.version>2.15.3</jackson.version>
-		<javax-servlet-api.version>4.0.1</javax-servlet-api.version>
-		<javax-json-api.version>1.1.4</javax-json-api.version>
-		<javax-annotation-api.version>1.3.2</javax-annotation-api.version>
-		<javax-xml-soap-api.version>1.4.0</javax-xml-soap-api.version>
-		<jakarta-xml-bind-api.version>4.0.0</jakarta-xml-bind-api.version>
-		<jaxb-core.version>3.0.2</jaxb-core.version>
-		<jaxb-impl.version>3.0.2</jaxb-impl.version>
+		<jakarta-activation-api.version>2.1.2</jakarta-activation-api.version>
+		<jakarta-annotation-api.version>2.1.1</jakarta-annotation-api.version>
+		<jakarta-json-api.version>2.1.3</jakarta-json-api.version>
+		<jakarta-servlet-api.version>6.0.0</jakarta-servlet-api.version>
+		<jakarta-xml-soap-api.version>3.0.1</jakarta-xml-soap-api.version>
+		<jakarta-xml-bind-api.version>4.0.1</jakarta-xml-bind-api.version>
 		<jasypt.version>1.9.3</jasypt.version>
 		<jeka.version>0.10.30</jeka.version>
 		<json.version>20231013</json.version>
@@ -207,7 +206,7 @@
 							<configuration>
 								<toolchains>
 									<jdk>
-										<version>11</version>
+										<version>21</version>
 									</jdk>
 								</toolchains>
 							</configuration>
@@ -267,8 +266,8 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
-                    <source>11</source>
-                    <target>11</target>
+                    <source>21</source>
+                    <target>21</target>
                 </configuration>
             </plugin>
             <plugin>

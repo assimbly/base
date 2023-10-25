@@ -15,7 +15,7 @@
 
     <properties>
   	  	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    	<maven.compiler.release>11</maven.compiler.release>
+    	<maven.compiler.release>21</maven.compiler.release>
         <maven.versions.rules>file:///${project.basedir}/../rules.xml</maven.versions.rules>
     </properties>
 
@@ -162,22 +162,6 @@
             <groupId>org.apache.camel</groupId>
             <artifactId>camel-validator</artifactId>
         </dependency>
-
-        <dependency>
-            <groupId>org.apache.camel</groupId>
-            <artifactId>camel-jaxb</artifactId>
-        </dependency>
-
-        <!--
-        <dependency>
-            <groupId>org.apache.camel</groupId>
-            <artifactId>camel-xml-jaxb</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.camel</groupId>
-            <artifactId>camel-xml-jaxb-dsl</artifactId>
-        </dependency>
-        -->
 
         <dependency>
             <groupId>org.apache.camel</groupId>

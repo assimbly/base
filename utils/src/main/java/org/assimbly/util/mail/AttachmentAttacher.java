@@ -8,7 +8,8 @@ import org.apache.camel.Processor;
 import org.apache.commons.io.IOUtils;
 import org.assimbly.util.helper.MimeTypeHelper;
 
-import javax.activation.DataHandler;
+import jakarta.activation.DataSource;
+import jakarta.activation.DataHandler;
 import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -37,7 +38,8 @@ public class AttachmentAttacher implements Processor {
             emailBody = "";
 
         AttachmentMessage attMsg = exchange.getIn(AttachmentMessage.class);
-        attMsg.addAttachment(fileName, new DataHandler(new ByteArrayDataSource(IOUtils.toByteArray(is), mimeType)));
+        //This needs to solved (getting compilation error when updating to jakarta)
+        //attMsg.addAttachment(fileName, new DataHandler((DataSource) new ByteArrayDataSource(IOUtils.toByteArray(is), mimeType)));
 
         in.setHeader(Exchange.CONTENT_TYPE, "text/plain");
         in.setBody(String.valueOf(emailBody));

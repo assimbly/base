@@ -15,7 +15,7 @@
 
     <properties>
   	  	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    	<maven.compiler.release>11</maven.compiler.release>
+    	<maven.compiler.release>21</maven.compiler.release>
         <maven.versions.rules>file:///${project.basedir}/../rules.xml</maven.versions.rules>
     </properties>
 
@@ -146,8 +146,8 @@
             <artifactId>camel-undertow</artifactId>
         </dependency>
         <dependency>
-			    <groupId>org.apache.camel</groupId>
-			    <artifactId>camel-velocity</artifactId>
+		    <groupId>org.apache.camel</groupId>
+		    <artifactId>camel-velocity</artifactId>
 		    </dependency>
         <dependency>
             <groupId>org.apache.camel</groupId>
