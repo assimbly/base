@@ -4,7 +4,7 @@
   <parent>
     <artifactId>base</artifactId>
     <groupId>org.assimbly</groupId>
-    <version>4.0.4-SNAPSHOT</version>
+    <version>4.0.4</version>
   </parent>
 
   <artifactId>utils</artifactId>

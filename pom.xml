@@ -8,7 +8,7 @@
 	<name>org.assimbly.camelconnector</name>
 	<url>http://maven.apache.org</url>
 
-	<version>4.0.4-SNAPSHOT</version>
+	<version>4.0.4</version>
 
 	<modules>
 		<module>activemqBase</module>
@@ -42,7 +42,7 @@
 		<!-- Manage the versions of all dependencies here -->
 		<aopalliance.version>1.0</aopalliance.version>
 		<axiom.version>1.4.0</axiom.version>
-		<assimbly.version>4.0.4-SNAPSHOT</assimbly.version>
+		<assimbly.version>4.0.4</assimbly.version>
 		<activemq-classic.version>5.18.3</activemq-classic.version>
 		<activemq-artemis.version>2.31.2</activemq-artemis.version>
 		<activemq-artemis-native.version>2.0.0</activemq-artemis-native.version>
