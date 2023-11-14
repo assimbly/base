@@ -195,10 +195,10 @@
             <groupId>org.apache.camel</groupId>
             <artifactId>camel-yaml-dsl</artifactId>
         </dependency>
-        <!--<dependency>
+        <dependency>
             <groupId>org.apache.camel</groupId>
             <artifactId>camel-zipfile</artifactId>
-        </dependency>-->
+        </dependency>
 
         <!-- minimal components -->
         <dependency>
