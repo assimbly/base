@@ -8,14 +8,14 @@
     <parent>
         <artifactId>base</artifactId>
         <groupId>org.assimbly</groupId>
-        <version>4.0.5-SNAPSHOT</version>
+        <version>4.1.0-SNAPSHOT</version>
     </parent>
 
     <artifactId>camel-base</artifactId>
 
     <properties>
   	  	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    	<maven.compiler.release>11</maven.compiler.release>
+    	<maven.compiler.release>21</maven.compiler.release>
         <maven.versions.rules>file:///${project.basedir}/../rules.xml</maven.versions.rules>
     </properties>
 
@@ -162,22 +162,6 @@
             <groupId>org.apache.camel</groupId>
             <artifactId>camel-validator</artifactId>
         </dependency>
-
-        <dependency>
-            <groupId>org.apache.camel</groupId>
-            <artifactId>camel-jaxb</artifactId>
-        </dependency>
-
-        <!--
-        <dependency>
-            <groupId>org.apache.camel</groupId>
-            <artifactId>camel-xml-jaxb</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.camel</groupId>
-            <artifactId>camel-xml-jaxb-dsl</artifactId>
-        </dependency>
-        -->
 
         <dependency>
             <groupId>org.apache.camel</groupId>
