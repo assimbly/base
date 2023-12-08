@@ -55,6 +55,12 @@
             <artifactId>activemq-client</artifactId>
             <version>${activemq-classic.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.apache.activemq</groupId>
+            <artifactId>activemq-spring</artifactId>
+            <version>${activemq-classic.version}</version>
+        </dependency>
+
 
         <!-- activemq artemis dependencies -->
         <dependency>

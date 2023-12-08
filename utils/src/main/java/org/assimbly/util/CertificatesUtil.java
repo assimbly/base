@@ -36,8 +36,6 @@ import java.util.Map;
 import java.util.UUID;
 import java.util.regex.Pattern;
 
-import javax.net.ssl.SSLSession;
-
 import org.apache.http.HttpResponseInterceptor;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.utils.DateUtils;
@@ -72,6 +70,8 @@ import org.bouncycastle.operator.bc.BcDigestCalculatorProvider;
 import org.bouncycastle.operator.jcajce.JcaContentSignerBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import javax.net.ssl.SSLSession;
 
 public final class CertificatesUtil {
 
