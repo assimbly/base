@@ -270,12 +270,7 @@
         <!-- jolokia dependencies -->
         <dependency>
             <groupId>org.jolokia</groupId>
-            <artifactId>jolokia-core</artifactId>
-            <version>${jolokia.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.jolokia</groupId>
-            <artifactId>jolokia-jvm</artifactId>
+            <artifactId>jolokia-server-core</artifactId>
             <version>${jolokia.version}</version>
         </dependency>
         <dependency>
