@@ -206,6 +206,16 @@
             <artifactId>groovy-dateutil</artifactId>
             <version>${groovy-script.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.codehaus.groovy</groupId>
+            <artifactId>groovy-json</artifactId>
+            <version>${groovy-script.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.codehaus.groovy</groupId>
+            <artifactId>groovy-xml</artifactId>
+            <version>${groovy-script.version}</version>
+        </dependency>
 
         <!-- Jackson -->
         <dependency>
