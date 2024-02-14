@@ -41,7 +41,7 @@
 		<!-- Manage the versions of all dependencies here -->
 		<aopalliance.version>1.0</aopalliance.version>
 		<axiom.version>1.4.0</axiom.version>
-		<assimbly.version>4.1.0-SNAPSHOT</assimbly.version>
+		<assimbly.version>5.0.0</assimbly.version>
 		<activemq-classic.version>6.0.1</activemq-classic.version>
 		<activemq-artemis.version>2.32.0</activemq-artemis.version>
 		<activemq-artemis-native.version>2.0.0</activemq-artemis-native.version>
@@ -92,7 +92,7 @@
 		<mockserver.version>5.15.0</mockserver.version>
 		<mongo.version>3.12.11</mongo.version>
 		<mysql-connector-java.version>8.3.0</mysql-connector-java.version>
-		<netty.version>4.1.106.Final</netty.version>
+		<netty.version>4.1.107.Final</netty.version>
 		<oracle12.version>23.3.0.23.09</oracle12.version>
 		<postgresql.version>42.7.1</postgresql.version>
 		<powermock.version>2.0.9</powermock.version>
