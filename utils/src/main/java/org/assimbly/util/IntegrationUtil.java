@@ -85,10 +85,9 @@ public final class IntegrationUtil {
 	}
 
 	public static boolean isXML(String xml) {
-		try {
-			SAXParserFactory.newInstance().newSAXParser().getXMLReader().parse(new InputSource(new StringReader(xml)));
+		if(xml.startsWith("<")){
 			return true;
-		} catch (ParserConfigurationException | SAXException | IOException ex) {
+		}else{
 			return false;
 		}
 	}
@@ -122,7 +121,6 @@ public final class IntegrationUtil {
 			return ResourceHelper.fromString("route.xml", route); 
 		}		
 	}
-
 
 	@SuppressWarnings("resource")
 	public static String testConnection(String host, int port, int timeOut) {
