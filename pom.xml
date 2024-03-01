@@ -63,14 +63,14 @@
 		<db2-jdbc.version>db2jcc4</db2-jdbc.version>
 		<docconverter.version>1.9.0</docconverter.version>
 		<dropwizard-metrics.version>4.2.25</dropwizard-metrics.version>
-		<elasticsearch-rest-client.version>8.12.1</elasticsearch-rest-client.version>
+		<elasticsearch-rest-client.version>8.12.2</elasticsearch-rest-client.version>
 		<gson.version>2.10.1</gson.version>
-		<groovy-script.version>4.0.18</groovy-script.version>
+		<groovy-script.version>4.0.19</groovy-script.version>
 		<guava.version>33.0.0-jre</guava.version>
-		<ibmmq-client.version>9.3.4.1</ibmmq-client.version>
+		<ibmmq-client.version>9.3.5.0</ibmmq-client.version>
 		<informix-jdbc.version>4.50.10.1</informix-jdbc.version>
 		<jackson.version>2.16.1</jackson.version>
-		<jakarta-activation-api.version>2.1.2</jakarta-activation-api.version>
+		<jakarta-activation-api.version>2.1.3</jakarta-activation-api.version>
 		<jakarta-annotation-api.version>2.1.1</jakarta-annotation-api.version>
 		<jakarta-json-api.version>2.1.3</jakarta-json-api.version>
 		<jakarta-servlet-api.version>6.0.0</jakarta-servlet-api.version>
@@ -85,16 +85,17 @@
 		<jwt.version>0.12.5</jwt.version>
 		<jolokia.version>2.0.1</jolokia.version>
 		<httpclient.version>4.5.14</httpclient.version>
-		<kamelet.version>4.3.0</kamelet.version>
-		<logback-classic.version>1.5.0</logback-classic.version>
-		<mssql-jdbc.version> 12.6.0.jre11</mssql-jdbc.version> <!-- use jre21 when it comes out -->
+		<kamelet.version>4.4.0</kamelet.version>
+		<logback-classic.version>1.5.1</logback-classic.version>
+		<messaginghub>3.1.5</messaginghub>
+		<mssql-jdbc.version> 12.6.1.jre11</mssql-jdbc.version> <!-- use jre21 when it comes out -->
 		<mockito.version>5.10.0</mockito.version>
 		<mockserver.version>5.15.0</mockserver.version>
 		<mongo.version>3.12.11</mongo.version>
 		<mysql-connector-java.version>8.3.0</mysql-connector-java.version>
 		<netty.version>4.1.107.Final</netty.version>
 		<oracle12.version>23.3.0.23.09</oracle12.version>
-		<postgresql.version>42.7.1</postgresql.version>
+		<postgresql.version>42.7.2</postgresql.version>
 		<powermock.version>2.0.9</powermock.version>
 		<qpid-proton-j.version>0.34.1</qpid-proton-j.version>
 		<slf4j.version>2.0.12</slf4j.version>
