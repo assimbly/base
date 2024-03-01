@@ -7,6 +7,7 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import net.sf.saxon.jaxp.TransformerImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -23,25 +24,40 @@ public final class TransformUtil {
     protected final static Logger log = LoggerFactory.getLogger("org.assimbly.util.TransformUtil");
 
     public static String transformXML(String xml, InputStream xslFile) {
+
         String outputXML = null;
         try {
             System.setProperty("javax.xml.transform.TransformerFactory", "net.sf.saxon.TransformerFactoryImpl");
             TransformerFactory factory = TransformerFactory.newInstance();
-            Transformer transformer = factory.newTransformer(new StreamSource(xslFile));
+
+            StreamSource sourcXsl = new StreamSource(xslFile);
+
+
+            Transformer transformer = factory.newTransformer(sourcXsl);
+
             Source xmlStream = new StreamSource(new StringReader(xml));
+
             StringWriter writer = new StringWriter();
+
             Result result = new StreamResult(writer);
+
             transformer.transform(xmlStream, result);
+
             outputXML = writer.getBuffer().toString();
+
+            writer.close();
+
         } catch (TransformerConfigurationException tce) {
             tce.printStackTrace();
         } catch (TransformerException te) {
             te.printStackTrace();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
         return outputXML;
     }
 
-	    /**
+    /**
      * Performs simultaneous search/replace of multiple strings.
      *
      * @param target        string to perform replacements on.
