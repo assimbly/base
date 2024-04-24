@@ -8,7 +8,7 @@
 	<name>org.assimbly.camelconnector</name>
 	<url>http://maven.apache.org</url>
 	<version>5.0.0</version>
-  
+
 	<modules>
 		<module>activemqBase</module>
 		<module>camelBase</module>
@@ -63,7 +63,7 @@
 		<db2-jdbc.version>db2jcc4</db2-jdbc.version>
 		<docconverter.version>1.9.0</docconverter.version>
 		<dropwizard-metrics.version>4.2.25</dropwizard-metrics.version>
-		<elasticsearch-rest-client.version>8.12.2</elasticsearch-rest-client.version>
+		<elasticsearch-rest-client.version>8.13.2</elasticsearch-rest-client.version>
 		<gson.version>2.10.1</gson.version>
 		<groovy-script.version>4.0.20</groovy-script.version>
 		<guava.version>33.1.0-jre</guava.version>
@@ -93,7 +93,7 @@
 		<mockserver.version>5.15.0</mockserver.version>
 		<mongo.version>3.12.11</mongo.version>
 		<mysql-connector-java.version>8.3.0</mysql-connector-java.version>
-		<netty.version>4.1.108.Final</netty.version>
+		<netty.version>4.1.109.Final</netty.version>
 		<oracle12.version>23.3.0.23.09</oracle12.version>
 		<postgresql.version>42.7.3</postgresql.version>
 		<powermock.version>2.0.9</powermock.version>
@@ -103,7 +103,7 @@
 		<spring.version>6.1.5</spring.version>
 		<spring-data.version>3.2.4</spring-data.version>
 		<springdoc.version>2.4.0</springdoc.version>
-		<sqlite-jdbc.version>3.45.2.0</sqlite-jdbc.version>
+		<sqlite-jdbc.version>3.45.3.0</sqlite-jdbc.version>
 		<tika.version>1.28.5</tika.version>
 		<xalan.version>2.7.3</xalan.version>
 		<xerces.version>2.12.2</xerces.version>
@@ -124,7 +124,7 @@
 			<dependency>
 				<groupId>org.apache.maven.plugin-tools</groupId>
 				<artifactId>maven-plugin-annotations</artifactId>
-				<version>3.11.0</version>
+				<version>3.12.0</version>
 				<scope>provided</scope> <!-- annotations are not used at runtime because @Retention(value=CLASS), they are needed only to build the plugin -->
 			</dependency>
 		</dependencies>
