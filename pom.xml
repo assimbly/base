@@ -92,7 +92,7 @@
 		<mockito.version>5.11.0</mockito.version>
 		<mockserver.version>5.15.0</mockserver.version>
 		<mongo.version>3.12.11</mongo.version>
-		<mysql-connector-java.version>8.3.0</mysql-connector-java.version>
+		<mysql-connector-java.version>8.4.0</mysql-connector-java.version>
 		<netty.version>4.1.109.Final</netty.version>
 		<oracle12.version>23.3.0.23.09</oracle12.version>
 		<postgresql.version>42.7.3</postgresql.version>
