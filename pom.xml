@@ -64,7 +64,7 @@
 		<docconverter.version>1.9.0</docconverter.version>
 		<dropwizard-metrics.version>4.2.25</dropwizard-metrics.version>
 		<elasticsearch-rest-client.version>8.13.4</elasticsearch-rest-client.version>
-		<gson.version>2.10.1</gson.version>
+		<gson.version>2.11.0</gson.version>
 		<groovy-script.version>4.0.21</groovy-script.version>
 		<guava.version>33.2.0-jre</guava.version>
 		<ibmmq-client.version>9.3.5.1</ibmmq-client.version>
@@ -87,6 +87,7 @@
 		<httpclient.version>4.5.14</httpclient.version>
 		<kamelet.version>4.6.0</kamelet.version>
 		<logback-classic.version>1.5.6</logback-classic.version>
+		<messaginghub.version>3.1.6</messaginghub.version>
 		<messaginghub.version>3.1.6</messaginghub.version>
 		<mssql-jdbc.version>12.7.0.jre11-preview</mssql-jdbc.version> <!-- use jre21 when it comes out -->
 		<mockito.version>5.12.0</mockito.version>
