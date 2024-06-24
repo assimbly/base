@@ -79,10 +79,10 @@
 		<jasypt.version>1.9.3</jasypt.version>
 		<jeka.version>0.10.49</jeka.version>
 		<json.version>20240303</json.version>
-		<jsonassert.version>1.5.1</jsonassert.version>
+		<jsonassert.version>1.5.2</jsonassert.version>
 		<json-path.version>2.9.0</json-path.version>
 		<junit.version>5.10.2</junit.version>
-		<jwt.version>0.12.5</jwt.version>
+		<jwt.version>0.12.6</jwt.version>
 		<jolokia.version>2.0.3</jolokia.version>
 		<httpclient.version>4.5.14</httpclient.version>
 		<kamelet.version>4.6.0</kamelet.version>
@@ -101,7 +101,7 @@
 		<qpid-proton-j.version>0.34.1</qpid-proton-j.version>
 		<slf4j.version>2.0.13</slf4j.version>
 		<sonic.version>12.0.2</sonic.version>
-		<spring.version>6.1.9</spring.version>
+		<spring.version>6.1.10</spring.version>
 		<spring-data.version>3.3.1</spring-data.version>
 		<springdoc.version>2.5.0</springdoc.version>
 		<sqlite-jdbc.version>3.46.0.0</sqlite-jdbc.version>
