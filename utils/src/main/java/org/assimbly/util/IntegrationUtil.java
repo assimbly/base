@@ -114,13 +114,16 @@ public final class IntegrationUtil {
 	}
 
 	public static Resource setResource(String route){
+
+		String uuid = UUID.randomUUID().toString();
+
 		if(IntegrationUtil.isXML(route)){
-			return ResourceHelper.fromString("route.xml", route); 
+			return ResourceHelper.fromString("route_" + uuid + ".xml", route);
 		}else if(IntegrationUtil.isYaml(route)){
-			return ResourceHelper.fromString("route.yaml", route); 
+			return ResourceHelper.fromString("route_" + uuid + ".yaml", route);
 		}else{
 			log.warn("unknown route format");
-			return ResourceHelper.fromString("route.xml", route); 
+			return ResourceHelper.fromString("route_" + uuid + ".xml", route);
 		}		
 	}
 
