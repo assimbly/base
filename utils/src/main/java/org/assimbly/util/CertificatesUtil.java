@@ -287,7 +287,7 @@ public final class CertificatesUtil {
 
 				Certificate[] chain = p12Store.getCertificateChain(alias);
 
-				jksStore.setKeyEntry(alias, key, p12Password.toCharArray(), chain);
+				jksStore.setKeyEntry(alias, key, keystorePassword.toCharArray(), chain);
 
 				for (Certificate certificate : chain){
 					certificateMap.put(alias, certificate);
@@ -414,7 +414,7 @@ public final class CertificatesUtil {
 	public KeyStore loadKeystoreFromString(String keyStoreString, String keystorePassword, String keystoreType) throws Exception {
 
 		Base64.Decoder decoder = Base64.getDecoder();
-		byte[] decodedByte = decoder.decode(keyStoreString.split(",")[1]);
+		byte[] decodedByte = decoder.decode(keyStoreString);
 
 
 		InputStream inputStream = new ByteArrayInputStream(decodedByte);
