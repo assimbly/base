@@ -39,7 +39,7 @@ jobs:
           organization: assimbly
           type: maven
           keep: 0
-          version-pattern: "${{inputs.milestone}}"
+          semver-pattern: "${{inputs.milestone}}"
           names: |
             org.assimbly.base
             org.assimbly.common-base
