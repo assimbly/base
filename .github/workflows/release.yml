@@ -5,20 +5,12 @@ on:
     #  schedule:
     #    - cron: '0 0 * * *'
     inputs:
-      branch:
-        description: 'Branch to use'
-        default: 'develop'
-        type: string
       milestone:
         description: 'Milestone to use as version'
         type: string
 
   workflow_call:
     inputs:
-      branch:
-        description: 'Branch to use'
-        default: 'develop'
-        type: string
       milestone:
         description: 'Milestone to use as version'
         type: string
@@ -66,8 +58,8 @@ jobs:
       - name: Checkout the code
         uses: actions/checkout@v4
         with:
-          repository: assimbly/base
-          ref: ${{ inputs.branch }}
+          repository: ${{ github.repository }}
+          ref: ${{ github.ref_name }}
           fetch-depth: 0
           token: ${{ secrets.RELEASE_TOKEN }}
 
