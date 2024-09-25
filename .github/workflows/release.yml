@@ -8,6 +8,7 @@ on:
       milestone:
         description: 'Milestone to use as version'
         type: string
+        required: true
 
   workflow_call:
     inputs:
