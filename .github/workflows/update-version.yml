@@ -55,7 +55,7 @@ jobs:
         run: |
           git config --local user.email "raymondmeester@gmail.com"
           git config --local user.name "skin27"
-          git commit -a -m "Update version to ${{inputs.milestone}}"
+          git diff-index --quiet HEAD || git commit -a -m "Update version to ${{inputs.milestone}}"
 
       - name: Push changes
         uses: ad-m/github-push-action@master
