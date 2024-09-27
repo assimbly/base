@@ -32,6 +32,8 @@ jobs:
     permissions:
       contents: write
       packages: write
+      pull-requests: write
+      repository-projects: write      
 
     steps:
 
