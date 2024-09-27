@@ -10,7 +10,7 @@ jobs:
   getversion:
     runs-on: ubuntu-latest
     outputs:
-      milestone: "${{ steps.mavenversion.outputs.milestone }}"
+      milestone: "${{ steps.maven-version.outputs.milestone }}"
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -24,7 +24,7 @@ jobs:
           distribution: 'temurin'
 
       - name: Get Maven Project Version
-        id: mavenversion
+        id: maven-version
         run: |
           VERSION=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)         
           echo "Maven version: $VERSION"
@@ -35,6 +35,7 @@ jobs:
 
   printversion:
     runs-on: ubuntu-latest
+    needs: getversion
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
