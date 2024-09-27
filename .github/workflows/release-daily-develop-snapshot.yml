@@ -1,15 +1,16 @@
 name: Release Daily Development Snapshot
 
 on:
+  schedule:
+    - cron: '0 0 * * *'
+  
   workflow_dispatch:
-    schedule:
-      - cron: '0 0 * * *'
 
 jobs:
   getversion:
     runs-on: ubuntu-latest
     outputs:
-      milestone: ${{ steps.gradle-version.outputs.milestone }}
+      milestone: ${{ steps.maven-version.outputs.milestone }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -22,17 +23,15 @@ jobs:
           java-version: '21'
           distribution: 'temurin'
 
-      - name: Get Gradle Project Version
+      - name: Get Maven Project Version
         id: maven-version
         run: |
           VERSION=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)         
-          echo "Gradle version: $VERSION"
+          echo "Maven version: $VERSION"
           echo "milestone=$VERSION" >> "$GITHUB_OUTPUT"
 
   printversion:
     runs-on: ubuntu-latest
-    outputs:
-      milestone: ${{ steps.gradle-version.outputs.milestone }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
