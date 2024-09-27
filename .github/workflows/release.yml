@@ -53,7 +53,6 @@ jobs:
             org.assimbly.camel-components
             org.assimbly.utils
             org.assimbly.extra
-            org.assimbly.extra
 
   release-jars:
     needs: delete_old_snapshots
