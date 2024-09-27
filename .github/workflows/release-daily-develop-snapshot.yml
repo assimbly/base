@@ -57,6 +57,3 @@ jobs:
 
       - name: Show Maven version 3
         run: echo "The version is ${{ steps.getversion.outputs.milestone }}"
-
-      - name: Show Maven version 4
-        run: echo "The version is ${{ outputs.milestone }}"
