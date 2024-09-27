@@ -10,7 +10,7 @@ jobs:
   getversion:
     runs-on: ubuntu-latest
     outputs:
-      milestone: ${{ steps.maven-version.outputs.milestone }}
+      milestone: ${{ steps.mavenversion.outputs.milestone }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -24,14 +24,14 @@ jobs:
           distribution: 'temurin'
 
       - name: Get Maven Project Version
-        id: maven-version
+        id: mavenversion
         run: |
           VERSION=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)         
           echo "Maven version: $VERSION"
           echo "milestone=$VERSION" >> "$GITHUB_OUTPUT"
 
       - name: Show Maven version
-        run: echo "The version is ${{ steps.getversion.outputs.milestone }}"
+        run: echo "The version is ${{ steps.mavenversion.outputs.milestone }}"
 
   printversion:
     runs-on: ubuntu-latest
@@ -47,10 +47,16 @@ jobs:
           java-version: '21'
           distribution: 'temurin'
 
-      - name: Get Maven Project Version
+      - name: Show Version 1
         id: maven-version2
         run: |
           echo "Maven version: ${{needs.getversion.outputs.milestone}}"
         
-      - name: Show Maven version
+      - name: Show Maven version 2
+        run: echo "The version is ${{ steps.mavenversion.outputs.milestone }}"
+
+      - name: Show Maven version 3
         run: echo "The version is ${{ steps.getversion.outputs.milestone }}"
+
+      - name: Show Maven version 4
+        run: echo "The version is ${{ outputs.milestone }}"
