@@ -35,6 +35,8 @@ jobs:
 
       - name: Delete older snapshots
         uses: smartsquaregmbh/delete-old-packages@v0.8.1
+        env:
+          GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
         with:
           organization: assimbly
           type: maven
