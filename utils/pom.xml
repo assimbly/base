@@ -4,11 +4,7 @@
   <parent>
     <artifactId>base</artifactId>
     <groupId>org.assimbly</groupId>
-<<<<<<< HEAD
-    <version>4.0.4</version>
-=======
     <version>5.0.0</version>
->>>>>>> develop
   </parent>
 
   <artifactId>utils</artifactId>
