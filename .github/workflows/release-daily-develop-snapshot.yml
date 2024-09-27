@@ -30,6 +30,9 @@ jobs:
           echo "Maven version: $VERSION"
           echo "milestone=$VERSION" >> "$GITHUB_OUTPUT"
 
+      - name: Show Maven version
+        run: echo "The version is ${{ steps.getversion.outputs.milestone }}"
+
   printversion:
     runs-on: ubuntu-latest
     steps:
@@ -47,5 +50,7 @@ jobs:
       - name: Get Maven Project Version
         id: maven-version2
         run: |
-          echo "Maven version: ${{ needs.getversion.outputs.milestone }}"
+          echo "Maven version: ${{needs.getversion.outputs.milestone}}"
         
+      - name: Show Maven version
+        run: echo "The version is ${{ steps.getversion.outputs.milestone }}"
