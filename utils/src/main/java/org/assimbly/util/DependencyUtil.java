@@ -9,10 +9,7 @@ import java.net.URLClassLoader;
 import java.nio.file.Path;
 import java.security.AccessController;
 import java.security.PrivilegedAction;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.jar.JarEntry;
 import java.util.jar.JarInputStream;
 
@@ -44,9 +41,11 @@ public class DependencyUtil {
             URL url = path.toUri().toURL();
 
             AccessController.doPrivileged((PrivilegedAction) () -> {
+
                 URLClassLoader child = new URLClassLoader(new URL[] {url}, this.getClass().getClassLoader());
 
                 ArrayList<String> classNames = null;
+
                 try {
                     classNames = getClassNamesFromJar(path.toString());
                 } catch (Exception e) {
@@ -55,12 +54,15 @@ public class DependencyUtil {
 
                 for (String className : classNames) {
                     Class classToLoad = null;
+
                     try {
                         classToLoad = Class.forName(className, true, child);
-                    } catch (ClassNotFoundException e) {
+                        classes.add(classToLoad);
+                    } catch(NoClassDefFoundError e) {
+                        //ignore
+                    } catch (Exception e) {
                         throw new RuntimeException(e);
                     }
-                    classes.add(classToLoad);
                 }
                 return classes;
             });
@@ -69,6 +71,26 @@ public class DependencyUtil {
 
         return classes;
 
+    }
+
+    private boolean classExists(String moduleName, String className) {
+        Optional<Module> module = ModuleLayer.boot().findModule(moduleName);
+        if(module.isPresent()) {
+            return Class.forName(module.get(), className) != null;
+        }
+        return false;
+    }
+
+    /**
+     * Checks if a class can be found with the classloader.
+     * @param name the fully qualified name of the class in question.
+     * @return true if the class can be found, otherwise false.
+     */
+    private boolean classExists(String name) {
+        int lastDot = name.lastIndexOf('.');
+        String moduleName = name.substring(0, lastDot);
+        String className = name.substring(lastDot+1);
+        return classExists(moduleName, className);
     }
 
 
@@ -104,118 +126,9 @@ public class DependencyUtil {
         return getClassNamesFromJar(new JarInputStream(new FileInputStream(jarPath)));
     }
 
-    public enum PredefinedBlocks {
-
-        AGGREGATE("aggregate"),
-        AMAZON("amazon"),
-        APPENDTOBODY("appendtobody"),
-        BASE64TOTEXT("base64totext"),
-        CONTINUEFLOW("continueflow"),
-        CSVTOXML("csvtoxml"),
-        CONNECT("CONNECT"),
-        DELAY("delay"),
-        DELETE("delete"),
-        DYNAMIC("dynamic"),
-        EDITOXML("editoxml"),
-        EDIFACTTOXML("edifacttoxml"),
-        EDIFACTSTANDARDSTOXML("edifactstandardstoxml"),
-        ENRICH("enrich"),
-        EXCELTOXML("exceltoxml"),
-        FILTER("filter"),
-        FMUTA("fmuta"),
-        FORMTOXML("formtoxml"),
-        GET("get"),
-        GOOGLEDRIVE("googledrive"),
-        GROOVY("groovy"),
-        HEAD("head"),
-        HL7ER7("hl7er7"),
-        HL7XML("hl7xml"),
-        HTTP("http"),
-        HTTPS("https"),
-        JAVA("java"),
-        JOOR("joor"),
-        JSONTOXML("jsontoxml"),
-        LOG("log"),
-        MANAGEFLOW("manageflow"),
-        MLLP("mllp"),
-        MULTIPART("multipart"),
-        OAUTH2TOKEN("oauth2token"),
-        ORIFLAME("oriflame"),
-        OPTIONS("OPTIONS"),
-        PATCH("PATCH"),
-        PAUSEFLOW("pauseflow"),
-        POLLENRICH("pollenrich"),
-        POST("post"),
-        PREPENDTOBODY("prependtobody"),
-        PRINT("print"),
-        PUT("put"),
-        PYTHON("python"),
-        QUEUETHROTTLE("queuethrottle"),
-        RABBITMQ("rabbitmq"),
-        REMOVEHEADERS("removeheaders"),
-        REMOVECOOKIE("removecookie"),
-        REPLACE("replace"),
-        REPLACEINPDF("replaceinpdf"),
-        RESUMEFLOW("resumeflow"),
-        SETBODY("setbody"),
-        SETBODYBYHEADER("setbodybyheader"),
-        SETCOOKIE("setcookie"),
-        SETHEADER("setheader"),
-        SETHEADERS("setheaders"),
-        SETMESSAGE("setmessage"),
-        SETPATTERN("setpattern"),
-        SETPROPERTY("setproperty"),
-        SETUUID("setuuid"),
-        SIMPLE("simple"),
-        SIMPLEREPLACE("simplereplace"),
-        STARTFLOW("startflow"),
-        STOPFLOW("stopflow"),
-        SUSPENDFLOW("suspendflow"),
-        SPLIT("split"),
-        TEXTTOBASE64("texttobase64"),
-        TIMER("timer"),
-        TIMER2("timer2"),
-        TRACE("trace"),
-        THROTTLE("throttle"),
-        UNIVOCITYCSV("univocity-csv"),
-        UNZIP("unzip"),
-        VELOCITY("velocity"),
-        WIRETAP("wiretap"),
-        XMLTOEDI("xmltoedi"),
-        XMLTOEDIFACT("xmltoedifact"),
-        XMLTOEDIFACTSTANDARDS("xmltoedifactstandards"),
-        XMLTOCSV("xmltocsv"),
-        XMLTOEXCEL("xmltoexcel"),
-        XMLTOJSON("xmltojson"),
-        XMLTOJSONLEGACY("xmltojsonlegacy"),
-        XSLT("xslt"),
-        ZIP("zip"),
-        ;
-
-        private static Map<String, PredefinedBlocks> BY_LABEL = new HashMap<>();
-
-        static {
-            for (PredefinedBlocks cd : values()) {
-                BY_LABEL.put(cd.label, cd);
-            }
-        }
-
-        public final String label;
-
-        PredefinedBlocks(final String label) {
-            this.label = label;
-        }
-
-        public static boolean hasBlock(String label){
-            return BY_LABEL.containsKey(label);
-        }
-    }
-
-
     //These components are part of baseComponentsModule
     public enum CompiledDependency {
 
-        ACTIVEMQ("activemq"),
         AGGREGATE("aggregate"),
         ALERIS("aleris"),
         AMAZON("amazon"),
@@ -223,16 +136,12 @@ public class DependencyUtil {
         AMQP("amqp"),
         AMQPS("amqps"),
         ARCHIVE("archive"),
-        AS2("as2"),
-        AWS2S3("aws2-s3"),
         BASE64TOTEXT("base64totext"),
         BEAN("bean"),
         CONTROLBUS("controlbus"),
         CSVTOXML("csvtoxml"),
         DATAFORMAT("dataformat"),
         DELAY("delay"),
-        DIRECT("direct"),
-        DIRECTVM("direct-vm"),
         DOCCONVERTER("docconverter"),
         EDIFACTDOTWEB("edifact-dotweb"),
         EDIFACTSTANDARDS("edifact-standards"),
@@ -249,23 +158,15 @@ public class DependencyUtil {
         FMUTA("fmuta"),
         FORM2XML("form2xml"),
         FORMTOXML("formtoxml"),
-        FTP("ftp"),
-        FTPS("ftps"),
         GOOGLEDRIVE("googledrive"),
         GROOVY("groovy"),
-        HL7XML("hl7xml"),
         HTTP("http"),
         HTTPS("https"),
         IBMMQ("ibmmq"),
         IMAP("imap"),
         IMAPS("imaps"),
-        JAVA("java"),
-        JETTY("jetty"),
         JETTYNOSSL("jetty-nossl"),
-        JMS("jms"),
         JSONTOXML("jsontoxml"),
-        KAFKA("kafka"),
-        KAMELET("kamelet"),
         LOG("log"),
         MLLP("mllp"),
         MULTIPART("multipart"),
@@ -274,21 +175,13 @@ public class DependencyUtil {
         ORIFLAME("oriflame"),
         PDFTOTEXT("pdftotext"),
         POLLENRICH("pollenrich"),
-        POP3("pop3"),
         PRINT("print"),
-        QUARTZ("quartz"),
         QUEUETHROTTLE("queuethrottle"),
-        RABBITMQ("rabbitmq"),
         REMOVECOOKIE("removecookie"),
         REMOVEHEADERS("removeheaders"),
         REPLACE("replace"),
         REPLACEINPDF("replaceinpdf"),
-        REST("rest"),
-        RESTSOPENAPI("rest-openapi"),
-        RESTSWAGGER("rest-swagger"),
         SANDBOX("sandbox"),
-        SCHEDULER("scheduler"),
-        SEDA("seda"),
         SERVLET("servlet"),
         SETBODY("setbody"),
         SETCOOKIE("setcookie"),
@@ -299,31 +192,14 @@ public class DependencyUtil {
         SETPATTERN("setpattern"),
         SETPROPERTY("setproperty"),
         SETUUID("setuuid"),
-        SFTP("sftp"),
         SIMPLEREPLACE("simplereplace"),
-        SJMS("sjms"),
-        SJMS2("sjms2"),
-        SLACK("slack"),
-        SMTP("smtp"),
-        SOAP("soap"),
         SONICMQ("sonicmq"),
-        SPLIT("split"),
-        SPRING("spring"),
-        SQL("sql"),
         SQLCUSTOM("sql-custom"),
-        STREAM("stream"),
-        STUB("stub"),
         TEXTTOBASE64("texttobase64"),
         THROTTLE("throttle"),
-        TIMER("timer"),
-        UNDERTOW("undertow"),
         UNIVOCITYCSV("univocity-csv"),
         UNZIP("unzip"),
-        VELOCITY("velocity"),
-        VERTXHTTP("vertx-http"),
-        VM("vm"),
         WASTEBIN("wastebin"),
-        WEBSOCKET("websocket"),
         WIRETAP("wiretap"),
         XMLTOCSV("xmltocsv"),
         XMLTOEDI("xmltoedi"),
@@ -332,7 +208,6 @@ public class DependencyUtil {
         XMLTOEXCEL("xmltoexcel"),
         XMLTOJSON("xmltojson"),
         XMLTOJSONLEGACY("xmltojsonlegacy"),
-        XSLT("xslt"),
         XSLTSAXON("xslt-saxon"),
         ZIP("zip"),
         ;
@@ -355,5 +230,5 @@ public class DependencyUtil {
             return BY_LABEL.containsKey(label);
         }
     }
-    
+
 }

@@ -8,14 +8,14 @@
     <parent>
         <artifactId>base</artifactId>
         <groupId>org.assimbly</groupId>
-        <version>4.0.4</version>
+        <version>5.0.0</version>
     </parent>
 
     <artifactId>activemq-base</artifactId>
 
     <properties>
   	  	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    	<maven.compiler.release>11</maven.compiler.release>
+    	<maven.compiler.release>21</maven.compiler.release>
     	<maven.versions.rules>file:///${project.basedir}/../rules.xml</maven.versions.rules>
     </properties>
 
@@ -56,6 +56,14 @@
             <version>${activemq-classic.version}</version>
         </dependency>
 
+
+        <dependency>
+            <groupId>org.apache.activemq</groupId>
+            <artifactId>activemq-spring</artifactId>
+            <version>${activemq-classic.version}</version>
+        </dependency>
+
+
         <!-- activemq artemis dependencies -->
         <dependency>
             <groupId>org.apache.activemq</groupId>
@@ -64,7 +72,7 @@
         </dependency>
         <dependency>
             <groupId>org.apache.activemq</groupId>
-            <artifactId>artemis-jms-server</artifactId>
+            <artifactId>artemis-jakarta-server</artifactId>
             <version>${activemq-artemis.version}</version>
         </dependency>
         <dependency>
@@ -79,7 +87,7 @@
         </dependency>
         <dependency>
             <groupId>org.apache.activemq</groupId>
-            <artifactId>artemis-ra</artifactId>
+            <artifactId>artemis-jakarta-ra</artifactId>
             <version>${activemq-artemis.version}</version>
         </dependency>
         <dependency>
@@ -121,7 +129,7 @@
 
         <dependency>
             <groupId>org.apache.activemq</groupId>
-            <artifactId>artemis-jms-client-all</artifactId>
+            <artifactId>artemis-jakarta-client-all</artifactId>
             <version>${activemq-artemis.version}</version>
         </dependency>
 

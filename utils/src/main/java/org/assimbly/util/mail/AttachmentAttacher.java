@@ -8,7 +8,7 @@ import org.apache.camel.Processor;
 import org.apache.commons.io.IOUtils;
 import org.assimbly.util.helper.MimeTypeHelper;
 
-import javax.activation.DataHandler;
+import jakarta.activation.DataHandler;
 import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -37,7 +37,7 @@ public class AttachmentAttacher implements Processor {
             emailBody = "";
 
         AttachmentMessage attMsg = exchange.getIn(AttachmentMessage.class);
-        attMsg.addAttachment(fileName, new DataHandler(new ByteArrayDataSource(IOUtils.toByteArray(is), mimeType)));
+        attMsg.addAttachment(fileName, new DataHandler(IOUtils.toByteArray(is), mimeType));
 
         in.setHeader(Exchange.CONTENT_TYPE, "text/plain");
         in.setBody(String.valueOf(emailBody));
