@@ -28,7 +28,7 @@ jobs:
         run: |
           VERSION=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)         
           echo "Maven version: $VERSION"
-          echo "milestone=$VERSION" >> "$GITHUB_OUTPUT"
+          echo "::set-output name=milestone::$VERSION"
 
       - name: Show Maven version
         run: echo "The version is ${{ steps.mavenversion.outputs.milestone }}"
@@ -48,9 +48,7 @@ jobs:
           distribution: 'temurin'
 
       - name: Show Version 1
-        id: maven-version2
-        run: |
-          echo "Maven version: ${{needs.getversion.outputs.milestone}}"
+        run: echo "Maven version is ${{ needs.getversion.outputs.milestone }}"
         
       - name: Show Maven version 2
         run: echo "The version is ${{ steps.mavenversion.outputs.milestone }}"
