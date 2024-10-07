@@ -62,7 +62,7 @@
 		<commons-text.version>1.12.0</commons-text.version>
 		<db2-jdbc.version>db2jcc4</db2-jdbc.version>
 		<docconverter.version>1.11.0</docconverter.version>
-		<dropwizard-metrics.version>4.2.27</dropwizard-metrics.version>
+		<dropwizard-metrics.version>4.2.28</dropwizard-metrics.version>
 		<elasticsearch-rest-client.version>8.15.2</elasticsearch-rest-client.version>
 		<gson.version>2.11.0</gson.version>
 		<groovy-script.version>4.0.23</groovy-script.version>
@@ -81,7 +81,7 @@
 		<json.version>20240303</json.version>
 		<jsonassert.version>1.5.3</jsonassert.version>
 		<json-path.version>2.9.0</json-path.version>
-		<junit.version>5.11.1</junit.version>
+		<junit.version>5.11.2</junit.version>
 		<jwt.version>0.12.6</jwt.version>
 		<jolokia.version>2.1.1</jolokia.version>
 		<httpclient.version>4.5.14</httpclient.version>
@@ -90,11 +90,11 @@
 		<messaginghub.version>3.1.6</messaginghub.version>
 		<messaginghub.version>3.1.6</messaginghub.version>
 		<mssql-jdbc.version>12.8.1.jre11</mssql-jdbc.version> <!-- use jre21 when it comes out -->
-		<mockito.version>5.13.0</mockito.version>
+		<mockito.version>5.14.1</mockito.version>
 		<mockserver.version>5.15.0</mockserver.version>
 		<mongo.version>3.12.11</mongo.version>
 		<mysql-connector-java.version>9.0.0</mysql-connector-java.version>
-		<netty.version>4.1.113.Final</netty.version>
+		<netty.version>4.1.114.Final</netty.version>
 		<oracle12.version>23.5.0.24.07</oracle12.version>
 		<postgresql.version>42.7.4</postgresql.version>
 		<powermock.version>2.0.9</powermock.version>
