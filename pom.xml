@@ -86,7 +86,7 @@
 		<jolokia.version>2.1.1</jolokia.version>
 		<httpclient.version>4.5.14</httpclient.version>
 		<kamelet.version>4.8.0</kamelet.version>
-		<logback-classic.version>1.5.8</logback-classic.version>
+		<logback-classic.version>1.5.9</logback-classic.version>
 		<messaginghub.version>3.1.6</messaginghub.version>
 		<messaginghub.version>3.1.6</messaginghub.version>
 		<mssql-jdbc.version>12.8.1.jre11</mssql-jdbc.version> <!-- use jre21 when it comes out -->
