@@ -10,16 +10,16 @@ public class AssimblyEvent implements Serializable {
 
     private final String timestamp;
     private final String expiryDate;
-    private final String bundleId;
+    private final String flowId;
     private final int flowVersion;
     private final String component;
     private final String body;
     private final Map<String, Object> headers;
 
-    public AssimblyEvent(String timestamp, String expiryDate, String bundleId, int flowVersion, String component, String body, Map<String, Object> headers) {
+    public AssimblyEvent(String timestamp, String expiryDate, String flowId, int flowVersion, String component, String body, Map<String, Object> headers) {
         this.timestamp = timestamp;
         this.expiryDate = expiryDate;
-        this.bundleId = bundleId;
+        this.flowId = flowId;
         this.flowVersion = flowVersion;
         this.component = component;
         this.body = body;
@@ -34,8 +34,8 @@ public class AssimblyEvent implements Serializable {
         return timestamp;
     }
 
-    public String getBundleId() {
-        return bundleId;
+    public String getFlowId() {
+        return flowId;
     }
 
     public int getFlowVersion() {
