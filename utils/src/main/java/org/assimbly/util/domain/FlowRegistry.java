@@ -40,7 +40,7 @@ public class FlowRegistry {
 
     public HashMap<String, FlowInfo> getRegisteredFlows() { return new HashMap<>(registeredFlows); }
 
-    public void unregister(String bundleId) { registeredFlows.remove(bundleId); }
+    public void unregister(String flowId) { registeredFlows.remove(flowId); }
 
     public static FlowRegistry getInstance() {
         return INSTANCE;

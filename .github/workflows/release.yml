@@ -29,9 +29,7 @@ jobs:
   delete_old_snapshots:
 
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      packages: write
+    permissions: write-all
 
     steps:
 
@@ -40,6 +38,7 @@ jobs:
         with:
           organization: assimbly
           type: maven
+          token: ${{ secrets.MAVEN_TOKEN }}
           keep: 0
           semver-pattern: "${{inputs.milestone}}"
           names: |
@@ -52,7 +51,6 @@ jobs:
             org.assimbly.database-drivers
             org.assimbly.camel-components
             org.assimbly.utils
-            org.assimbly.extra
             org.assimbly.extra
 
   release-jars:
@@ -67,7 +65,7 @@ jobs:
       - name: Checkout the code
         uses: actions/checkout@v4
         with:
-          repository: ${{ github.repository }}
+          repository: "assimbly/base"
           ref: ${{ inputs.branch }}
           fetch-depth: 0
           token: ${{ secrets.RELEASE_TOKEN }}

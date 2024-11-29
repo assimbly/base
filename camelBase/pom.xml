@@ -8,7 +8,7 @@
     <parent>
         <artifactId>base</artifactId>
         <groupId>org.assimbly</groupId>
-        <version>5.0.0</version>
+        <version>5.0.2-SNAPSHOT</version>
     </parent>
 
     <artifactId>camel-base</artifactId>
@@ -106,10 +106,14 @@
             <groupId>org.apache.camel</groupId>
             <artifactId>camel-groovy</artifactId>
         </dependency>
-       <!-- <dependency>
+        <!-- <dependency>
             <groupId>org.apache.camel</groupId>
-            <artifactId>camel-javascript</artifactId>
+            <artifactId>camel-jmx</artifactId>
         </dependency>-->
+        <!-- <dependency>
+             <groupId>org.apache.camel</groupId>
+             <artifactId>camel-javascript</artifactId>
+         </dependency>-->
         <dependency>
             <groupId>org.apache.camel</groupId>
             <artifactId>camel-joor</artifactId>
@@ -141,6 +145,10 @@
         <dependency>
             <groupId>org.apache.camel</groupId>
             <artifactId>camel-metrics</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-micrometer</artifactId>
         </dependency>
         <dependency>
             <groupId>org.apache.camel</groupId>

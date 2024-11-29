@@ -5,7 +5,7 @@
     <parent>
         <artifactId>base</artifactId>
         <groupId>org.assimbly</groupId>
-        <version>5.0.0</version>
+        <version>5.0.2-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
@@ -86,12 +86,12 @@
             <version>${mockito.version}</version>
             <scope>compile</scope>
         </dependency>
-        <dependency>
+<!--        <dependency>
             <groupId>org.mock-server</groupId>
             <artifactId>mockserver-netty</artifactId>
             <version>${mockserver.version}</version>
             <scope>compile</scope>
-        </dependency>
+        </dependency>-->
 
         <!-- is this need as powermock isn't available for junit5? -->
         <dependency>
