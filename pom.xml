@@ -46,7 +46,7 @@
 		<activemq-artemis.version>2.38.0</activemq-artemis.version>
 		<activemq-artemis-native.version>2.0.0</activemq-artemis-native.version>
 		<bouncycastle.version>1.70</bouncycastle.version>
-		<camel.version>4.8.1</camel.version>
+		<camel.version>4.9.0</camel.version>
 		<commons-beanutils.version>1.9.4</commons-beanutils.version>
 		<commons-cli.version>1.9.0</commons-cli.version>
 		<commons-codec.version>1.17.1</commons-codec.version>
@@ -85,7 +85,7 @@
 		<jwt.version>0.12.6</jwt.version>
 		<jolokia.version>2.1.2</jolokia.version>
 		<httpclient.version>4.5.14</httpclient.version>
-		<kamelet.version>4.8.1</kamelet.version>
+		<kamelet.version>4.9.0</kamelet.version>
 		<logback-classic.version>1.5.12</logback-classic.version>
 		<messaginghub.version>3.1.7</messaginghub.version>
 		<mssql-jdbc.version>12.8.1.jre11</mssql-jdbc.version> <!-- use jre21 when it comes out -->
