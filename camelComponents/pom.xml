@@ -188,11 +188,11 @@
             <artifactId>camel-kamelets</artifactId>
             <version>${kamelet.version}</version>
         </dependency>
-        <dependency>
+      <!--  <dependency>
             <groupId>org.apache.camel.kamelets</groupId>
             <artifactId>camel-kamelets-utils</artifactId>
             <version>${kamelet.version}</version>
-        </dependency>
+        </dependency>-->
         <dependency>
             <groupId>org.apache.camel.kamelets</groupId>
             <artifactId>camel-kamelets-catalog</artifactId>
