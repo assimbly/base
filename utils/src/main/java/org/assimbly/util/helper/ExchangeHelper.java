@@ -23,7 +23,7 @@ public final class ExchangeHelper {
         for(String regex : Arrays.asList(HEADER_VARIABLE_REGEX, BODY_VARIABLE_REGEX)){
             text = replaceVariables(text, exchange, regex);
         }
-        
+
         return text;
     }
 
@@ -53,11 +53,12 @@ public final class ExchangeHelper {
 
     public static String unescapeExceptionalCharacters(String str) {
         return str.replaceAll("\\\\n", "\n")
-                  .replaceAll("\\\\t", "\t")
-                  .replaceAll("\\\\r", "\r");
+                .replaceAll("\\\\t", "\t")
+                .replaceAll("\\\\r", "\r");
     }
 
     static String escapeDollarSign(String str) {
         return str.replace("$", "\\$");
     }
+
 }

@@ -8,7 +8,7 @@
     <parent>
         <artifactId>base</artifactId>
         <groupId>org.assimbly</groupId>
-        <version>5.0.1</version>
+        <version>5.0.2</version>
     </parent>
 
     <artifactId>camel-components</artifactId>
@@ -188,11 +188,11 @@
             <artifactId>camel-kamelets</artifactId>
             <version>${kamelet.version}</version>
         </dependency>
-        <dependency>
+      <!--  <dependency>
             <groupId>org.apache.camel.kamelets</groupId>
             <artifactId>camel-kamelets-utils</artifactId>
             <version>${kamelet.version}</version>
-        </dependency>
+        </dependency>-->
         <dependency>
             <groupId>org.apache.camel.kamelets</groupId>
             <artifactId>camel-kamelets-catalog</artifactId>
