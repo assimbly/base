@@ -75,6 +75,12 @@
           <version>${axiom.version}</version>
       </dependency>
       <dependency>
+          <groupId>org.apache.ws.commons.axiom</groupId>
+          <artifactId>axiom-legacy-attachments</artifactId>
+          <version>${axiom.version}</version>
+      </dependency>
+
+      <dependency>
           <groupId>org.apache.tika</groupId>
           <artifactId>tika-bundle</artifactId>
           <version>${tika.version}</version>
