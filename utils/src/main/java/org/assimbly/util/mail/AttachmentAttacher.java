@@ -1,14 +1,13 @@
 package org.assimbly.util.mail;
 
-import org.apache.axiom.attachments.ByteArrayDataSource;
+import jakarta.activation.DataHandler;
 import org.apache.camel.Exchange;
 import org.apache.camel.Message;
-import org.apache.camel.attachment.AttachmentMessage;
 import org.apache.camel.Processor;
+import org.apache.camel.attachment.AttachmentMessage;
 import org.apache.commons.io.IOUtils;
 import org.assimbly.util.helper.MimeTypeHelper;
 
-import jakarta.activation.DataHandler;
 import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;

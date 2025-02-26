@@ -1,7 +1,8 @@
 package org.assimbly.util;
 
-import dev.jeka.core.api.depmanagement.*;
-import dev.jeka.core.api.depmanagement.resolution.*;
+import dev.jeka.core.api.depmanagement.JkDependencySet;
+import dev.jeka.core.api.depmanagement.JkRepo;
+import dev.jeka.core.api.depmanagement.resolution.JkDependencyResolver;
 
 import java.io.FileInputStream;
 import java.net.URL;
@@ -80,19 +81,6 @@ public class DependencyUtil {
         }
         return false;
     }
-
-    /**
-     * Checks if a class can be found with the classloader.
-     * @param name the fully qualified name of the class in question.
-     * @return true if the class can be found, otherwise false.
-     */
-    private boolean classExists(String name) {
-        int lastDot = name.lastIndexOf('.');
-        String moduleName = name.substring(0, lastDot);
-        String className = name.substring(lastDot+1);
-        return classExists(moduleName, className);
-    }
-
 
     // Returns an arraylist of class names in a JarInputStream
     private ArrayList<String> getClassNamesFromJar(JarInputStream jarFile) throws Exception {

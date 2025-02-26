@@ -45,15 +45,20 @@ public final class ConfigHelper {
         ClassLoader loader = originClass.getClassLoader();
         Properties props = new Properties();
         InputStream resourceStream = null;
+        FileInputStream fileInputStream = null;
 
         try {
             resourceStream = loader.getResourceAsStream(fileName);
-            props.load(new FileInputStream("/opt/karaf/etc/" + fileName));
+            fileInputStream = new FileInputStream("/opt/karaf/etc/" + fileName);
+            props.load(fileInputStream);
         } catch (IOException e) {
             e.printStackTrace();
         }finally {
             if(resourceStream!=null) {
                 resourceStream.close();
+            }
+            if(fileInputStream!=null) {
+                fileInputStream.close();
             }
         }
 

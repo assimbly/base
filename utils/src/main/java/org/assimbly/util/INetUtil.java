@@ -1,7 +1,9 @@
 package org.assimbly.util;
 
 import java.io.IOException;
-import java.net.*;
+import java.net.InetSocketAddress;
+import java.net.Socket;
+import java.net.UnknownHostException;
 
 public class INetUtil {
 

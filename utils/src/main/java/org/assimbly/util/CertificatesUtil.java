@@ -1,41 +1,5 @@
 package org.assimbly.util;
 
-import java.io.ByteArrayInputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.math.BigInteger;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.StandardCopyOption;
-import java.security.Key;
-import java.security.KeyPair;
-import java.security.KeyStore;
-import java.security.KeyStoreException;
-import java.security.NoSuchAlgorithmException;
-import java.security.Provider;
-import java.security.PublicKey;
-import java.security.Security;
-import java.security.cert.Certificate;
-import java.security.cert.CertificateEncodingException;
-import java.security.cert.CertificateException;
-import java.security.cert.CertificateFactory;
-import java.security.cert.X509Certificate;
-import java.time.Duration;
-import java.time.Instant;
-import java.util.Base64;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.Enumeration;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.UUID;
-import java.util.regex.Pattern;
-
 import org.apache.http.HttpResponseInterceptor;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.utils.DateUtils;
@@ -51,12 +15,8 @@ import org.apache.http.ssl.SSLContextBuilder;
 import org.bouncycastle.asn1.ASN1ObjectIdentifier;
 import org.bouncycastle.asn1.oiw.OIWObjectIdentifiers;
 import org.bouncycastle.asn1.x500.X500Name;
-import org.bouncycastle.asn1.x509.AlgorithmIdentifier;
-import org.bouncycastle.asn1.x509.AuthorityKeyIdentifier;
-import org.bouncycastle.asn1.x509.BasicConstraints;
 import org.bouncycastle.asn1.x509.Extension;
-import org.bouncycastle.asn1.x509.SubjectKeyIdentifier;
-import org.bouncycastle.asn1.x509.SubjectPublicKeyInfo;
+import org.bouncycastle.asn1.x509.*;
 import org.bouncycastle.cert.CertIOException;
 import org.bouncycastle.cert.X509ExtensionUtils;
 import org.bouncycastle.cert.X509v3CertificateBuilder;
@@ -72,6 +32,19 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.net.ssl.SSLSession;
+import java.io.*;
+import java.math.BigInteger;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardCopyOption;
+import java.security.*;
+import java.security.cert.Certificate;
+import java.security.cert.*;
+import java.time.Duration;
+import java.time.Instant;
+import java.util.*;
+import java.util.regex.Pattern;
 
 public final class CertificatesUtil {
 
@@ -330,22 +303,20 @@ public final class CertificatesUtil {
 
 
 	public static String convertStringToBinary(String input) {
+		StringBuffer bString = new StringBuffer();
 
-		String bString="";
-		String temp="";
-		for(int i=0;i<input.length();i++)
-		{
-			temp=Integer.toBinaryString(input.charAt(i));
-			for(int j=temp.length();j<8;j++)
-			{
-				temp="0"+temp;
+		for (int i = 0; i < input.length(); i++) {
+			String temp = Integer.toBinaryString(input.charAt(i));
+
+			// Ensure each binary value is 8 bits long (pad with leading zeros)
+			while (temp.length() < 8) {
+				temp = "0" + temp;
 			}
-			bString+=temp+" ";
+
+			bString.append(temp).append(" ");
 		}
 
-		System.out.println(bString);
-		return bString;
-
+		return bString.toString();
 	}
 
 	public static String convertX509CertificateToPem(X509Certificate certificate) throws CertificateEncodingException {

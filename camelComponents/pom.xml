@@ -51,10 +51,6 @@
         </dependency>
         <dependency>
             <groupId>org.apache.camel</groupId>
-            <artifactId>camel-hl7</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.camel</groupId>
             <artifactId>camel-javascript</artifactId>
         </dependency>
         <dependency>
@@ -131,10 +127,6 @@
         </dependency>
         <dependency>
             <groupId>org.apache.camel</groupId>
-            <artifactId>camel-stub</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.camel</groupId>
             <artifactId>camel-telegram</artifactId>
         </dependency>
         <dependency>
@@ -161,10 +153,6 @@
             <groupId>org.apache.camel</groupId>
             <artifactId>camel-xslt</artifactId>
         </dependency>        
-        <dependency>
-            <groupId>org.apache.camel</groupId>
-            <artifactId>camel-xslt-saxon</artifactId>
-        </dependency>
 
         <!-- kamelets -->
         <dependency>
@@ -172,11 +160,6 @@
             <artifactId>camel-kamelets</artifactId>
             <version>${kamelet.version}</version>
         </dependency>
-      <!--  <dependency>
-            <groupId>org.apache.camel.kamelets</groupId>
-            <artifactId>camel-kamelets-utils</artifactId>
-            <version>${kamelet.version}</version>
-        </dependency>-->
         <dependency>
             <groupId>org.apache.camel.kamelets</groupId>
             <artifactId>camel-kamelets-catalog</artifactId>

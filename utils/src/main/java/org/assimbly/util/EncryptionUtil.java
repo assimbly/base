@@ -16,9 +16,7 @@ public final class EncryptionUtil {
     private final StandardPBEStringEncryptor textEncryptor = new StandardPBEStringEncryptor();
     private static final int SALT_LENGTH = 16; // Length of the salt in bytes
     private static final int IV_LENGTH = 16; // Length of the IV in bytes
-    public static String key;
-    public static String algorithm;
-    public static String password;
+    private final String password;
 
     public EncryptionUtil(String password, String algorithm) {
         this.password = password;

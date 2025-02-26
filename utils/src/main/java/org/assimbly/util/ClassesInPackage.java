@@ -1,5 +1,6 @@
 package org.assimbly.util;
 
+import com.google.common.reflect.ClassPath;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -10,8 +11,6 @@ import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 import java.util.Set;
 import java.util.stream.Collectors;
-
-import com.google.common.reflect.ClassPath;
 
 @SuppressWarnings("rawtypes")
 public class ClassesInPackage {
