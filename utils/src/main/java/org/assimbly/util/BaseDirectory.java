@@ -8,7 +8,7 @@ public class BaseDirectory {
 
     private volatile String baseDirectory = System.getProperty("user.home") + "/.assimbly";
 
-    private static BaseDirectory getInstance() {
+    public static BaseDirectory getInstance() {
         return INSTANCE;
     }
 
