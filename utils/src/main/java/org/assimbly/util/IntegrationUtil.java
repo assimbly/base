@@ -35,7 +35,7 @@ import java.util.stream.Collectors;
 
 public final class IntegrationUtil {
 
-	protected final static Logger log = LoggerFactory.getLogger("org.assimbly.util.IntegrationUtil");
+	protected static final Logger log = LoggerFactory.getLogger("org.assimbly.util.IntegrationUtil");
 
 	public static boolean isValidUri(String name) throws Exception {
 		try {
@@ -74,11 +74,7 @@ public final class IntegrationUtil {
 	}
 
 	public static boolean isXML(String xml) {
-		if(xml.startsWith("<")){
-			return true;
-		}else{
-			return false;
-		}
+		return xml.startsWith("<");
 	}
 	
 	public static String isValidXML(URL schemaFile, String xml) {
@@ -92,9 +88,9 @@ public final class IntegrationUtil {
 			Validator validator = schema.newValidator();
 			validator.validate(xmlFile);
 			result = "xml is valid";
-		} catch (SAXException e) {
+		} catch (SAXException | IOException e) {
 			result = "xml is NOT valid. Reason:" + e;
-		} catch (IOException e) {}
+		}
 
 		return result;
 
@@ -139,7 +135,7 @@ public final class IntegrationUtil {
 	}
 
 
-	public static List<String> getXMLParameters(XMLConfiguration conf, String prefix) throws ConfigurationException {
+	public static List<String> getXMLParameters(XMLConfiguration conf, String prefix) {
 
 		Iterator<String> keys;
 
@@ -149,7 +145,7 @@ public final class IntegrationUtil {
 			keys = conf.getKeys(prefix);
 		}
 
-		List<String> keyList = new ArrayList<String>();
+		List<String> keyList = new ArrayList<>();
 
 		while(keys.hasNext()){
 			keyList.add(keys.next());
@@ -164,9 +160,7 @@ public final class IntegrationUtil {
 
 		XPath xpathFactory = XPathFactory.newInstance().newXPath();
 		XPathExpression expr = xpathFactory.compile(xpath);
-		Node node = (Node) expr.evaluate(doc, XPathConstants.NODE);
-
-		return node;
+		return (Node) expr.evaluate(doc, XPathConstants.NODE);
 
 	}
 
@@ -178,9 +172,8 @@ public final class IntegrationUtil {
 		DocumentBuilder db = dbf.newDocumentBuilder();
 		Document doc = db.parse(isr);
 
-		NodeList nodeList = doc.getElementsByTagName(nodeName);
+		return doc.getElementsByTagName(nodeName);
 
-		return nodeList;
 	}
 
 	public static Iterable<Node> iterable(final NodeList nodeList) {
@@ -202,7 +195,7 @@ public final class IntegrationUtil {
 		};
 	}
 
-	public static void printTreemap(TreeMap<String, String> treeMap) throws Exception {
+	public static void printTreemap(TreeMap<String, String> treeMap) {
 
 		System.out.println("print treemap: \n");
 		for (Map.Entry<String,String> entry : treeMap.entrySet()) {
@@ -211,7 +204,7 @@ public final class IntegrationUtil {
 
 	}
 
-	public static void printConfiguration(TreeMap<String, String> treeMap) throws Exception {
+	public static void printConfiguration(TreeMap<String, String> treeMap) {
 
 		List<String> items = Arrays.asList( "id", "flow", "source", "action", "sink", "response", "error", "header", "connection", "route", "routeConfiguration", "routeTemplate");
 
@@ -221,7 +214,7 @@ public final class IntegrationUtil {
 
 	}
 
-	public static String convertTreemapToString(TreeMap<String, String> treeMap, List<String> items) throws Exception {
+	public static String convertTreemapToString(TreeMap<String, String> treeMap, List<String> items) {
 
 		StringBuilder string = new StringBuilder();
 

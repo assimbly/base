@@ -20,7 +20,7 @@ import java.util.regex.Pattern;
 
 public final class TransformUtil {
 
-    protected final static Logger log = LoggerFactory.getLogger("org.assimbly.util.TransformUtil");
+    protected static final Logger log = LoggerFactory.getLogger("org.assimbly.util.TransformUtil");
 
     public static String transformXML(String xml, InputStream xslFile) {
 
@@ -70,7 +70,7 @@ public final class TransformUtil {
 
         //if we are doing case-insensitive replacements, we need to make the map case-insensitive--make a new map with all-lower-case keys
         if(!caseSensitive) {
-            Map<String, String> altReplacements = new HashMap<String, String>(replacements.size());
+            Map<String, String> altReplacements = new HashMap<>(replacements.size());
             for(Map.Entry<String, String> entry : replacements.entrySet())
                 altReplacements.put(entry.getKey().toLowerCase(), replacements.get(entry.getKey()));
 

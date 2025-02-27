@@ -27,9 +27,7 @@ public class DependencyUtil {
 
         JkDependencyResolver resolver = JkDependencyResolver.of().addRepos(JkRepo.ofMavenCentral());
 
-        List<Path> paths = resolver.resolve(deps).getFiles().getEntries();
-
-        return paths;
+        return resolver.resolve(deps).getFiles().getEntries();
 
 	}
 

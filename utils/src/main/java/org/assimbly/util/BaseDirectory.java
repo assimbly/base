@@ -16,6 +16,10 @@ public class BaseDirectory {
         return baseDirectory;
     }
 
+    /*example usage
+      BaseDirectory.getInstance().setBaseDirectory(10);
+      System.out.println(BaseDirectory.getInstance().getBaseDirectory());
+     */
     public void setBaseDirectory(String baseDirectory) {
         File directory = new File(baseDirectory);
         if (! directory.exists()){
@@ -27,9 +31,7 @@ public class BaseDirectory {
         this.baseDirectory = baseDirectory;
     }
 
-    //example usage
-    //BaseDirectory.getInstance().setBaseDirectory(10);
-    //System.out.println(BaseDirectory.getInstance().getBaseDirectory());
+
 
 }
 

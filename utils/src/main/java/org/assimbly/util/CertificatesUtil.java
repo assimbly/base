@@ -48,7 +48,7 @@ import java.util.regex.Pattern;
 
 public final class CertificatesUtil {
 
-	protected final static Logger log = LoggerFactory.getLogger("org.assimbly.util.CertificatesUtil");
+	protected static final Logger log = LoggerFactory.getLogger("org.assimbly.util.CertificatesUtil");
 	
     public static final String PEER_CERTIFICATES = "PEER_CERTIFICATES";
 
@@ -247,12 +247,12 @@ public final class CertificatesUtil {
 
 		Enumeration<String> aliases = p12Store.aliases();
 
-		Map<String,Certificate> certificateMap = new HashMap<String,Certificate>();
+		Map<String,Certificate> certificateMap = new HashMap<>();
 
 
 		while (aliases.hasMoreElements()) {
 
-			String alias = (String)aliases.nextElement();
+			String alias = aliases.nextElement();
 
 			if (p12Store.isKeyEntry(alias)) {
 				System.out.println("Adding key for alias " + alias);
@@ -419,7 +419,7 @@ public final class CertificatesUtil {
 		Path path = file.toPath();
 
 		if (!securityPath.exists()) {
-			boolean dirsCreated = securityPath.mkdirs();;
+			boolean dirsCreated = securityPath.mkdirs();
 			if(!dirsCreated){
 				System.out.println("Keystore Directory: " + securityPath.getAbsolutePath() + " couldn't be created.");
 			}

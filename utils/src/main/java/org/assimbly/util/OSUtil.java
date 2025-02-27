@@ -1,9 +1,10 @@
 package org.assimbly.util;
 
 public class OSUtil {
+
     public enum OS {
         WINDOWS, LINUX, MAC, SOLARIS
-    };// Operating systems.
+    }
 
     private static OS os = null;
 
