@@ -29,7 +29,7 @@ public final class XmlHelper {
 
     protected static final Logger log = LoggerFactory.getLogger(XmlHelper.class);
 
-    public static final String validXmlRegex = "[^A-z0-9_.\\-]|^(xml|[\\-0-9\\.])+";
+    public static final String VALID_XML_REGEX = "[^A-z0-9_.\\-]|^(xml|[\\-0-9\\.])+";
 
     public static Document newDocument(){
         DocumentBuilderFactory icFactory;
@@ -70,7 +70,7 @@ public final class XmlHelper {
     }
 
     public static List<Element> getChildrenByTagName(Element parent, String name) {
-        List<Element> nodeList = new ArrayList<Element>();
+        List<Element> nodeList = new ArrayList<>();
         for (Node child = parent.getFirstChild(); child != null; child = child.getNextSibling()) {
             if (child.getNodeType() == Node.ELEMENT_NODE &&
                     name.equals(child.getNodeName())) {
@@ -130,7 +130,7 @@ public final class XmlHelper {
     }
 
     public static boolean hasInvalidXml(String input) {
-        Pattern pattern = Pattern.compile(validXmlRegex);
+        Pattern pattern = Pattern.compile(VALID_XML_REGEX);
         Matcher matcher = pattern.matcher(input);
         return matcher.find();
     }
@@ -139,7 +139,7 @@ public final class XmlHelper {
         String result = input;
 
         while (hasInvalidXml(result)) {
-            result = result.replaceAll(validXmlRegex, "");
+            result = result.replaceAll(VALID_XML_REGEX, "");
 
             if (result.isEmpty())
                 result = "element-" + input;

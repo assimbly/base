@@ -26,9 +26,8 @@ public class ValidationErrorMessage {
 
         ValidationErrorMessage that = (ValidationErrorMessage) o;
 
-        if (error != null ? !error.equals(that.error) : that.error != null) return false;
+        return (error != null ? !error.equals(that.error) : that.error != null);
 
-        return true;
     }
 
     @Override

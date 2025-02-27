@@ -63,7 +63,7 @@ public final class HeaderUtil {
         return headers;
     }
     
-    public static HttpHeaders createFailureAlert(String entityName, String errorKey, String defaultMessage) {
+    public static HttpHeaders createFailureAlert(String entityName, String defaultMessage) {
         log.error("Entity processing failed, {}", defaultMessage);
         HttpHeaders headers = new HttpHeaders();
         headers.add("X-" + APPLICATION_NAME + "-error", defaultMessage);

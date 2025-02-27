@@ -10,7 +10,7 @@ import org.springframework.http.ResponseEntity;
  */
 public final class ResponseUtil {
 
-	protected final static Logger log = LoggerFactory.getLogger("org.assimbly.util.rest.ResponseUtil");
+	protected static final Logger log = LoggerFactory.getLogger("org.assimbly.util.rest.ResponseUtil");
 	
     private static ResponseEntity<String> response;
 
@@ -168,7 +168,7 @@ public final class ResponseUtil {
 	}
 
 
-	public static ResponseEntity<String> createNoContentResponse(long connectorId, String path) throws Exception{
+	public static ResponseEntity<String> createNoContentResponse(long connectorId, String path) {
 
 		log.debug("REST request with path " + path + " for gateway with id " + connectorId);
 
@@ -177,7 +177,7 @@ public final class ResponseUtil {
 	}
 
 
-	public static ResponseEntity<String> createNotModifiedResponse(long connectorId, String path) throws Exception{
+	public static ResponseEntity<String> createNotModifiedResponse(long connectorId, String path) {
 
 		log.debug("REST request with path " + path + " for gateway with id " + connectorId);
 

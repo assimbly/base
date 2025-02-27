@@ -14,7 +14,7 @@ public class AssimblyEvent implements Serializable {
     private final int flowVersion;
     private final String component;
     private final String body;
-    private final Map<String, Object> headers;
+    private transient Map<String, Object> headers;
 
     public AssimblyEvent(String timestamp, String expiryDate, String flowId, int flowVersion, String component, String body, Map<String, Object> headers) {
         this.timestamp = timestamp;
