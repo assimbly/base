@@ -56,7 +56,7 @@ public final class CertificatesUtil {
 
 		System.out.println("Start downloading certificates (url=" + url + ")");
 
-		Certificate[] peercertificates = null;
+		Certificate[] peercertificates;
 
         // create http response certificate interceptor
         HttpResponseInterceptor certificateInterceptor = (httpResponse, context) -> {
@@ -107,7 +107,7 @@ public final class CertificatesUtil {
 				}
 
 			}else{
-				log.error("No certificates found url=" + url + ")");
+                log.error("Certificates not found. URL: {})", url);
 			}
 
         } finally {
@@ -306,11 +306,11 @@ public final class CertificatesUtil {
 		StringBuffer bString = new StringBuffer();
 
 		for (int i = 0; i < input.length(); i++) {
-			String temp = Integer.toBinaryString(input.charAt(i));
+			StringBuilder temp = new StringBuilder(Integer.toBinaryString(input.charAt(i)));
 
 			// Ensure each binary value is 8 bits long (pad with leading zeros)
 			while (temp.length() < 8) {
-				temp = "0" + temp;
+				temp.insert(0, "0");
 			}
 
 			bString.append(temp).append(" ");
@@ -357,7 +357,7 @@ public final class CertificatesUtil {
 
 		File file = new File(keyStorePath);
 
-		KeyStore keystore = null;
+		KeyStore keystore;
 
 		if(keystoreType == null){
 			keystore = KeyStore.getInstance(KeyStore.getDefaultType());
@@ -390,7 +390,7 @@ public final class CertificatesUtil {
 
 		InputStream inputStream = new ByteArrayInputStream(decodedByte);
 
-		KeyStore keystore = null;
+		KeyStore keystore;
 
 		if(keystoreType == null){
 			keystore = KeyStore.getInstance(KeyStore.getDefaultType());
@@ -432,8 +432,10 @@ public final class CertificatesUtil {
 
 		ClassLoader classloader = Thread.currentThread().getContextClassLoader();
 		InputStream is = classloader.getResourceAsStream("keystore.jks");
-		Files.copy(is, path, StandardCopyOption.REPLACE_EXISTING);
-		is.close();
+        if (is != null) {
+            Files.copy(is, path, StandardCopyOption.REPLACE_EXISTING);
+			is.close();
+		}
 
 	}
 

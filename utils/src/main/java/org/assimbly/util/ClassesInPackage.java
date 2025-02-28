@@ -20,16 +20,19 @@ public class ClassesInPackage {
         public Set<Class> findClasses(String packageName) {
 
             BufferedReader reader = null;
-            Set<Class> classes;
+            Set<Class> classes = Set.of();
             InputStream stream = ClassLoader.getSystemClassLoader().getResourceAsStream(packageName.replaceAll("[.]", "/"));
 
             try {
 
-                reader = new BufferedReader(new InputStreamReader(stream,StandardCharsets.UTF_8));
-                classes = reader.lines()
-                        .filter(line -> line.endsWith(".class"))
-                        .map(line -> getClass(line, packageName))
-                        .collect(Collectors.toSet());
+                if (stream != null) {
+                    reader = new BufferedReader(new InputStreamReader(stream,StandardCharsets.UTF_8));
+                    classes = reader.lines()
+                            .filter(line -> line.endsWith(".class"))
+                            .map(line -> getClass(line, packageName))
+                            .collect(Collectors.toSet());
+                }
+
             } finally {
                 // this block will be executed in every case, success or caught exception
                 if (reader != null) {
@@ -49,7 +52,7 @@ public class ClassesInPackage {
             try {
                 return Class.forName(packageName + "." + className.substring(0, className.lastIndexOf('.')));
             } catch (ClassNotFoundException e) {
-                log.error("Class not found: " + className + "Reason: " + e.getMessage());
+                log.error("Class not found: {}. Reason: {}", className, e.getMessage());
             }
             return null;
         }

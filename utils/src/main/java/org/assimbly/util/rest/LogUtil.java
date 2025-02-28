@@ -47,6 +47,8 @@ public class LogUtil {
 	            try {
 	                fileHandler.close();
 	            } catch (IOException e) {
+					e.printStackTrace();
+					return null;
 	            }
 	    }
 	}	

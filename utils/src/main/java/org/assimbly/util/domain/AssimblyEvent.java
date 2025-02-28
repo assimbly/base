@@ -1,11 +1,13 @@
 package org.assimbly.util.domain;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
 public class AssimblyEvent implements Serializable {
 
+    @Serial
     private static final long serialVersionUID = -414325906494469280L;
 
     private final String timestamp;

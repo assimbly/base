@@ -79,7 +79,7 @@ public final class IntegrationUtil {
 	
 	public static String isValidXML(URL schemaFile, String xml) {
 
-		String result = null;
+		String result;
 
 		Source xmlFile = new StreamSource(new StringReader(xml));
 		SchemaFactory schemaFactory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
@@ -222,7 +222,7 @@ public final class IntegrationUtil {
 		string.append("Flow Configuration\n");
 		string.append("-----------------------------------------------------------------\n");
 
-		Map<String, String> subMap = null;
+		Map<String, String> subMap;
 
 		for (String item : items) {
 
@@ -233,7 +233,7 @@ public final class IntegrationUtil {
 
 			if(subMap.size() > 0) {
 
-				string.append("\n" + item.toUpperCase() + "\n");
+				string.append("\n").append(item.toUpperCase()).append("\n");
 
 				for(Map.Entry<String,String> entry : subMap.entrySet()) {
 
@@ -244,7 +244,7 @@ public final class IntegrationUtil {
 						value = "***********";
 					}
 
-					string.append(key + ":" + value + "\n");
+					string.append(key).append(":").append(value).append("\n");
 				}
 			}
 

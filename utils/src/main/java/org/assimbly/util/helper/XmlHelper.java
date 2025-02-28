@@ -122,7 +122,7 @@ public final class XmlHelper {
     }
 
     public static String prettyPrintWithPossibleException(String xml) throws Exception {
-        Document doc = null;
+        Document doc;
         DocumentBuilder db = DocumentBuilderFactory.newInstance().newDocumentBuilder();
         doc = db.parse(new InputSource(new StringReader(xml)));
 

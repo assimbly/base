@@ -118,7 +118,7 @@ public final class TransformUtil {
 		  t.setOutputProperty(OutputKeys.INDENT, "yes");
 		  t.transform(new DOMSource(node), new StreamResult(sw));
 		} catch (TransformerException te) {
-		  log.error("NodeToString Transformer Exception: " + te);
+            log.error("nodeToString Transformer Exception: {}", String.valueOf(te));
 		}
 
 		return sw.toString();

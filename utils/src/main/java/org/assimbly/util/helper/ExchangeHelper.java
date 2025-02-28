@@ -8,7 +8,7 @@ import java.util.regex.Pattern;
 
 public final class ExchangeHelper {
 
-    private static final String HEADER_VARIABLE_REGEX = "\\$\\{header(?:s)?\\.(.+?)}";
+    private static final String HEADER_VARIABLE_REGEX = "\\$\\{headers?\\.(.+?)}";
     private static final String BODY_VARIABLE_REGEX = "\\$\\{body(As\\(String\\))?}";
 
     public static boolean hasVariables(String string){
@@ -28,10 +28,10 @@ public final class ExchangeHelper {
     }
 
     private static String replaceVariables(String text, Exchange exchange, String regex) {
-        StringBuffer stringBuffer = new StringBuffer();
+        StringBuilder stringBuilder = new StringBuilder();
         Matcher m = Pattern.compile(regex).matcher(text);
         while(m.find()) {
-            String value = null;
+            String value;
             switch (regex) {
                 case HEADER_VARIABLE_REGEX:
                     value = exchange.getIn().getHeader(m.group(1), String.class);
@@ -40,11 +40,11 @@ public final class ExchangeHelper {
                     value = exchange.getIn().getBody(String.class);
                     break;
                 default:
-                    return stringBuffer.toString();
+                    return stringBuilder.toString();
             }
             if(value != null) {
                 value = escapeDollarSign(value);
-                m.appendReplacement(stringBuffer, unescapeExceptionalCharacters(value));
+                m.appendReplacement(stringBuilder, unescapeExceptionalCharacters(value));
             }
         }
         m.appendTail(stringBuffer);

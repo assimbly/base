@@ -21,7 +21,7 @@ public final class ResponseUtil {
     
     public static ResponseEntity<String> createSuccessResponse(long connectorId, String mediaType, String path, String message) throws Exception{
 
-    	log.debug("REST request with path " + path + " for gateway with id " + connectorId);
+        log.debug("REST request with path {} for gateway with id {}", path, connectorId);
     	
     	switch (mediaType.toLowerCase()) {    	
 	        case "application/json":
@@ -43,7 +43,7 @@ public final class ResponseUtil {
 
     public static ResponseEntity<String> createSuccessResponse(long connectorId, String mediaType, String path, String message, boolean plainResponse) throws Exception{
 
-    	log.debug("REST request with path " + path + " for gateway with id " + connectorId);
+        log.debug("REST request with path {} for gateway with id {}", path, connectorId);
     
     	if(plainResponse) {
         	response = ResponseEntity.ok()
@@ -72,7 +72,7 @@ public final class ResponseUtil {
     
     public static ResponseEntity<String> createSuccessResponseWithHeaders(long connectorId, String mediaType, String path, String message, String headerMessage, String headerParam) throws Exception{
 
-    	log.debug("REST request with path " + path + " for gateway with id " + connectorId);
+        log.debug("REST request with path {} for gateway with id {}", path, connectorId);
     	
     	switch (mediaType.toLowerCase()) {    	
 	        case "application/json":
@@ -94,7 +94,7 @@ public final class ResponseUtil {
     
     public static ResponseEntity<String> createFailureResponse(long connectorId, String mediaType, String path, String message) throws Exception{
 
-		log.error("REST request with path " + path + " for gateway with id " + connectorId + " failed.");
+        log.error("REST request with path {} for gateway with id {} failed.", path, connectorId);
 
     	switch (mediaType.toLowerCase()) {    	
 	        case "application/json":
@@ -117,7 +117,7 @@ public final class ResponseUtil {
 
 	public static ResponseEntity<String> createFailureResponse(long connectorId, String mediaType, String path, String message, boolean plainResponse) throws Exception{
 
-		log.error("REST request with path " + path + " for gateway with id " + connectorId + " failed.");
+        log.error("REST request with path {} for gateway with id {} failed.", path, connectorId);
 
 		if(plainResponse) {
 			response = ResponseEntity.badRequest()
@@ -146,7 +146,7 @@ public final class ResponseUtil {
 
 	public static ResponseEntity<String> createFailureResponseWithHeaders(long connectorId, String mediaType, String path, String message, String headerMessage, String headerParam) throws Exception{
 
-		log.error("REST request with path " + path + " for gateway with id " + connectorId + " failed.");
+        log.error("REST request with path {} for gateway with id {} failed.", path, connectorId);
 
     	switch (mediaType.toLowerCase()) {    	
 	        case "application/json":
@@ -170,7 +170,7 @@ public final class ResponseUtil {
 
 	public static ResponseEntity<String> createNoContentResponse(long connectorId, String path) {
 
-		log.debug("REST request with path " + path + " for gateway with id " + connectorId);
+        log.debug("REST request with path {} for gateway with id {}", path, connectorId);
 
 		response = ResponseEntity.noContent().build();
 		return response;
@@ -179,7 +179,7 @@ public final class ResponseUtil {
 
 	public static ResponseEntity<String> createNotModifiedResponse(long connectorId, String path) {
 
-		log.debug("REST request with path " + path + " for gateway with id " + connectorId);
+        log.debug("REST request with path {} for gateway with id {}", path, connectorId);
 
 		response = ResponseEntity.status(HttpStatus.NOT_MODIFIED).build();
 		return response;

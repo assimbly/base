@@ -43,7 +43,7 @@ public class DependencyUtil {
 
                 URLClassLoader child = new URLClassLoader(new URL[] {url}, this.getClass().getClassLoader());
 
-                ArrayList<String> classNames = null;
+                ArrayList<String> classNames;
 
                 try {
                     classNames = getClassNamesFromJar(path.toString());
@@ -52,7 +52,7 @@ public class DependencyUtil {
                 }
 
                 for (String className : classNames) {
-                    Class classToLoad = null;
+                    Class classToLoad;
 
                     try {
                         classToLoad = Class.forName(className, true, child);
