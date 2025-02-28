@@ -64,7 +64,7 @@ public final class CertificatesUtil {
             SSLSession sslSession = routedConnection.getSSLSession();
             if (sslSession != null) {
 
-                // get the server certificates from the {@Link SSLSession}
+                // get the server certificates from the SSLSession
                 java.security.cert.Certificate[] certificates = sslSession.getPeerCertificates();
 
                 // add the certificates to the context, where we can later grab it from
@@ -132,17 +132,7 @@ public final class CertificatesUtil {
 
 	        return certificate;
 	        
-		}catch (KeyStoreException e) {
-			e.printStackTrace();
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (NoSuchAlgorithmException e) {
-			e.printStackTrace();
-		} catch (CertificateException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		} catch (Exception e) {
+		}catch (Exception e) {
 			e.printStackTrace();
 		}
 		return null;   	
@@ -174,17 +164,7 @@ public final class CertificatesUtil {
 			// Save the new keystore contents
 			storeKeystore(keyStorePath,keystorePassword,keystore);
 
-		}catch (KeyStoreException e) {
-			e.printStackTrace();
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (NoSuchAlgorithmException e) {
-			e.printStackTrace();
-		} catch (CertificateException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		} catch (Exception e) {
+		}catch (Exception e) {
 			e.printStackTrace();
 		}
 
@@ -195,7 +175,7 @@ public final class CertificatesUtil {
 	public Map<String,Certificate> importCertificates(String keyStorePath, String keystorePassword, Certificate[] certificates) {
 
         System.out.println("Importing certificates");
-        Map<String,Certificate> certificateMap = new HashMap<String,Certificate>();
+        Map<String,Certificate> certificateMap = new HashMap<>();
 
     	try {
     		//load keystore
@@ -222,17 +202,7 @@ public final class CertificatesUtil {
 	        // Save the new keystore contents
 			storeKeystore(keyStorePath,keystorePassword,keystore);
 	        
-		}catch (KeyStoreException e) {
-			e.printStackTrace();
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (NoSuchAlgorithmException e) {
-			e.printStackTrace();
-		} catch (CertificateException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		} catch (Exception e) {
+		}catch (Exception e) {
 			e.printStackTrace();
 		}
 
@@ -275,7 +245,7 @@ public final class CertificatesUtil {
 
 	}
 
-	public void deleteCertificate(String keyStorePath, String keystorePassword, String certificateName) {
+	public void deleteCertificate(String keyStorePath, String keystorePassword) {
 
     	try {
     		//load keystore
@@ -284,17 +254,7 @@ public final class CertificatesUtil {
 			// Save the new keystore contents
 			storeKeystore(keyStorePath,keystorePassword,keystore);
 	        
-		}catch (KeyStoreException e) {
-			e.printStackTrace();
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (NoSuchAlgorithmException e) {
-			e.printStackTrace();
-		} catch (CertificateException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		} catch (Exception e) {
+		}catch (Exception e) {
 			e.printStackTrace();
 		}
 
@@ -303,7 +263,7 @@ public final class CertificatesUtil {
 
 
 	public static String convertStringToBinary(String input) {
-		StringBuffer bString = new StringBuffer();
+		StringBuilder bString = new StringBuilder();
 
 		for (int i = 0; i < input.length(); i++) {
 			StringBuilder temp = new StringBuilder(Integer.toBinaryString(input.charAt(i)));

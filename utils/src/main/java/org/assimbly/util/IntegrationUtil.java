@@ -41,11 +41,7 @@ public final class IntegrationUtil {
 		try {
 			URI uri = new URI(name);
 
-			if(uri.getScheme() == null){
-				return false;
-			}else{
-				return true;
-			}
+            return uri.getScheme() != null;
 
 		} catch (URISyntaxException e) {
 			return false;
@@ -114,21 +110,15 @@ public final class IntegrationUtil {
 	public static String testConnection(String host, int port, int timeOut) {
 
 		SocketAddress socketAddress = new InetSocketAddress(host, port);
-		Socket socket = new Socket();
+
 		timeOut = timeOut * 1000;
 
-		try {
+		try (Socket socket = new Socket();) {
 			socket.connect(socketAddress, timeOut);
 		} catch (SocketTimeoutException stex) {
 			return "Connection error: Timed out";
 		} catch (IOException ioException) {
 			return "Connection error: IOException";
-		} finally {
-			try {
-				socket.close();
-			} catch (IOException ioException2) {
-				return "Connection error: Can't close connection." + ioException2.getMessage();
-			}
 		}
 
 		return "Connection successful";
@@ -229,9 +219,9 @@ public final class IntegrationUtil {
 			subMap = treeMap.entrySet()
 					.stream()
 					.filter(map -> map.getKey().startsWith(item))
-					.collect(Collectors.toMap(map -> map.getKey(), map -> Optional.ofNullable(map.getValue()).orElse("")));
+					.collect(Collectors.toMap(Map.Entry::getKey, map -> Optional.ofNullable(map.getValue()).orElse("")));
 
-			if(subMap.size() > 0) {
+			if(!subMap.isEmpty()) {
 
 				string.append("\n").append(item.toUpperCase()).append("\n");
 

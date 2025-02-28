@@ -35,13 +35,11 @@ public class DirectoryWatcher implements Runnable, Service {
     private Future<?> mWatcherTask;
 
     private final Set<Path> mWatched;
-    private final boolean mPreExistingAsCreated;
     private final Listener mListener;
     private final Filter<Path> mFilter;
 
     public DirectoryWatcher(Builder builder) {
         mWatched = builder.mWatched;
-        mPreExistingAsCreated = builder.mPreExistingAsCreated;
         mListener = builder.mListener;
         mFilter = builder.mFilter;
     }
@@ -67,7 +65,9 @@ public class DirectoryWatcher implements Runnable, Service {
 
     @Override
     public void run() {
+
         WatchService watchService;
+
         try {
             watchService = FileSystems.getDefault().newWatchService();
         } catch (IOException ioe) {
@@ -90,6 +90,15 @@ public class DirectoryWatcher implements Runnable, Service {
             }
         }
 
+        watchDirectory(watchService, watchKeyToDirectory);
+
+    }
+
+    public interface Listener {
+        void onEvent(Event event, Path path);
+    }
+
+    private void watchDirectory(WatchService watchService, Map<WatchKey, Path> watchKeyToDirectory) {
         while (true) {
             if (Thread.interrupted()) {
                 log.info("Directory watcher thread interrupted.");
@@ -119,17 +128,17 @@ public class DirectoryWatcher implements Runnable, Service {
                 WatchEvent.Kind<Path> kind = pathEvent.kind();
 
                 Path path = dir.resolve(pathEvent.context());
-				try {
-					if (mFilter.accept(path) && EVENT_MAP.containsKey(kind)) {
-						if (event.kind().equals(ENTRY_DELETE)) {
-							mListener.onEvent(EVENT_MAP.get(kind), path);
-						}else if(Files.exists(path) && Files.size(path)> 0 && (path.toString().toLowerCase().endsWith(".xml") || path.toString().toLowerCase().endsWith(".json") || path.toString().toLowerCase().endsWith(".yaml"))){
-							mListener.onEvent(EVENT_MAP.get(kind), path);
-						}
-					}
-				} catch (IOException ie) {
-					log.error("Not watching '{}'.", dir, ie);
-				}
+                try {
+                    if (mFilter.accept(path) && EVENT_MAP.containsKey(kind)) {
+                        if (event.kind().equals(ENTRY_DELETE)) {
+                            mListener.onEvent(EVENT_MAP.get(kind), path);
+                        }else if(Files.exists(path) && Files.size(path)> 0 && (path.toString().toLowerCase().endsWith(".xml") || path.toString().toLowerCase().endsWith(".json") || path.toString().toLowerCase().endsWith(".yaml"))){
+                            mListener.onEvent(EVENT_MAP.get(kind), path);
+                        }
+                    }
+                } catch (IOException ie) {
+                    log.error("Not watching '{}'.", dir, ie);
+                }
             }
 
             boolean valid = key.reset();
@@ -141,10 +150,6 @@ public class DirectoryWatcher implements Runnable, Service {
                 }
             }
         }
-    }
-
-    public interface Listener {
-        void onEvent(Event event, Path path);
     }
 
     public static class Builder {

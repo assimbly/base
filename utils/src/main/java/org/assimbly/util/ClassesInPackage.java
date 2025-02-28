@@ -17,31 +17,19 @@ public class ClassesInPackage {
 
         protected static final Logger log = LoggerFactory.getLogger("org.assimbly.util.ClassesInPackage");
 
-        public Set<Class> findClasses(String packageName) {
+        public Set<Class> findClasses(String packageName) throws IOException {
 
-            BufferedReader reader = null;
             Set<Class> classes = Set.of();
             InputStream stream = ClassLoader.getSystemClassLoader().getResourceAsStream(packageName.replaceAll("[.]", "/"));
 
-            try {
+            if (stream != null) {
+                try (BufferedReader reader = new BufferedReader(new InputStreamReader(stream,StandardCharsets.UTF_8));) {
 
-                if (stream != null) {
-                    reader = new BufferedReader(new InputStreamReader(stream,StandardCharsets.UTF_8));
                     classes = reader.lines()
                             .filter(line -> line.endsWith(".class"))
                             .map(line -> getClass(line, packageName))
                             .collect(Collectors.toSet());
-                }
 
-            } finally {
-                // this block will be executed in every case, success or caught exception
-                if (reader != null) {
-                    // again, a resource is involved, so try-catch another time
-                    try {
-                        reader.close();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
                 }
             }
 
@@ -63,7 +51,7 @@ public class ClassesInPackage {
                 .stream()
                 .filter(clazz -> clazz.getPackageName()
                         .equalsIgnoreCase(packageName))
-                .map(clazz -> clazz.load())
+                .map(ClassPath.ClassInfo::load)
                 .collect(Collectors.toSet());
     }
 

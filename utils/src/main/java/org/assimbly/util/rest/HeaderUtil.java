@@ -55,7 +55,7 @@ public final class HeaderUtil {
 		return createAlert("Route " + param + " resumes", param);
 	}
 
-	public static HttpHeaders flowFailureAlert(String flowName, String errorKey, String defaultMessage) {
+	public static HttpHeaders flowFailureAlert(String flowName, String defaultMessage) {
         log.error("Entity processing failed, {}", defaultMessage);
         HttpHeaders headers = new HttpHeaders();
         headers.add("X-gatewayApp-error", defaultMessage);
