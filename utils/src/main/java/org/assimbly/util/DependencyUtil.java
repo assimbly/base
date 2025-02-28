@@ -8,17 +8,14 @@ import java.io.FileInputStream;
 import java.net.URL;
 import java.net.URLClassLoader;
 import java.nio.file.Path;
-import java.security.AccessController;
-import java.security.PrivilegedAction;
 import java.util.*;
 import java.util.jar.JarEntry;
 import java.util.jar.JarInputStream;
 
-//import static dev.jeka.core.api.depmanagement.JkJavaDepScopes.*;
 
 public class DependencyUtil {
 
-	public List<Path> resolveDependency(String groupId, String artifactId, String version) throws Exception {
+	public List<Path> resolveDependency(String groupId, String artifactId, String version) {
     	
         String dependency = groupId + ":" + artifactId + ":" + version;
         
@@ -31,20 +28,17 @@ public class DependencyUtil {
 
 	}
 
-    public List<Class> loadDependency(List<Path> paths) throws Exception {
+    public List<Class<?>> loadDependency(List<Path> paths) throws Exception {
 
-        List<Class> classes = new ArrayList<>();
+        List<Class<?>> classes = new ArrayList<>();
 
         for(Path path: paths){
 
             URL url = path.toUri().toURL();
 
-            AccessController.doPrivileged((PrivilegedAction) () -> {
-
-                URLClassLoader child = new URLClassLoader(new URL[] {url}, this.getClass().getClassLoader());
+            try(URLClassLoader child = new URLClassLoader(new URL[]{url}, this.getClass().getClassLoader())) {
 
                 ArrayList<String> classNames;
-
                 try {
                     classNames = getClassNamesFromJar(path.toString());
                 } catch (Exception e) {
@@ -52,19 +46,17 @@ public class DependencyUtil {
                 }
 
                 for (String className : classNames) {
-                    Class classToLoad;
-
                     try {
-                        classToLoad = Class.forName(className, true, child);
+                        Class<?> classToLoad = Class.forName(className, true, child);
                         classes.add(classToLoad);
-                    } catch(NoClassDefFoundError e) {
-                        //ignore
+                    } catch (NoClassDefFoundError e) {
+                        // Ignore missing dependencies
                     } catch (Exception e) {
                         throw new RuntimeException(e);
                     }
                 }
-                return classes;
-            });
+
+            }
 
         }
 
@@ -72,19 +64,10 @@ public class DependencyUtil {
 
     }
 
-    private boolean classExists(String moduleName, String className) {
-        Optional<Module> module = ModuleLayer.boot().findModule(moduleName);
-        if(module.isPresent()) {
-            return Class.forName(module.get(), className) != null;
-        }
-        return false;
-    }
-
     // Returns an arraylist of class names in a JarInputStream
     private ArrayList<String> getClassNamesFromJar(JarInputStream jarFile) throws Exception {
         ArrayList<String> classNames = new ArrayList<>();
         try {
-            //JarInputStream jarFile = new JarInputStream(jarFileStream);
             JarEntry jar;
 
             //Iterate through the contents of the jar file
@@ -95,7 +78,7 @@ public class DependencyUtil {
                 }
                 //Pick file that has the extension of .class
                 if ((jar.getName().endsWith(".class"))) {
-                    String className = jar.getName().replaceAll("/", "\\.");
+                    String className = jar.getName().replace("/", "\\.");
                     String myClass = className.substring(0, className.lastIndexOf('.'));
                     classNames.add(myClass);
                 }
@@ -198,11 +181,11 @@ public class DependencyUtil {
         ZIP("zip"),
         ;
 
-        private static Map<String, CompiledDependency> BY_LABEL = new HashMap<>();
+        private static final Map<String, CompiledDependency> byLabel = new HashMap<>();
 
         static {
             for (CompiledDependency cd : values()) {
-                BY_LABEL.put(cd.label, cd);
+                byLabel.put(cd.label, cd);
             }
         }
 
@@ -213,7 +196,7 @@ public class DependencyUtil {
         }
 
         public static boolean hasCompiledDependency(String label){
-            return BY_LABEL.containsKey(label);
+            return byLabel.containsKey(label);
         }
     }
 
