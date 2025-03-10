@@ -46,7 +46,7 @@
 		<activemq-artemis.version>2.39.0</activemq-artemis.version>
 		<activemq-artemis-native.version>2.0.0</activemq-artemis-native.version>
 		<bouncycastle.version>1.70</bouncycastle.version>
-		<camel.version>4.10.1</camel.version>
+		<camel.version>4.10.2</camel.version>
 		<commons-beanutils.version>1.10.1</commons-beanutils.version>
 		<commons-cli.version>1.9.0</commons-cli.version>
 		<commons-codec.version>1.18.0</commons-codec.version>
@@ -281,6 +281,15 @@
 				</configuration>
 			</plugin>
 		</plugins>
+
+		<extensions>
+			<extension>
+				<groupId>org.apache.maven.extensions</groupId>
+				<artifactId>maven-build-cache-extension</artifactId>
+				<version>1.2.0</version>
+			</extension>
+		</extensions>
+
 	</build>
 
 </project>
