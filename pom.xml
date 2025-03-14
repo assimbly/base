@@ -42,11 +42,11 @@
 		<aopalliance.version>1.0</aopalliance.version>
 		<axiom.version>2.0.0</axiom.version>
 		<assimbly.version>5.1.0</assimbly.version>
-		<activemq-classic.version>6.1.5</activemq-classic.version>
+		<activemq-classic.version>6.1.6</activemq-classic.version>
 		<activemq-artemis.version>2.39.0</activemq-artemis.version>
 		<activemq-artemis-native.version>2.0.0</activemq-artemis-native.version>
 		<bouncycastle.version>1.70</bouncycastle.version>
-		<camel.version>4.10.1</camel.version>
+		<camel.version>4.10.2</camel.version>
 		<commons-beanutils.version>1.10.1</commons-beanutils.version>
 		<commons-cli.version>1.9.0</commons-cli.version>
 		<commons-codec.version>1.18.0</commons-codec.version>
@@ -68,7 +68,7 @@
 		<groovy-script.version>4.0.26</groovy-script.version>
 		<guava.version>33.4.0-jre</guava.version>
 		<ibmmq-client.version>9.4.2.0</ibmmq-client.version>
-		<informix-jdbc.version>15.0.0.0</informix-jdbc.version>
+		<informix-jdbc.version>15.0.0.1</informix-jdbc.version>
 		<jackson.version>2.18.3</jackson.version>
 		<jakarta-activation-api.version>2.1.3</jakarta-activation-api.version>
 		<jakarta-annotation-api.version>3.0.0</jakarta-annotation-api.version>
@@ -77,15 +77,15 @@
 		<jakarta-xml-soap-api.version>3.0.2</jakarta-xml-soap-api.version>
 		<jakarta-xml-bind-api.version>4.0.2</jakarta-xml-bind-api.version>
 		<jasypt.version>1.9.3</jasypt.version>
-		<jeka.version>0.11.23</jeka.version>
+		<jeka.version>0.11.24</jeka.version>
 		<json.version>20250107</json.version>
 		<jsonassert.version>1.5.3</jsonassert.version>
 		<json-path.version>2.9.0</json-path.version>
 		<junit.version>5.12.0</junit.version>
 		<jwt.version>0.12.6</jwt.version>
-		<jolokia.version>2.2.4</jolokia.version>
+		<jolokia.version>2.2.6</jolokia.version>
 		<httpclient.version>4.5.14</httpclient.version>
-		<kamelet.version>4.10.0</kamelet.version>
+		<kamelet.version>4.10.2</kamelet.version>
 		<logback-classic.version>1.5.17</logback-classic.version>
 		<messaginghub.version>3.1.7</messaginghub.version>
 		<mssql-jdbc.version>12.8.1.jre11</mssql-jdbc.version> <!-- use jre21 when it comes out -->
@@ -100,7 +100,7 @@
 		<qpid-proton-j.version>0.34.1</qpid-proton-j.version>
 		<slf4j.version>2.0.17</slf4j.version>
 		<sonic.version>14.0.8</sonic.version>
-		<spring.version>6.2.3</spring.version>
+		<spring.version>6.2.4</spring.version>
 		<spring-data.version>3.4.3</spring-data.version>
 		<springdoc.version>2.8.5</springdoc.version>
 		<sqlite-jdbc.version>3.49.1.0</sqlite-jdbc.version>
