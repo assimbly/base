@@ -81,7 +81,7 @@
 		<json.version>20250107</json.version>
 		<jsonassert.version>1.5.3</jsonassert.version>
 		<json-path.version>2.9.0</json-path.version>
-		<junit.version>5.12.0</junit.version>
+		<junit.version>5.12.1</junit.version>
 		<jwt.version>0.12.6</jwt.version>
 		<jolokia.version>2.2.6</jolokia.version>
 		<httpclient.version>4.5.14</httpclient.version>
@@ -89,7 +89,7 @@
 		<logback-classic.version>1.5.17</logback-classic.version>
 		<messaginghub.version>3.1.7</messaginghub.version>
 		<mssql-jdbc.version>12.8.1.jre11</mssql-jdbc.version> <!-- use jre21 when it comes out -->
-		<mockito.version>5.16.0</mockito.version>
+		<mockito.version>5.16.1</mockito.version>
 		<mockserver.version>5.15.0</mockserver.version>
 		<mongo.version>3.12.11</mongo.version>
 		<mysql-connector-java.version>9.2.0</mysql-connector-java.version>
@@ -101,7 +101,7 @@
 		<slf4j.version>2.0.17</slf4j.version>
 		<sonic.version>14.0.8</sonic.version>
 		<spring.version>6.2.4</spring.version>
-		<spring-data.version>3.4.3</spring-data.version>
+		<spring-data.version>3.4.4</spring-data.version>
 		<springdoc.version>2.8.5</springdoc.version>
 		<sqlite-jdbc.version>3.49.1.0</sqlite-jdbc.version>
 		<tika.version>1.28.5</tika.version>
