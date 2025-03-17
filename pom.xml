@@ -7,7 +7,7 @@
 	<packaging>pom</packaging>
 	<name>org.assimbly.camelconnector</name>
 	<url>http://maven.apache.org</url>
-	<version>5.0.3</version>
+	<version>5.0.4</version>
 
 	<modules>
 		<module>activemqBase</module>
@@ -41,12 +41,12 @@
 		<!-- Manage the versions of all dependencies here -->
 		<aopalliance.version>1.0</aopalliance.version>
 		<axiom.version>2.0.0</axiom.version>
-		<assimbly.version>5.0.3</assimbly.version>
-		<activemq-classic.version>6.1.5</activemq-classic.version>
+		<assimbly.version>5.0.4</assimbly.version>
+		<activemq-classic.version>6.1.6</activemq-classic.version>
 		<activemq-artemis.version>2.39.0</activemq-artemis.version>
 		<activemq-artemis-native.version>2.0.0</activemq-artemis-native.version>
 		<bouncycastle.version>1.70</bouncycastle.version>
-		<camel.version>4.10.0</camel.version>
+		<camel.version>4.10.2</camel.version>
 		<commons-beanutils.version>1.10.1</commons-beanutils.version>
 		<commons-cli.version>1.9.0</commons-cli.version>
 		<commons-codec.version>1.18.0</commons-codec.version>
@@ -65,7 +65,7 @@
 		<dropwizard-metrics.version>4.2.30</dropwizard-metrics.version>
 		<elasticsearch-rest-client.version>8.17.2</elasticsearch-rest-client.version>
 		<gson.version>2.12.1</gson.version>
-		<groovy-script.version>4.0.25</groovy-script.version>
+		<groovy-script.version>4.0.26</groovy-script.version>
 		<guava.version>33.4.0-jre</guava.version>
 		<ibmmq-client.version>9.4.1.1</ibmmq-client.version>
 		<informix-jdbc.version>15.0.0.0</informix-jdbc.version>
@@ -85,7 +85,7 @@
 		<jwt.version>0.12.6</jwt.version>
 		<jolokia.version>2.2.2</jolokia.version>
 		<httpclient.version>4.5.14</httpclient.version>
-		<kamelet.version>4.10.0</kamelet.version>
+		<kamelet.version>4.10.2</kamelet.version>
 		<logback-classic.version>1.5.16</logback-classic.version>
 		<messaginghub.version>3.1.7</messaginghub.version>
 		<mssql-jdbc.version>12.8.1.jre11</mssql-jdbc.version> <!-- use jre21 when it comes out -->
@@ -281,6 +281,15 @@
 				</configuration>
 			</plugin>
 		</plugins>
+
+		<extensions>
+			<extension>
+				<groupId>org.apache.maven.extensions</groupId>
+				<artifactId>maven-build-cache-extension</artifactId>
+				<version>1.2.0</version>
+			</extension>
+		</extensions>
+
 	</build>
 
 </project>
