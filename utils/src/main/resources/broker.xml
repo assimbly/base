@@ -23,7 +23,7 @@
         <journal-file-size>10M</journal-file-size>
         <journal-buffer-timeout>60000</journal-buffer-timeout>
         <journal-buffer-size>10000000</journal-buffer-size>
-        <journal-max-io>2000</journal-max-io>
+        <journal-max-io>4096</journal-max-io>
         <disk-scan-period>10000</disk-scan-period>
         <max-disk-usage>95</max-disk-usage>
         <critical-analyzer>true</critical-analyzer>
