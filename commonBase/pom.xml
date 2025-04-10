@@ -253,16 +253,6 @@
             <artifactId>xpath2</artifactId>
             <version>${xpath2.version}</version>
         </dependency>
-     <!--   <dependency>
-            <groupId>xalan</groupId>
-            <artifactId>xalan</artifactId>
-            <version>${xalan.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>xalan</groupId>
-            <artifactId>serializer</artifactId>
-            <version>${xalan.version}</version>
-        </dependency>-->
         <dependency>
             <groupId>org.messaginghub</groupId>
             <artifactId>pooled-jms</artifactId>
