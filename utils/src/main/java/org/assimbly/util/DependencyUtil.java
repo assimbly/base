@@ -46,6 +46,7 @@ public class DependencyUtil {
                 }
 
                 for (String className : classNames) {
+                    System.out.println("Class name: " + className);
                     try {
                         Class<?> classToLoad = Class.forName(className, true, child);
                         classes.add(classToLoad);
@@ -78,7 +79,7 @@ public class DependencyUtil {
                 }
                 //Pick file that has the extension of .class
                 if ((jar.getName().endsWith(".class"))) {
-                    String className = jar.getName().replace("/", "\\.");
+                    String className = jar.getName().replace("/", ".");
                     String myClass = className.substring(0, className.lastIndexOf('.'));
                     classNames.add(myClass);
                 }
@@ -105,6 +106,7 @@ public class DependencyUtil {
         AMQP("amqp"),
         AMQPS("amqps"),
         ARCHIVE("archive"),
+        AS2("as2"),
         BASE64TOTEXT("base64totext"),
         BEAN("bean"),
         CONTROLBUS("controlbus"),
@@ -177,6 +179,7 @@ public class DependencyUtil {
         XMLTOEXCEL("xmltoexcel"),
         XMLTOJSON("xmltojson"),
         XMLTOJSONLEGACY("xmltojsonlegacy"),
+        XSLT("xslt"),
         XSLTSAXON("xslt-saxon"),
         ZIP("zip"),
         ;
