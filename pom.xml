@@ -45,7 +45,7 @@
 		<activemq-classic.version>6.1.6</activemq-classic.version>
 		<activemq-artemis.version>2.41.0</activemq-artemis.version>
 		<activemq-artemis-native.version>2.0.0</activemq-artemis-native.version>
-		<bouncycastle.version>1.80</bouncycastle.version>
+		<bouncycastle.version>1.81</bouncycastle.version>
 		<camel.version>4.12.0</camel.version>
 		<commons-beanutils.version>1.11.0</commons-beanutils.version>
 		<commons-cli.version>1.9.0</commons-cli.version>
@@ -87,13 +87,14 @@
 		<httpclient.version>4.5.14</httpclient.version>
 		<kamelet.version>4.12.0</kamelet.version>
 		<logback-classic.version>1.5.18</logback-classic.version>
+		<mapdb.version>3.1.0</mapdb.version>
 		<messaginghub.version>3.1.7</messaginghub.version>
 		<mssql-jdbc.version>12.10.0.jre11</mssql-jdbc.version> <!-- use jre21 when it comes out -->
 		<mockito.version>5.18.0</mockito.version>
 		<mockserver.version>5.15.0</mockserver.version>
 		<mongo.version>3.12.11</mongo.version>
 		<mysql-connector-java.version>9.3.0</mysql-connector-java.version>
-		<netty.version>4.2.1.Final</netty.version>
+		<netty.version>4.2.2.Final</netty.version>
 		<oracle12.version>23.8.0.25.04</oracle12.version>
 		<postgresql.version>42.7.6</postgresql.version>
 		<powermock.version>2.0.9</powermock.version>

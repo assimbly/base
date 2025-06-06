@@ -284,6 +284,13 @@
             <version>${jolokia.version}</version>
         </dependency>
 
+        <!-- cache -->
+        <dependency>
+            <groupId>org.mapdb</groupId>
+            <artifactId>mapdb</artifactId>
+            <version>${mapdb.version}</version>
+        </dependency>
+
         <!-- log dependencies -->
         <dependency>
             <groupId>org.slf4j</groupId>
