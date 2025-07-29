@@ -52,9 +52,9 @@ public final class ExchangeHelper {
     }
 
     public static String unescapeExceptionalCharacters(String str) {
-        return str.replaceAll("\\\\n", "\n")
-                .replaceAll("\\\\t", "\t")
-                .replaceAll("\\\\r", "\r");
+        return str.replace("\\\\n", "\n")
+                .replace("\\\\t", "\t")
+                .replace("\\\\r", "\r");
     }
 
     static String escapeDollarSign(String str) {

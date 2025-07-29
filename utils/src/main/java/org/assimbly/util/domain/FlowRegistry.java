@@ -8,7 +8,7 @@ public class FlowRegistry {
 
     private static final FlowRegistry INSTANCE = new FlowRegistry();
 
-    private static HashMap<String, FlowInfo> registeredFlows = new HashMap<>();
+    private static final HashMap<String, FlowInfo> registeredFlows = new HashMap<>();
 
     private FlowRegistry() {}
 

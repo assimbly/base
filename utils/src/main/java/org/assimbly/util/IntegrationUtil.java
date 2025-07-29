@@ -35,7 +35,7 @@ import java.util.stream.Collectors;
 
 public final class IntegrationUtil {
 
-	protected static final Logger log = LoggerFactory.getLogger("org.assimbly.util.IntegrationUtil");
+	private static final Logger log = LoggerFactory.getLogger("org.assimbly.util.IntegrationUtil");
 
 	public static boolean isValidUri(String name) throws Exception {
 		try {

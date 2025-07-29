@@ -6,11 +6,15 @@ import org.apache.tika.mime.MediaType;
 import org.apache.tika.mime.MimeTypeException;
 import org.apache.tika.mime.MimeTypes;
 import org.apache.tika.parser.AutoDetectParser;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.io.InputStream;
 
 public final class MimeTypeHelper {
+
+    private static final Logger log = LoggerFactory.getLogger("org.assimbly.util.helper.MimeTypeHelper");
 
     private MimeTypeHelper() {}
 
@@ -21,7 +25,7 @@ public final class MimeTypeHelper {
         try {
             return detector.detect(content, new Metadata());
         } catch (IOException e) {
-            e.printStackTrace();
+            log.error("MimeType not detected",e);
         }
 
         return MediaType.TEXT_PLAIN;

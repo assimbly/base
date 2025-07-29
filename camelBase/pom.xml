@@ -138,7 +138,7 @@
             <groupId>org.apache.camel</groupId>
             <artifactId>camel-micrometer</artifactId>
         </dependency>
-        <dependency>
+      <dependency>
             <groupId>org.apache.camel</groupId>
             <artifactId>camel-quartz</artifactId>
         </dependency>
@@ -223,20 +223,6 @@
             <artifactId>artemis-jms-client-all</artifactId>
             <version>${activemq-artemis.version}</version>
         </dependency>
-
-        <!-- auto configuration for used in Spring Boot -->
-        <!--
-        <dependency>
-            <groupId>org.apache.camel.springboot</groupId>
-            <artifactId>camel-scheduler-starter</artifactId>
-            <version>3.20.9</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.camel.springboot</groupId>
-            <artifactId>camel-quartz-starter</artifactId>
-            <version>3.20.9</version>
-        </dependency>
-        -->
 
     </dependencies>
 

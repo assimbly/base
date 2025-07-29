@@ -1,38 +1,35 @@
 package org.assimbly.util;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.io.File;
 
 public class BaseDirectory {
 
+    private static final Logger log = LoggerFactory.getLogger("org.assimbly.util.BaseDirectory");
+
     private static final BaseDirectory INSTANCE = new BaseDirectory();
 
-    private volatile String baseDirectory = System.getProperty("user.home") + "/.assimbly";
+    private volatile String baseDirectoryPath = System.getProperty("user.home") + "/.assimbly";
 
     public static BaseDirectory getInstance() {
         return INSTANCE;
     }
 
     public String getBaseDirectory() {
-        return baseDirectory;
+        return baseDirectoryPath;
     }
 
-    /*example usage
-      BaseDirectory.getInstance().setBaseDirectory(10);
-      System.out.println(BaseDirectory.getInstance().getBaseDirectory());
-     */
-    public void setBaseDirectory(String baseDirectory) {
-        File directory = new File(baseDirectory);
+    public void setBaseDirectory(String baseDirectoryPath) {
+        File directory = new File(baseDirectoryPath);
         if (! directory.exists()){
-            boolean dirsCreated = directory.mkdirs();
-            if(!dirsCreated){
-                System.out.println("Base Directory: " + baseDirectory + " couldn't be created.");
+            boolean dirCreated = directory.mkdirs();
+            if(!dirCreated){
+                log.warn("Could not create base directory: {}", baseDirectoryPath);
             }
         }
-        this.baseDirectory = baseDirectory;
+        this.baseDirectoryPath = baseDirectoryPath;
     }
 
-
-
 }
-
-

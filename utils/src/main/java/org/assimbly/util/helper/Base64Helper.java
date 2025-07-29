@@ -21,7 +21,7 @@ public final class Base64Helper {
 
     public static String marshal(String string){
         byte[] encoded = Base64.encodeBase64(string.getBytes(StandardCharsets.UTF_8));
-       return new String(encoded, StandardCharsets.UTF_8);
+        return new String(encoded, StandardCharsets.UTF_8);
     }
 
     public static String marshal(byte[] bytes){

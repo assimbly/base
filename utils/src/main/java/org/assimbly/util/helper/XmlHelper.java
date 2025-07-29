@@ -27,9 +27,11 @@ import java.util.regex.Pattern;
 
 public final class XmlHelper {
 
-    protected static final Logger log = LoggerFactory.getLogger(XmlHelper.class);
+    private static final Logger log = LoggerFactory.getLogger("org.assimbly.util.helper.XmlHelper");
 
-    public static final String VALID_XML_REGEX = "[^A-z0-9_.\\-]|^(xml|[\\-0-9\\.])+";
+    private static final String INVALID_CHAR_REGEX = "[^A-Za-z0-9_.-]";
+
+    private static final String INVALID_START_REGEX = "^([0-9.-]|(?i)xml).*";
 
     public static Document newDocument(){
         DocumentBuilderFactory icFactory;
@@ -130,19 +132,28 @@ public final class XmlHelper {
     }
 
     public static boolean hasInvalidXml(String input) {
-        Pattern pattern = Pattern.compile(VALID_XML_REGEX);
-        Matcher matcher = pattern.matcher(input);
-        return matcher.find();
+        // Check for invalid characters
+        if (Pattern.compile(INVALID_CHAR_REGEX).matcher(input).find()) {
+            return true;
+        }
+        // Check for invalid starting patterns
+        return Pattern.compile(INVALID_START_REGEX).matcher(input).matches();
     }
 
     public static String fixInvalidXml(String input) {
         String result = input;
 
-        while (hasInvalidXml(result)) {
-            result = result.replaceAll(VALID_XML_REGEX, "");
+        result = result.replaceAll(INVALID_CHAR_REGEX, "");
 
-            if (result.isEmpty())
-                result = "element-" + input;
+        Pattern startPattern = Pattern.compile(INVALID_START_REGEX);
+        Matcher startMatcher = startPattern.matcher(result);
+
+        if (startMatcher.matches() || result.isEmpty()) { // If it starts with an invalid pattern or is now empty
+            if (result.isEmpty()) {
+                result = "element-" + input; // Use original input to ensure some content
+            } else {
+                result = "element-" + result;
+            }
         }
 
         return result;
