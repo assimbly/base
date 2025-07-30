@@ -61,7 +61,7 @@
 		<commons-math3.version>3.6.1</commons-math3.version>
 		<commons-text.version>1.14.0</commons-text.version>
 		<db2-jdbc.version>db2jcc4</db2-jdbc.version>
-		<docconverter.version>1.14.4</docconverter.version>
+		<docconverter.version>1.15.0</docconverter.version>
 		<dropwizard-metrics.version>4.2.33</dropwizard-metrics.version>
 		<elasticsearch-rest-client.version>9.1.0</elasticsearch-rest-client.version>
 		<gson.version>2.13.1</gson.version>
@@ -211,19 +211,6 @@
 				<plugin>
 					<artifactId>maven-deploy-plugin</artifactId>
 					<version>3.1.4</version>
-					<configuration>
-						<message>Maven artifacts for ${project.version}</message>
-						<noJekyll>true</noJekyll>
-						<outputDirectory>${project.build.directory}</outputDirectory>
-						<branch>refs/heads/${branch-name}</branch>
-						<includes>
-							<include>**/*</include>
-						</includes>
-						<merge>true</merge>
-						<repositoryName>base</repositoryName>
-						<repositoryOwner>${assimbly}</repositoryOwner>
-						<server>github</server>
-					</configuration>
 				</plugin>
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
