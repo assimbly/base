@@ -11,6 +11,6 @@ public class ExtendedHeaderFilterStrategy extends DefaultHeaderFilterStrategy {
             return false;
         }
 
-        return (exchange.getContext().getTypeConverter().tryConvertTo(String.class, value).contains("\n"));
+        return exchange.getContext().getTypeConverter().tryConvertTo(String.class, value).contains("\n");
     }
 }

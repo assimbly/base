@@ -10,16 +10,14 @@ import org.springframework.http.ResponseEntity;
  */
 public final class ResponseUtil {
 
-	protected static final Logger log = LoggerFactory.getLogger("org.assimbly.util.rest.ResponseUtil");
+	private static final Logger log = LoggerFactory.getLogger("org.assimbly.util.rest.ResponseUtil");
 	
     private static ResponseEntity<String> response;
-
 
 	private ResponseUtil() {
     }
 
-    
-    public static ResponseEntity<String> createSuccessResponse(long connectorId, String mediaType, String path, String message) throws Exception{
+    public static ResponseEntity<String> createSuccessResponse(long connectorId, String mediaType, String path, String message) {
 
         log.debug("REST request with path {} for gateway with id {}", path, connectorId);
     	
@@ -41,7 +39,7 @@ public final class ResponseUtil {
    		return response;    	
     }
 
-    public static ResponseEntity<String> createSuccessResponse(long connectorId, String mediaType, String path, String message, boolean plainResponse) throws Exception{
+    public static ResponseEntity<String> createSuccessResponse(long connectorId, String mediaType, String path, String message, boolean plainResponse) {
 
         log.debug("REST request with path {} for gateway with id {}", path, connectorId);
     
@@ -68,9 +66,8 @@ public final class ResponseUtil {
     	
     	return response;	
    	}
-    
-    
-    public static ResponseEntity<String> createSuccessResponseWithHeaders(long connectorId, String mediaType, String path, String message, String headerMessage, String headerParam) throws Exception{
+
+    public static ResponseEntity<String> createSuccessResponseWithHeaders(long connectorId, String mediaType, String path, String message, String headerMessage, String headerParam) {
 
         log.debug("REST request with path {} for gateway with id {}", path, connectorId);
     	
@@ -92,7 +89,7 @@ public final class ResponseUtil {
    		return response;    	
     }    
     
-    public static ResponseEntity<String> createFailureResponse(long connectorId, String mediaType, String path, String message) throws Exception{
+    public static ResponseEntity<String> createFailureResponse(long connectorId, String mediaType, String path, String message) {
 
         log.error("REST request with path {} for gateway with id {} failed.", path, connectorId);
 
@@ -115,7 +112,7 @@ public final class ResponseUtil {
 		return response;
 	}
 
-	public static ResponseEntity<String> createFailureResponse(long connectorId, String mediaType, String path, String message, boolean plainResponse) throws Exception{
+	public static ResponseEntity<String> createFailureResponse(long connectorId, String mediaType, String path, String message, boolean plainResponse) {
 
         log.error("REST request with path {} for gateway with id {} failed.", path, connectorId);
 
@@ -143,8 +140,7 @@ public final class ResponseUtil {
 		return response;
 	}
 
-
-	public static ResponseEntity<String> createFailureResponseWithHeaders(long connectorId, String mediaType, String path, String message, String headerMessage, String headerParam) throws Exception{
+	public static ResponseEntity<String> createFailureResponseWithHeaders(long connectorId, String mediaType, String path, String message, String headerMessage, String headerParam) {
 
         log.error("REST request with path {} for gateway with id {} failed.", path, connectorId);
 
@@ -175,7 +171,6 @@ public final class ResponseUtil {
 		response = ResponseEntity.noContent().build();
 		return response;
 	}
-
 
 	public static ResponseEntity<String> createNotModifiedResponse(long connectorId, String path) {
 

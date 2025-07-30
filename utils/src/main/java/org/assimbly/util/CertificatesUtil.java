@@ -48,7 +48,7 @@ import java.util.regex.Pattern;
 
 public final class CertificatesUtil {
 
-	protected static final Logger log = LoggerFactory.getLogger("org.assimbly.util.CertificatesUtil");
+	private static final Logger log = LoggerFactory.getLogger("org.assimbly.util.CertificatesUtil");
 	
     public static final String PEER_CERTIFICATES = "PEER_CERTIFICATES";
 
@@ -72,30 +72,29 @@ public final class CertificatesUtil {
             }
         };
 
-		CloseableHttpClient httpClient = HttpClients
-				.custom()
-				.setSSLContext(new SSLContextBuilder().loadTrustMaterial(null, TrustAllStrategy.INSTANCE).build())
-				.setSSLHostnameVerifier(NoopHostnameVerifier.INSTANCE)
-				.addInterceptorLast(certificateInterceptor)
-				.build();
-
-		try {
+        try (CloseableHttpClient httpClient = HttpClients
+                .custom()
+                .setSSLContext(new SSLContextBuilder().loadTrustMaterial(null, TrustAllStrategy.INSTANCE).build())
+                .setSSLHostnameVerifier(NoopHostnameVerifier.INSTANCE)
+                .addInterceptorLast(certificateInterceptor)
+                .build()) {
 
 			// make HTTP GET request to resource server
-            HttpGet httpget = new HttpGet(url);
+			HttpGet httpget = new HttpGet(url);
 
-            System.out.println("Executing request " + httpget.getRequestLine());
- 
+			log.info("Executing request {}", httpget.getRequestLine());
+
 			// create http context where the certificate will be added
-            HttpContext context = new BasicHttpContext();
-            httpClient.execute(httpget, context);
-			
-			// obtain the server certificates from the context
-            peercertificates = (Certificate[])context.getAttribute(PEER_CERTIFICATES);
+			HttpContext context = new BasicHttpContext();
+			httpClient.execute(httpget, context);
 
-			if(peercertificates!=null){
+			// obtain the server certificates from the context
+			peercertificates = (Certificate[]) context.getAttribute(PEER_CERTIFICATES);
+
+			if (peercertificates != null) {
+
 				// loop over certificates and print meta-data
-				for (Certificate certificate : peercertificates){
+				for (Certificate certificate : peercertificates) {
 					X509Certificate real = (X509Certificate) certificate;
 					System.out.println("----------------------------------------");
 					System.out.println("Type: " + real.getType());
@@ -106,13 +105,10 @@ public final class CertificatesUtil {
 					System.out.println("Not Before: " + DateUtils.formatDate(real.getNotBefore(), "dd-MM-yyyy"));
 				}
 
-			}else{
-                log.error("Certificates not found. URL: {})", url);
+			} else {
+				log.error("Certificates not found. URL: {})", url);
 			}
 
-        } finally {
-            // close httpclient
-            httpClient.close();
         }
 
         return peercertificates;
@@ -133,7 +129,7 @@ public final class CertificatesUtil {
 	        return certificate;
 	        
 		}catch (Exception e) {
-			e.printStackTrace();
+			log.error("Get certificate for keystore {} with name {} failed", keyStorePath, certificateName, e);
 		}
 		return null;   	
 
@@ -165,7 +161,7 @@ public final class CertificatesUtil {
 			storeKeystore(keyStorePath,keystorePassword,keystore);
 
 		}catch (Exception e) {
-			e.printStackTrace();
+			log.error("Import certificate for keystore {} with name {} failed", keyStorePath, certificateName, e);
 		}
 
 		return certificateName;
@@ -203,7 +199,7 @@ public final class CertificatesUtil {
 			storeKeystore(keyStorePath,keystorePassword,keystore);
 	        
 		}catch (Exception e) {
-			e.printStackTrace();
+			log.error("Import certificates for keystore {} failed", keyStorePath, e);
 		}
 
 		return certificateMap;
@@ -255,7 +251,7 @@ public final class CertificatesUtil {
 			storeKeystore(keyStorePath,keystorePassword,keystore);
 	        
 		}catch (Exception e) {
-			e.printStackTrace();
+			log.error("Delete certificate for keystore {} failed", keyStorePath, e);
 		}
 
 	}
@@ -481,10 +477,7 @@ public final class CertificatesUtil {
 	 * Creates the hash value of the public key.
 	 *
 	 * @param publicKey of the certificate
-	 *
 	 * @return SubjectKeyIdentifier hash
-	 *
-	 * @throws OperatorCreationException
 	 */
 	private static SubjectKeyIdentifier createSubjectKeyId(final PublicKey publicKey) throws OperatorCreationException {
 		final SubjectPublicKeyInfo publicKeyInfo = SubjectPublicKeyInfo.getInstance(publicKey.getEncoded());
@@ -498,10 +491,8 @@ public final class CertificatesUtil {
 	 * Creates the hash value of the authority public key.
 	 *
 	 * @param publicKey of the authority certificate
-	 *
 	 * @return AuthorityKeyIdentifier hash
-	 *
-	 * @throws OperatorCreationException
+
 	 */
 	private static AuthorityKeyIdentifier createAuthorityKeyId(final PublicKey publicKey)
 			throws OperatorCreationException

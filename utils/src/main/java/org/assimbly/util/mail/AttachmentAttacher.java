@@ -39,6 +39,6 @@ public class AttachmentAttacher implements Processor {
         attMsg.addAttachment(fileName, new DataHandler(IOUtils.toByteArray(is), mimeType));
 
         in.setHeader(Exchange.CONTENT_TYPE, "text/plain");
-        in.setBody(String.valueOf(emailBody));
+        in.setBody(emailBody);
     }
 }

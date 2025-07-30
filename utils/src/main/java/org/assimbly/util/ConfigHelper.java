@@ -1,5 +1,7 @@
 package org.assimbly.util;
 
+import org.slf4j.LoggerFactory;
+
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -9,8 +11,10 @@ import java.util.logging.Logger;
 
 public final class ConfigHelper {
 
-    private String fileName;
-    private Class<?> originClass;
+    private static final org.slf4j.Logger log = LoggerFactory.getLogger("org.assimbly.util.ConfigHelper");
+
+    private final String fileName;
+    private final Class<?> originClass;
 
     public ConfigHelper(String fileName, Class<?> originClass) {
         this.fileName = fileName;
@@ -46,12 +50,12 @@ public final class ConfigHelper {
         Properties props = new Properties();
 
         try (
-                InputStream resourceStream = loader.getResourceAsStream(fileName);
-                FileInputStream fileInputStream = new FileInputStream("/opt/karaf/etc/" + fileName)
+            InputStream resourceStream = loader.getResourceAsStream(fileName);
+            FileInputStream fileInputStream = new FileInputStream("/opt/karaf/etc/" + fileName)
         ) {
             props.load(fileInputStream);
         } catch (IOException e) {
-            e.printStackTrace();
+            log.error("Loading config file {} failed", fileName, e);
         }
 
        return props;

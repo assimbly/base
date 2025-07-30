@@ -2,8 +2,7 @@ package org.assimbly.util.exception;
 
 public class FlowNotFoundException extends RuntimeException {
 
-    public FlowNotFoundException() {
-    }
+    public FlowNotFoundException() {}
 
     public FlowNotFoundException(String s) {
         super(s);

@@ -22,7 +22,7 @@ public final class PropertiesHelper {
      */
     public static String getProperty(String key) {
         try {
-            Properties props = loadProperties(FILE_NAME);
+            Properties props = loadProperties();
             return props.getProperty(key);
         } catch (IOException e) {
             Logger.getLogger(PropertiesHelper.class.getName()).log(Level.SEVERE, null, e);
@@ -34,14 +34,13 @@ public final class PropertiesHelper {
     /**
      * Load the contents of the module's config file into a properties object.
      *
-     * @param fileName to get the config file by.
      * @return a Properties object representing all the properties.
      * @throws IOException when something went wrong while loading the file.
      */
-    private static Properties loadProperties(String fileName) throws IOException {
+    private static Properties loadProperties() throws IOException {
         ClassLoader loader = PropertiesHelper.class.getClassLoader();
 
-        InputStream resourceStream = loader.getResourceAsStream(fileName);
+        InputStream resourceStream = loader.getResourceAsStream(PropertiesHelper.FILE_NAME);
 
         Properties props = new Properties();
         props.load(resourceStream);

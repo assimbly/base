@@ -5,7 +5,6 @@ import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
 import org.apache.camel.spi.Resource;
 import org.apache.camel.support.ResourceHelper;
 import org.apache.commons.configuration2.XMLConfiguration;
-import org.apache.commons.configuration2.ex.ConfigurationException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.w3c.dom.Document;
@@ -37,7 +36,7 @@ public final class IntegrationUtil {
 
 	private static final Logger log = LoggerFactory.getLogger("org.assimbly.util.IntegrationUtil");
 
-	public static boolean isValidUri(String name) throws Exception {
+	public static boolean isValidUri(String name) {
 		try {
 			URI uri = new URI(name);
 
@@ -106,14 +105,13 @@ public final class IntegrationUtil {
 		}		
 	}
 
-	@SuppressWarnings("resource")
 	public static String testConnection(String host, int port, int timeOut) {
 
 		SocketAddress socketAddress = new InetSocketAddress(host, port);
 
 		timeOut = timeOut * 1000;
 
-		try (Socket socket = new Socket();) {
+		try (Socket socket = new Socket()) {
 			socket.connect(socketAddress, timeOut);
 		} catch (SocketTimeoutException stex) {
 			return "Connection error: Timed out";
@@ -167,22 +165,22 @@ public final class IntegrationUtil {
 	}
 
 	public static Iterable<Node> iterable(final NodeList nodeList) {
-		return () -> new Iterator<Node>() {
+		return () -> new Iterator<>() {
 
-			private int index = 0;
+            private int index = 0;
 
-			@Override
-			public boolean hasNext() {
-				return index < nodeList.getLength();
-			}
+            @Override
+            public boolean hasNext() {
+                return index < nodeList.getLength();
+            }
 
-			@Override
-			public Node next() {
-				if (!hasNext())
-					throw new NoSuchElementException();
-				return nodeList.item(index++);
-			}
-		};
+            @Override
+            public Node next() {
+                if (!hasNext())
+                    throw new NoSuchElementException();
+                return nodeList.item(index++);
+            }
+        };
 	}
 
 	public static void printTreemap(TreeMap<String, String> treeMap) {

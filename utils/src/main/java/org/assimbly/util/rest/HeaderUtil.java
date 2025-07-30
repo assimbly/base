@@ -56,7 +56,7 @@ public final class HeaderUtil {
 	}
 
 	public static HttpHeaders flowFailureAlert(String flowName, String defaultMessage) {
-        log.error("Entity processing failed, {}", defaultMessage);
+        log.error("Entity flowFailureAlert processing failed, {}", defaultMessage);
         HttpHeaders headers = new HttpHeaders();
         headers.add("X-gatewayApp-error", defaultMessage);
         headers.add("X-gatewayApp-params", flowName);
@@ -64,7 +64,7 @@ public final class HeaderUtil {
     }
     
     public static HttpHeaders createFailureAlert(String entityName, String defaultMessage) {
-        log.error("Entity processing failed, {}", defaultMessage);
+        log.error("Entity createFailureAlert processing failed, {}", defaultMessage);
         HttpHeaders headers = new HttpHeaders();
         headers.add("X-" + APPLICATION_NAME + "-error", defaultMessage);
         headers.add("X-" + APPLICATION_NAME + "-params", entityName);

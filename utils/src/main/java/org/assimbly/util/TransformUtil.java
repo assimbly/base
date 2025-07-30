@@ -20,7 +20,7 @@ import java.util.regex.Pattern;
 
 public final class TransformUtil {
 
-    protected static final Logger log = LoggerFactory.getLogger("org.assimbly.util.TransformUtil");
+    private static final Logger log = LoggerFactory.getLogger("org.assimbly.util.TransformUtil");
 
     public static String transformXML(String xml, InputStream xslFile) {
 
@@ -30,12 +30,8 @@ public final class TransformUtil {
             TransformerFactory factory = TransformerFactory.newInstance();
 
             StreamSource sourcXsl = new StreamSource(xslFile);
-
-
             Transformer transformer = factory.newTransformer(sourcXsl);
-
             Source xmlStream = new StreamSource(new StringReader(xml));
-
             StringWriter writer = new StringWriter();
 
             Result result = new StreamResult(writer);
@@ -47,9 +43,9 @@ public final class TransformUtil {
             writer.close();
 
         } catch (TransformerConfigurationException tce) {
-            tce.printStackTrace();
+            log.error("XSLT Transformation of XML failed due to a TransformerConfigurationException",tce);
         } catch (TransformerException te) {
-            te.printStackTrace();
+            log.error("XSLT Transformation of XML failed due to a TransformerException",te);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -65,7 +61,7 @@ public final class TransformUtil {
      * @return replaced string
      */
     public static String replaceMultipleStrings(String target, Map<String, String> replacements, boolean caseSensitive) {
-        if(target == null || "".equals(target) || replacements == null || replacements.size() == 0)
+        if(target == null || target.isEmpty() || replacements == null || replacements.isEmpty())
             return target;
 
         //if we are doing case-insensitive replacements, we need to make the map case-insensitive--make a new map with all-lower-case keys
@@ -96,7 +92,7 @@ public final class TransformUtil {
         Pattern pattern = Pattern.compile(patternString.toString());
         Matcher matcher = pattern.matcher(target);
 
-        StringBuffer res = new StringBuffer();
+        StringBuilder res = new StringBuilder();
         while(matcher.find()) {
             String match = matcher.group(1);
             if(!caseSensitive)
@@ -106,6 +102,7 @@ public final class TransformUtil {
         matcher.appendTail(res);
 
         return res.toString();
+
     }
 	
 	public static String nodeToString(Node node) {

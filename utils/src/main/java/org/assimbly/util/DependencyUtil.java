@@ -38,7 +38,7 @@ public class DependencyUtil {
 
             try(URLClassLoader child = new URLClassLoader(new URL[]{url}, this.getClass().getClassLoader())) {
 
-                ArrayList<String> classNames;
+                List<String> classNames;
                 try {
                     classNames = getClassNamesFromJar(path.toString());
                 } catch (Exception e) {
@@ -66,8 +66,8 @@ public class DependencyUtil {
     }
 
     // Returns an arraylist of class names in a JarInputStream
-    private ArrayList<String> getClassNamesFromJar(JarInputStream jarFile) throws Exception {
-        ArrayList<String> classNames = new ArrayList<>();
+    private List<String> getClassNamesFromJar(JarInputStream jarFile) throws Exception {
+        List<String> classNames = new ArrayList<>();
         try {
             JarEntry jar;
 
@@ -78,7 +78,7 @@ public class DependencyUtil {
                     break;
                 }
                 //Pick file that has the extension of .class
-                if ((jar.getName().endsWith(".class"))) {
+                if (jar.getName().endsWith(".class")) {
                     String className = jar.getName().replace("/", ".");
                     String myClass = className.substring(0, className.lastIndexOf('.'));
                     classNames.add(myClass);
@@ -92,7 +92,7 @@ public class DependencyUtil {
 
     // Returns an arraylist of class names in a JarInputStream
     // Calls the above function by converting the jar path to a stream
-    private ArrayList<String> getClassNamesFromJar(String jarPath) throws Exception {
+    private List<String> getClassNamesFromJar(String jarPath) throws Exception {
         return getClassNamesFromJar(new JarInputStream(new FileInputStream(jarPath)));
     }
 

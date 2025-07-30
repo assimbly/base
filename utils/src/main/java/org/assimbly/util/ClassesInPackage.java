@@ -23,7 +23,7 @@ public class ClassesInPackage {
             InputStream stream = ClassLoader.getSystemClassLoader().getResourceAsStream(packageName.replaceAll("[.]", "/"));
 
             if (stream != null) {
-                try (BufferedReader reader = new BufferedReader(new InputStreamReader(stream,StandardCharsets.UTF_8));) {
+                try (BufferedReader reader = new BufferedReader(new InputStreamReader(stream,StandardCharsets.UTF_8))) {
 
                     classes = reader.lines()
                             .filter(line -> line.endsWith(".class"))

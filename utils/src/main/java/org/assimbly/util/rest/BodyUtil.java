@@ -13,7 +13,7 @@ public final class BodyUtil {
     private BodyUtil() {
     }
 
-    public static String createSuccessJSONResponse(Long id, String path, String message) throws Exception {
+    public static String createSuccessJSONResponse(Long id, String path, String message) {
         
         JSONObject responseBody = new JSONObject();
         responseBody.put("id", id.toString());
@@ -27,7 +27,7 @@ public final class BodyUtil {
         
 	}
     
-    public static String createFailureJSONResponse(Long id, String path, String message) throws Exception {
+    public static String createFailureJSONResponse(Long id, String path, String message) {
   	
         JSONObject responseBody = new JSONObject();
         responseBody.put("id", id.toString());
@@ -41,7 +41,7 @@ public final class BodyUtil {
         
 	}
 
-    public static String createSuccessXMLResponse(Long id, String path, String message) throws Exception {
+    public static String createSuccessXMLResponse(Long id, String path, String message) {
         
         JSONObject responseBody = new JSONObject();
         responseBody.put("id", id.toString());
@@ -55,7 +55,7 @@ public final class BodyUtil {
         
 	}
     
-    public static String createFailureXMLResponse(Long id, String path, String message) throws Exception {
+    public static String createFailureXMLResponse(Long id, String path, String message) {
   	
         JSONObject responseBody = new JSONObject();
         responseBody.put("id", id.toString());

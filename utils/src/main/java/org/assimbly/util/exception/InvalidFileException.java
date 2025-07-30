@@ -2,8 +2,7 @@ package org.assimbly.util.exception;
 
 public class InvalidFileException extends RuntimeException {
 
-    public InvalidFileException() {
-    }
+    public InvalidFileException() {}
 
     public InvalidFileException(String s) {
         super(s);

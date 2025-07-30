@@ -7,7 +7,7 @@ public class LogUtil {
 
 	public static String tail(File file, int lines) {
 
-	    try (java.io.RandomAccessFile fileHandler = new java.io.RandomAccessFile( file, "r" );) {
+	    try (java.io.RandomAccessFile fileHandler = new java.io.RandomAccessFile( file, "r" )) {
 
 	        long fileLength = fileHandler.length() - 1;
 	        StringBuilder sb = new StringBuilder();
@@ -34,7 +34,6 @@ public class LogUtil {
 
 	        return sb.reverse().toString();
 	    } catch( IOException e ) {
-	        e.printStackTrace();
 	        return null;
 	    }
 	}	
