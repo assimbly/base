@@ -82,11 +82,6 @@
         </dependency>
         <dependency>
             <groupId>org.apache.activemq</groupId>
-            <artifactId>artemis-core-client</artifactId>
-            <version>${activemq-artemis.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.activemq</groupId>
             <artifactId>artemis-jakarta-ra</artifactId>
             <version>${activemq-artemis.version}</version>
         </dependency>
@@ -120,13 +115,11 @@
             <artifactId>artemis-hornetq-protocol</artifactId>
             <version>${activemq-artemis.version}</version>
         </dependency>
-
         <dependency>
             <groupId>org.apache.activemq</groupId>
             <artifactId>activemq-artemis-native</artifactId>
             <version>${activemq-artemis-native.version}</version>
         </dependency>
-
         <dependency>
             <groupId>org.apache.activemq</groupId>
             <artifactId>artemis-jakarta-client-all</artifactId>
