@@ -4,7 +4,7 @@
   <parent>
     <artifactId>base</artifactId>
     <groupId>org.assimbly</groupId>
-    <version>5.0.6</version>
+    <version>5.0.7</version>
   </parent>
 
   <artifactId>utils</artifactId>
@@ -65,7 +65,7 @@
 
         <dependency>
           <groupId>org.bouncycastle</groupId>
-          <artifactId>bcpkix-jdk15on</artifactId>
+          <artifactId>bcpkix-jdk18on</artifactId>
           <version>${bouncycastle.version}</version>
         </dependency>
 
