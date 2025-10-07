@@ -85,7 +85,7 @@
 		<jwt.version>0.13.0</jwt.version>
 		<jolokia.version>2.3.0</jolokia.version>
 		<httpclient.version>4.5.14</httpclient.version>
-		<kamelet.version>4.10.6</kamelet.version>
+		<kamelet.version>4.10.7</kamelet.version>
 		<logback-classic.version>1.5.19</logback-classic.version>
 		<messaginghub.version>3.1.7</messaginghub.version>
 		<mssql-jdbc.version>13.2.0.jre11</mssql-jdbc.version>
