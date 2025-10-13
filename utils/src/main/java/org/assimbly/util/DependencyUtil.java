@@ -136,6 +136,7 @@ public class DependencyUtil {
         AMQP("amqp"),
         AMQPS("amqps"),
         ARCHIVE("archive"),
+        AS2("as2"),
         BASE64TOTEXT("base64totext"),
         BEAN("bean"),
         CONTROLBUS("controlbus"),
