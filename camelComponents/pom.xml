@@ -8,7 +8,7 @@
     <parent>
         <artifactId>base</artifactId>
         <groupId>org.assimbly</groupId>
-        <version>5.0.7</version>
+        <version>5.0.8</version>
     </parent>
 
     <artifactId>camel-components</artifactId>
@@ -29,10 +29,10 @@
 
     <!-- list of Camel components in alphabetic order -->
     <dependencies>
-        <dependency>
+<!--        <dependency>
             <groupId>org.apache.camel</groupId>
             <artifactId>camel-as2</artifactId>
-        </dependency>
+        </dependency>-->
         <dependency>
             <groupId>org.apache.camel</groupId>
             <artifactId>camel-aws2-s3</artifactId>
