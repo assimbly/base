@@ -191,11 +191,11 @@
             <artifactId>groovy</artifactId>
             <version>${groovy-script.version}</version>
         </dependency>
-        <!--<dependency>
+        <dependency>
             <groupId>org.apache.groovy</groupId>
             <artifactId>groovy-jsr223</artifactId>
             <version>${groovy-script.version}</version>
-        </dependency>-->
+        </dependency>
         <dependency>
             <groupId>org.apache.groovy</groupId>
             <artifactId>groovy-dateutil</artifactId>
