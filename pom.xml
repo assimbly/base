@@ -42,7 +42,7 @@
 		<aopalliance.version>1.0</aopalliance.version>
 		<axiom.version>2.0.0</axiom.version>
 		<assimbly.version>5.0.10-SNAPSHOT</assimbly.version>
-		<activemq-classic.version>6.1.8</activemq-classic.version>
+		<activemq-classic.version>6.2.2</activemq-classic.version>
 		<activemq-artemis.version>2.44.0</activemq-artemis.version>
 		<activemq-artemis-native.version>2.0.0</activemq-artemis-native.version>
 		<bouncycastle.version>1.79</bouncycastle.version>
