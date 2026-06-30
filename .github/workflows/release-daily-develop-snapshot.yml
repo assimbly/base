@@ -2,7 +2,7 @@ name: Release Daily Development Snapshot
 
 on:
   schedule:
-    - cron: '0 0 * * *'
+    - cron: '20 0 * * *'
   
   workflow_dispatch:
 
