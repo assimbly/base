@@ -36,7 +36,7 @@ public final class XmlHelper {
         DocumentBuilder icBuilder;
 
         try {
-            icFactory = DocumentBuilderFactory.newInstance();
+            icFactory = createDocumentBuilderFactory();
             icBuilder = icFactory.newDocumentBuilder();
 
             return icBuilder.newDocument();
@@ -56,7 +56,7 @@ public final class XmlHelper {
         DocumentBuilder icBuilder;
 
         try {
-            icFactory = DocumentBuilderFactory.newInstance();
+            icFactory = createDocumentBuilderFactory();
             icBuilder = icFactory.newDocumentBuilder();
 
             return icBuilder.parse(
@@ -112,7 +112,7 @@ public final class XmlHelper {
         Document doc = null;
 
         try {
-            DocumentBuilder db = DocumentBuilderFactory.newInstance().newDocumentBuilder();
+            DocumentBuilder db = createDocumentBuilderFactory().newDocumentBuilder();
             doc = db.parse(new InputSource(new StringReader(xml)));
         } catch (ParserConfigurationException | SAXException | IOException e) {
             log.error(e.getMessage(), e);
@@ -123,7 +123,7 @@ public final class XmlHelper {
 
     public static String prettyPrintWithPossibleException(String xml) throws Exception {
         Document doc = null;
-        DocumentBuilder db = DocumentBuilderFactory.newInstance().newDocumentBuilder();
+        DocumentBuilder db = createDocumentBuilderFactory().newDocumentBuilder();
         doc = db.parse(new InputSource(new StringReader(xml)));
 
         return prettyPrint(doc);
@@ -146,5 +146,15 @@ public final class XmlHelper {
         }
 
         return result;
+    }
+
+    /**
+     * Namespace-aware factory so default xmlns on parents is applied to children
+     * in the DOM. Without this, Transformer emits empty xmlns="" undeclarations.
+     */
+    private static DocumentBuilderFactory createDocumentBuilderFactory() {
+        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+        factory.setNamespaceAware(true);
+        return factory;
     }
 }
