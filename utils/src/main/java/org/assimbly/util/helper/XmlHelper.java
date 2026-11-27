@@ -95,8 +95,7 @@ public final class XmlHelper {
         StreamResult result = new StreamResult(new StringWriter());
 
         try {
-            // The JDK implementation, not whichever provider is on the classpath:
-            // Saxon (camel-saxon) would be picked otherwise, and it serializes CDATA sections as escaped text.
+            // JDK transformer, because Saxon drops CDATA sections.
             transformer = TransformerFactory.newDefaultInstance().newTransformer();
             transformer.setOutputProperty(OutputKeys.INDENT, "yes");
             transformer.setOutputProperty(OutputKeys.METHOD, "xml");
