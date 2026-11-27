@@ -95,7 +95,9 @@ public final class XmlHelper {
         StreamResult result = new StreamResult(new StringWriter());
 
         try {
-            transformer = TransformerFactory.newInstance().newTransformer();
+            // The JDK implementation, not whichever provider is on the classpath:
+            // Saxon (camel-saxon) would be picked otherwise, and it serializes CDATA sections as escaped text.
+            transformer = TransformerFactory.newDefaultInstance().newTransformer();
             transformer.setOutputProperty(OutputKeys.INDENT, "yes");
             transformer.setOutputProperty(OutputKeys.METHOD, "xml");
             transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "2");
