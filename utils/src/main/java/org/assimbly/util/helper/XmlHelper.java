@@ -95,7 +95,8 @@ public final class XmlHelper {
         StreamResult result = new StreamResult(new StringWriter());
 
         try {
-            transformer = TransformerFactory.newInstance().newTransformer();
+            // JDK transformer, because Saxon drops CDATA sections.
+            transformer = TransformerFactory.newDefaultInstance().newTransformer();
             transformer.setOutputProperty(OutputKeys.INDENT, "yes");
             transformer.setOutputProperty(OutputKeys.METHOD, "xml");
             transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "2");
